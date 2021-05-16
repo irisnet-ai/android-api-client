@@ -61,16 +61,21 @@ public class EndpointsForAIChecksApi {
   * Upload and check image against previously chosen configuration.
   * 
    * @param licenseKey License obtained from irisnet.de shop.
-   * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
    * @param file 
+   * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
    * @return IrisNet
   */
-  public IrisNet checkImage (String licenseKey, Integer detail, File file) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public IrisNet checkImage (String licenseKey, File file, Integer detail) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'licenseKey' is set
     if (licenseKey == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'licenseKey' when calling checkImage",
         new ApiException(400, "Missing the required parameter 'licenseKey' when calling checkImage"));
+    }
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling checkImage",
+        new ApiException(400, "Missing the required parameter 'file' when calling checkImage"));
     }
 
     // create path and map variables
@@ -129,15 +134,20 @@ public class EndpointsForAIChecksApi {
       /**
    * Upload and check image against previously chosen configuration.
    * 
-   * @param licenseKey License obtained from irisnet.de shop.   * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.   * @param file 
+   * @param licenseKey License obtained from irisnet.de shop.   * @param file    * @param detail Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
   */
-  public void checkImage (String licenseKey, Integer detail, File file, final Response.Listener<IrisNet> responseListener, final Response.ErrorListener errorListener) {
+  public void checkImage (String licenseKey, File file, Integer detail, final Response.Listener<IrisNet> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'licenseKey' is set
     if (licenseKey == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'licenseKey' when calling checkImage",
         new ApiException(400, "Missing the required parameter 'licenseKey' when calling checkImage"));
+    }
+    // verify the required parameter 'file' is set
+    if (file == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'file' when calling checkImage",
+        new ApiException(400, "Missing the required parameter 'file' when calling checkImage"));
     }
 
     // create path and map variables

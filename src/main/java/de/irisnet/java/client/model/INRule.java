@@ -23,6 +23,8 @@ public class INRule {
   
   @SerializedName("inClass")
   private String inClass = null;
+  @SerializedName("inGroup")
+  private String inGroup = null;
   @SerializedName("found")
   private Integer found = null;
   @SerializedName("min")
@@ -39,6 +41,17 @@ public class INRule {
   }
   public void setInClass(String inClass) {
     this.inClass = inClass;
+  }
+
+  /**
+   * The group of the classification.
+   **/
+  @ApiModelProperty(value = "The group of the classification.")
+  public String getInGroup() {
+    return inGroup;
+  }
+  public void setInGroup(String inGroup) {
+    this.inGroup = inGroup;
   }
 
   /**
@@ -85,6 +98,7 @@ public class INRule {
     }
     INRule iNRule = (INRule) o;
     return (this.inClass == null ? iNRule.inClass == null : this.inClass.equals(iNRule.inClass)) &&
+        (this.inGroup == null ? iNRule.inGroup == null : this.inGroup.equals(iNRule.inGroup)) &&
         (this.found == null ? iNRule.found == null : this.found.equals(iNRule.found)) &&
         (this.min == null ? iNRule.min == null : this.min.equals(iNRule.min)) &&
         (this.max == null ? iNRule.max == null : this.max.equals(iNRule.max));
@@ -94,6 +108,7 @@ public class INRule {
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.inClass == null ? 0: this.inClass.hashCode());
+    result = 31 * result + (this.inGroup == null ? 0: this.inGroup.hashCode());
     result = 31 * result + (this.found == null ? 0: this.found.hashCode());
     result = 31 * result + (this.min == null ? 0: this.min.hashCode());
     result = 31 * result + (this.max == null ? 0: this.max.hashCode());
@@ -106,6 +121,7 @@ public class INRule {
     sb.append("class INRule {\n");
     
     sb.append("  inClass: ").append(inClass).append("\n");
+    sb.append("  inGroup: ").append(inGroup).append("\n");
     sb.append("  found: ").append(found).append("\n");
     sb.append("  min: ").append(min).append("\n");
     sb.append("  max: ").append(max).append("\n");

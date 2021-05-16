@@ -23,6 +23,10 @@ public class INObject {
   
   @SerializedName("inClass")
   private String inClass = null;
+  @SerializedName("inGroup")
+  private String inGroup = null;
+  @SerializedName("inId")
+  private String inId = null;
   @SerializedName("x0")
   private Float x0 = null;
   @SerializedName("y0")
@@ -43,6 +47,28 @@ public class INObject {
   }
   public void setInClass(String inClass) {
     this.inClass = inClass;
+  }
+
+  /**
+   * The group of the classification.
+   **/
+  @ApiModelProperty(value = "The group of the classification.")
+  public String getInGroup() {
+    return inGroup;
+  }
+  public void setInGroup(String inGroup) {
+    this.inGroup = inGroup;
+  }
+
+  /**
+   * The group of the classification.
+   **/
+  @ApiModelProperty(value = "The group of the classification.")
+  public String getInId() {
+    return inId;
+  }
+  public void setInId(String inId) {
+    this.inId = inId;
   }
 
   /**
@@ -111,6 +137,8 @@ public class INObject {
     }
     INObject iNObject = (INObject) o;
     return (this.inClass == null ? iNObject.inClass == null : this.inClass.equals(iNObject.inClass)) &&
+        (this.inGroup == null ? iNObject.inGroup == null : this.inGroup.equals(iNObject.inGroup)) &&
+        (this.inId == null ? iNObject.inId == null : this.inId.equals(iNObject.inId)) &&
         (this.x0 == null ? iNObject.x0 == null : this.x0.equals(iNObject.x0)) &&
         (this.y0 == null ? iNObject.y0 == null : this.y0.equals(iNObject.y0)) &&
         (this.width == null ? iNObject.width == null : this.width.equals(iNObject.width)) &&
@@ -122,6 +150,8 @@ public class INObject {
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.inClass == null ? 0: this.inClass.hashCode());
+    result = 31 * result + (this.inGroup == null ? 0: this.inGroup.hashCode());
+    result = 31 * result + (this.inId == null ? 0: this.inId.hashCode());
     result = 31 * result + (this.x0 == null ? 0: this.x0.hashCode());
     result = 31 * result + (this.y0 == null ? 0: this.y0.hashCode());
     result = 31 * result + (this.width == null ? 0: this.width.hashCode());
@@ -136,6 +166,8 @@ public class INObject {
     sb.append("class INObject {\n");
     
     sb.append("  inClass: ").append(inClass).append("\n");
+    sb.append("  inGroup: ").append(inGroup).append("\n");
+    sb.append("  inId: ").append(inId).append("\n");
     sb.append("  x0: ").append(x0).append("\n");
     sb.append("  y0: ").append(y0).append("\n");
     sb.append("  width: ").append(width).append("\n");

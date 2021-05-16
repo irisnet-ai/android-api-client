@@ -24,7 +24,7 @@ public class InlineObject {
 
   /**
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
   public File getFile() {
     return file;
   }
