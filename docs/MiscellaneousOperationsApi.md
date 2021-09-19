@@ -107,7 +107,7 @@ Get information from given license key.
 //import de.irisnet.java.client.MiscellaneousOperationsApi;
 
 MiscellaneousOperationsApi apiInstance = new MiscellaneousOperationsApi();
-String licenseKey = null; // String | License obtained from the https://www.irisnet.de/prices shop.
+String licenseKey = null; // String | License obtained from the https://irisnet.de/subscribe shop.
 try {
     LicenseInfo result = apiInstance.getLicenseInfo(licenseKey);
     System.out.println(result);
@@ -122,7 +122,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **licenseKey** | **String**| License obtained from the https://www.irisnet.de/prices shop. | [default to null]
+ **licenseKey** | **String**| License obtained from the https://irisnet.de/subscribe shop. | [default to null]
 
 ### Return type
 

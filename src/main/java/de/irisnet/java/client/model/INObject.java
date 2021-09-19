@@ -1,6 +1,6 @@
 /**
  * Irisnet API
- * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses.By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
+ * Artificial Intelligence (AI) for image- and video-processing in realtime. This is an interactive documentation meant to give a place were you can quickly look up the endpoints and their schemas, while also giving you the option to try things out yourself.  Listed below you'll see the available endpoints of the API that can be expanded by clicking on it. Each expanded endpoint lists the request parameter (if available) and the request body (if available). The request body can list some example bodies and the schema, explaining each model in detail. Additionally you'll find a 'Try it out' button where you can type in your custom parameters and custom body and execute that against the API. The responses section in the expanded endpoint lists the possible responses with their corresponding status codes. If you've executed an API call it will also show you the response from the server.  Underneath the endpoints you'll find the model schemas. These are the models used for the requests and responses. By clicking on the right arrow you can expand the model and it will show you a description of the model and the model parameters. For nested models you can keep clicking the right arrow to reveal further details on it.  
  *
  * The version of the OpenAPI document: v1
  * 
@@ -27,6 +27,16 @@ public class INObject {
   private String inGroup = null;
   @SerializedName("inId")
   private String inId = null;
+  public enum ColorEnum {
+     black,  brown,  blonde,  grey,  red,  other, 
+  };
+  @SerializedName("color")
+  private ColorEnum color = null;
+  public enum StyleEnum {
+     longHaired,  shortHaired, 
+  };
+  @SerializedName("style")
+  private StyleEnum style = null;
   @SerializedName("x0")
   private Float x0 = null;
   @SerializedName("y0")
@@ -69,6 +79,28 @@ public class INObject {
   }
   public void setInId(String inId) {
     this.inId = inId;
+  }
+
+  /**
+   * The color of the object, e.g. the color of the hair. Is only available for certain classification objects. See list below:  * _hair_ - black, brown, blonde, grey, red, other
+   **/
+  @ApiModelProperty(value = "The color of the object, e.g. the color of the hair. Is only available for certain classification objects. See list below:  * _hair_ - black, brown, blonde, grey, red, other")
+  public ColorEnum getColor() {
+    return color;
+  }
+  public void setColor(ColorEnum color) {
+    this.color = color;
+  }
+
+  /**
+   * The style attribute of the object, e.g. the style of the hair. Is only available for certain classification objects. See list below:  * _hair_ - longHaired, shortHaired
+   **/
+  @ApiModelProperty(value = "The style attribute of the object, e.g. the style of the hair. Is only available for certain classification objects. See list below:  * _hair_ - longHaired, shortHaired")
+  public StyleEnum getStyle() {
+    return style;
+  }
+  public void setStyle(StyleEnum style) {
+    this.style = style;
   }
 
   /**
@@ -139,6 +171,8 @@ public class INObject {
     return (this.inClass == null ? iNObject.inClass == null : this.inClass.equals(iNObject.inClass)) &&
         (this.inGroup == null ? iNObject.inGroup == null : this.inGroup.equals(iNObject.inGroup)) &&
         (this.inId == null ? iNObject.inId == null : this.inId.equals(iNObject.inId)) &&
+        (this.color == null ? iNObject.color == null : this.color.equals(iNObject.color)) &&
+        (this.style == null ? iNObject.style == null : this.style.equals(iNObject.style)) &&
         (this.x0 == null ? iNObject.x0 == null : this.x0.equals(iNObject.x0)) &&
         (this.y0 == null ? iNObject.y0 == null : this.y0.equals(iNObject.y0)) &&
         (this.width == null ? iNObject.width == null : this.width.equals(iNObject.width)) &&
@@ -152,6 +186,8 @@ public class INObject {
     result = 31 * result + (this.inClass == null ? 0: this.inClass.hashCode());
     result = 31 * result + (this.inGroup == null ? 0: this.inGroup.hashCode());
     result = 31 * result + (this.inId == null ? 0: this.inId.hashCode());
+    result = 31 * result + (this.color == null ? 0: this.color.hashCode());
+    result = 31 * result + (this.style == null ? 0: this.style.hashCode());
     result = 31 * result + (this.x0 == null ? 0: this.x0.hashCode());
     result = 31 * result + (this.y0 == null ? 0: this.y0.hashCode());
     result = 31 * result + (this.width == null ? 0: this.width.hashCode());
@@ -168,6 +204,8 @@ public class INObject {
     sb.append("  inClass: ").append(inClass).append("\n");
     sb.append("  inGroup: ").append(inGroup).append("\n");
     sb.append("  inId: ").append(inId).append("\n");
+    sb.append("  color: ").append(color).append("\n");
+    sb.append("  style: ").append(style).append("\n");
     sb.append("  x0: ").append(x0).append("\n");
     sb.append("  y0: ").append(y0).append("\n");
     sb.append("  width: ").append(width).append("\n");

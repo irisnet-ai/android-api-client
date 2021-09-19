@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.irisnet.java.client</groupId>
     <artifactId>irisnet-java-client</artifactId>
-    <version>2.2.3</version>
+    <version>2.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:2.2.3"
+compile "de.irisnet.java.client:irisnet-java-client:2.3.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/irisnet-java-client-2.2.3.jar
+- target/irisnet-java-client-2.3.0.jar
 - target/lib/*.jar
 
 ## Getting Started
@@ -67,8 +67,9 @@ public class EndpointsForAIChecksApiExample {
         String licenseKey = null; // String | License obtained from irisnet.de shop.
         File file = null; // File | 
         Integer detail = 1; // Integer | Sets the response details.  * _1_ - The response body informs you if the image is ok or not ok (better API performance) * _2_ - In addition the response body lists all broken rules. * _3_ - In addition to the first two options, this will show all objects with positional information.
+        Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output image that can be downloaded afterwards.
         try {
-            IrisNet result = apiInstance.checkImage(licenseKey, file, detail);
+            IrisNet result = apiInstance.checkImage(licenseKey, file, detail, imageEncode);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling EndpointsForAIChecksApi#checkImage");
