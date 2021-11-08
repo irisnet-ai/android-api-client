@@ -104,9 +104,9 @@ public class INObject {
   }
 
   /**
-   * The starting point of the rectangle in the vertical (x) direction.
+   * The center of the rectangle in the horizontal (x) direction.
    **/
-  @ApiModelProperty(value = "The starting point of the rectangle in the vertical (x) direction.")
+  @ApiModelProperty(value = "The center of the rectangle in the horizontal (x) direction.")
   public Float getX0() {
     return x0;
   }
@@ -115,9 +115,9 @@ public class INObject {
   }
 
   /**
-   * The starting point of the rectangle in the horizontal (y) direction.
+   * The center of the rectangle in the vertical (y) direction.
    **/
-  @ApiModelProperty(value = "The starting point of the rectangle in the horizontal (y) direction.")
+  @ApiModelProperty(value = "The center of the rectangle in the vertical (y) direction.")
   public Float getY0() {
     return y0;
   }
@@ -126,9 +126,9 @@ public class INObject {
   }
 
   /**
-   * The distance from the starting point (y0) to end the rectangle in the horizontal direction.
+   * The total width of the rectangle in the horizontal (x) direction. Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges of the rectangle.
    **/
-  @ApiModelProperty(value = "The distance from the starting point (y0) to end the rectangle in the horizontal direction.")
+  @ApiModelProperty(value = "The total width of the rectangle in the horizontal (x) direction. Use _x0 - width / 2_ and _x0 + width / 2_ to get the left and right edges of the rectangle.")
   public Float getWidth() {
     return width;
   }
@@ -137,9 +137,9 @@ public class INObject {
   }
 
   /**
-   * The distance from the starting point (x0) to end the rectangle in the vertical direction.
+   * The total height of the rectangle in the vertical (y) direction. Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom edges of the rectangle.
    **/
-  @ApiModelProperty(value = "The distance from the starting point (x0) to end the rectangle in the vertical direction.")
+  @ApiModelProperty(value = "The total height of the rectangle in the vertical (y) direction. Use _y0 - height / 2_ and _y0 + height / 2_ to get the top and bottom edges of the rectangle.")
   public Float getHeight() {
     return height;
   }

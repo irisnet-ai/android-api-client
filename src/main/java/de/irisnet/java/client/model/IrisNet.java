@@ -28,6 +28,8 @@ public class IrisNet {
   private Integer rulesBroken = null;
   @SerializedName("helpSuggested")
   private Integer helpSuggested = null;
+  @SerializedName("severity")
+  private Integer severity = null;
   @SerializedName("getnClasses")
   private Integer getnClasses = null;
   @SerializedName("getnObjects")
@@ -57,6 +59,17 @@ public class IrisNet {
   }
   public void setHelpSuggested(Integer helpSuggested) {
     this.helpSuggested = helpSuggested;
+  }
+
+  /**
+   * The highest severity value found amongst the broken rules.
+   **/
+  @ApiModelProperty(value = "The highest severity value found amongst the broken rules.")
+  public Integer getSeverity() {
+    return severity;
+  }
+  public void setSeverity(Integer severity) {
+    this.severity = severity;
   }
 
   /**
@@ -115,6 +128,7 @@ public class IrisNet {
     IrisNet irisNet = (IrisNet) o;
     return (this.rulesBroken == null ? irisNet.rulesBroken == null : this.rulesBroken.equals(irisNet.rulesBroken)) &&
         (this.helpSuggested == null ? irisNet.helpSuggested == null : this.helpSuggested.equals(irisNet.helpSuggested)) &&
+        (this.severity == null ? irisNet.severity == null : this.severity.equals(irisNet.severity)) &&
         (this.getnClasses == null ? irisNet.getnClasses == null : this.getnClasses.equals(irisNet.getnClasses)) &&
         (this.getnObjects == null ? irisNet.getnObjects == null : this.getnObjects.equals(irisNet.getnObjects)) &&
         (this.inRule == null ? irisNet.inRule == null : this.inRule.equals(irisNet.inRule)) &&
@@ -126,6 +140,7 @@ public class IrisNet {
     int result = 17;
     result = 31 * result + (this.rulesBroken == null ? 0: this.rulesBroken.hashCode());
     result = 31 * result + (this.helpSuggested == null ? 0: this.helpSuggested.hashCode());
+    result = 31 * result + (this.severity == null ? 0: this.severity.hashCode());
     result = 31 * result + (this.getnClasses == null ? 0: this.getnClasses.hashCode());
     result = 31 * result + (this.getnObjects == null ? 0: this.getnObjects.hashCode());
     result = 31 * result + (this.inRule == null ? 0: this.inRule.hashCode());
@@ -140,6 +155,7 @@ public class IrisNet {
     
     sb.append("  rulesBroken: ").append(rulesBroken).append("\n");
     sb.append("  helpSuggested: ").append(helpSuggested).append("\n");
+    sb.append("  severity: ").append(severity).append("\n");
     sb.append("  getnClasses: ").append(getnClasses).append("\n");
     sb.append("  getnObjects: ").append(getnObjects).append("\n");
     sb.append("  inRule: ").append(inRule).append("\n");

@@ -30,10 +30,14 @@ public class INParam {
   private Integer min = null;
   @SerializedName("max")
   private Integer max = null;
+  @SerializedName("severity")
+  private Integer severity = 100;
   @SerializedName("drawMode")
   private Integer drawMode = null;
   @SerializedName("grey")
   private Integer grey = 127;
+  @SerializedName("scale")
+  private Float scale = 1.0;
 
   /**
    * The classification of the object, that the element refers to. Default parameter values are defined per classification object. The following list contains the default values for 'min', 'max' and 'drawMode' in order.  * _face_ _(1, 3, 0)_ - Classification for human faces. * _child (*)_ _(0, 0, 6)_ - Recognizes children's faces. * _adult (*)_ _(0, -1, 0)_ - Recognizes faces of adults that are not considered seniors. * _senior (*)_ _(0, -1, 0)_ - Recognizes faces of seniors. * _pose_ _(0, 0, 0)_ - The age can not be estimated, due to a pose that hides facial features. * _female (*)_ _(0, -1, 0)_ - Recognizes female faces.  * _male (*)_ _(0, -1, 0)_ - Recognizes male faces.  * _hand_ _(0, -1, 0)_ - Classification for recognizing hands. * _foot_ _(0, -1, 0)_ - Classification for recognizing feet. * _footwear_ _(0, -1, 0)_ - Classification for recognizing footwear. * _hair_ _(0, -1, 0)_ - Classification for recognizing hair.  * _hairless_ _(0, -1, 0)_ - Classification for recognizing no hair.  * _beard_ _(0, -1, 0)_ - Classification for recognizing beards.  * _moustache_ _(0, -1, 0)_ - Classification for recognizing moustaches.  * _headpiece_ _(0, -1, 0)_ - Classification for recognizing headpieces.  * _glasses_ _(0, -1, 0)_ - Classification for recognizing glasses.  * _sunglasses_ _(0, -1, 0)_ - Classification for recognizing sunglasses.  * _mask_ _(0, -1, 0)_ - Classification for recognizing medical masks.  * _breast_ _(0, 0, 2)_ - Object that recognizes female breasts. * _vulva_ _(0, 0, 2)_ - Object that recognizes vulvae. * _penis_ _(0, 0, 2)_ - Object that recognizes penises. * _vagina_ _(0, 0, 2)_ - Object that recognizes vaginae. * _buttocks_ _(0, 0, 2)_ - Object that recognizes buttocks. * _anus_ _(0, 0, 2)_ - Object that recognizes ani. * _toy_ _(0, -1, 0)_ - Object that recognizes sex toys. * _oral_ _(0, 0, 2)_ - Object that recognizes oral sex. * _penetration_ _(0, 0, 2)_ - Object that recognizes a sexual penetration penetration. * _illegalSymbols_ _(0, 0, 1)_ - Classification for symbols that are not permitted in Germany.  * _textRecognition_ _(0, 6, 6)_ - Classification for recognizing text occurrences.  _Classification objects that are marked with (*) are sub-classifications of face. Both face and the marked classification are affected by the given parameter values._  _Please be aware that the default values can be subject to change. This is due to the difficulty of recognizing certain objects e.g. objects that are classified as toy._
@@ -69,6 +73,19 @@ public class INParam {
   }
 
   /**
+   * Set a value to define the severity of a broken rule of the given classification object.
+   * minimum: 0
+   * maximum: 1000
+   **/
+  @ApiModelProperty(value = "Set a value to define the severity of a broken rule of the given classification object.")
+  public Integer getSeverity() {
+    return severity;
+  }
+  public void setSeverity(Integer severity) {
+    this.severity = severity;
+  }
+
+  /**
    * The draw mode that will be used for the creating the media.  * _0_ - will draw nothing, * _1_ - will draw a frame with class name surrounding the object, * _2_ - will draw a filled rectangle that will mask the object, * _3_ - is a combination between _1_ and _2_ (frame/name + mask), * _6_ - will blur the object and * _7_ - is a combination between _1_ and _6_ (frame/name + blur).
    * minimum: 0
    * maximum: 7
@@ -94,6 +111,19 @@ public class INParam {
     this.grey = grey;
   }
 
+  /**
+   * Scale of the draw rectangle around the classification object. Specify a value to increase or decrease the size of the border.
+   * minimum: 0.5
+   * maximum: 2.0
+   **/
+  @ApiModelProperty(value = "Scale of the draw rectangle around the classification object. Specify a value to increase or decrease the size of the border.")
+  public Float getScale() {
+    return scale;
+  }
+  public void setScale(Float scale) {
+    this.scale = scale;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -107,8 +137,10 @@ public class INParam {
     return (this.inClass == null ? iNParam.inClass == null : this.inClass.equals(iNParam.inClass)) &&
         (this.min == null ? iNParam.min == null : this.min.equals(iNParam.min)) &&
         (this.max == null ? iNParam.max == null : this.max.equals(iNParam.max)) &&
+        (this.severity == null ? iNParam.severity == null : this.severity.equals(iNParam.severity)) &&
         (this.drawMode == null ? iNParam.drawMode == null : this.drawMode.equals(iNParam.drawMode)) &&
-        (this.grey == null ? iNParam.grey == null : this.grey.equals(iNParam.grey));
+        (this.grey == null ? iNParam.grey == null : this.grey.equals(iNParam.grey)) &&
+        (this.scale == null ? iNParam.scale == null : this.scale.equals(iNParam.scale));
   }
 
   @Override
@@ -117,8 +149,10 @@ public class INParam {
     result = 31 * result + (this.inClass == null ? 0: this.inClass.hashCode());
     result = 31 * result + (this.min == null ? 0: this.min.hashCode());
     result = 31 * result + (this.max == null ? 0: this.max.hashCode());
+    result = 31 * result + (this.severity == null ? 0: this.severity.hashCode());
     result = 31 * result + (this.drawMode == null ? 0: this.drawMode.hashCode());
     result = 31 * result + (this.grey == null ? 0: this.grey.hashCode());
+    result = 31 * result + (this.scale == null ? 0: this.scale.hashCode());
     return result;
   }
 
@@ -130,8 +164,10 @@ public class INParam {
     sb.append("  inClass: ").append(inClass).append("\n");
     sb.append("  min: ").append(min).append("\n");
     sb.append("  max: ").append(max).append("\n");
+    sb.append("  severity: ").append(severity).append("\n");
     sb.append("  drawMode: ").append(drawMode).append("\n");
     sb.append("  grey: ").append(grey).append("\n");
+    sb.append("  scale: ").append(scale).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

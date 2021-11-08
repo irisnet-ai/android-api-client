@@ -31,6 +31,8 @@ public class INRule {
   private Integer min = null;
   @SerializedName("max")
   private Integer max = null;
+  @SerializedName("severity")
+  private Integer severity = null;
 
   /**
    * The classification of the recognized object.
@@ -87,6 +89,17 @@ public class INRule {
     this.max = max;
   }
 
+  /**
+   * The severity of the classification object set while configuring the AI.
+   **/
+  @ApiModelProperty(value = "The severity of the classification object set while configuring the AI.")
+  public Integer getSeverity() {
+    return severity;
+  }
+  public void setSeverity(Integer severity) {
+    this.severity = severity;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -101,7 +114,8 @@ public class INRule {
         (this.inGroup == null ? iNRule.inGroup == null : this.inGroup.equals(iNRule.inGroup)) &&
         (this.found == null ? iNRule.found == null : this.found.equals(iNRule.found)) &&
         (this.min == null ? iNRule.min == null : this.min.equals(iNRule.min)) &&
-        (this.max == null ? iNRule.max == null : this.max.equals(iNRule.max));
+        (this.max == null ? iNRule.max == null : this.max.equals(iNRule.max)) &&
+        (this.severity == null ? iNRule.severity == null : this.severity.equals(iNRule.severity));
   }
 
   @Override
@@ -112,6 +126,7 @@ public class INRule {
     result = 31 * result + (this.found == null ? 0: this.found.hashCode());
     result = 31 * result + (this.min == null ? 0: this.min.hashCode());
     result = 31 * result + (this.max == null ? 0: this.max.hashCode());
+    result = 31 * result + (this.severity == null ? 0: this.severity.hashCode());
     return result;
   }
 
@@ -125,6 +140,7 @@ public class INRule {
     sb.append("  found: ").append(found).append("\n");
     sb.append("  min: ").append(min).append("\n");
     sb.append("  max: ").append(max).append("\n");
+    sb.append("  severity: ").append(severity).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
