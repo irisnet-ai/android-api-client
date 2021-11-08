@@ -105,7 +105,6 @@ Class | Method | HTTP request | Description
  - [INParam](docs/INParam.md)
  - [INParams](docs/INParams.md)
  - [INRule](docs/INRule.md)
- - [InlineObject](docs/InlineObject.md)
  - [IrisNet](docs/IrisNet.md)
  - [LicenseInfo](docs/LicenseInfo.md)
 

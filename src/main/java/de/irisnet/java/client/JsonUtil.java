@@ -89,10 +89,6 @@ public class JsonUtil {
       return new TypeToken<List<INRule>>(){}.getType();
     }
     
-    if ("InlineObject".equalsIgnoreCase(className)) {
-      return new TypeToken<List<InlineObject>>(){}.getType();
-    }
-    
     if ("IrisNet".equalsIgnoreCase(className)) {
       return new TypeToken<List<IrisNet>>(){}.getType();
     }
@@ -137,10 +133,6 @@ public class JsonUtil {
     
     if ("INRule".equalsIgnoreCase(className)) {
       return new TypeToken<INRule>(){}.getType();
-    }
-    
-    if ("InlineObject".equalsIgnoreCase(className)) {
-      return new TypeToken<InlineObject>(){}.getType();
     }
     
     if ("IrisNet".equalsIgnoreCase(className)) {
