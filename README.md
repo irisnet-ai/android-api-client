@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.irisnet.java.client</groupId>
     <artifactId>irisnet-java-client</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:3.0.1"
+compile "de.irisnet.java.client:irisnet-java-client:3.0.3"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/irisnet-java-client-3.0.1.jar
+- target/irisnet-java-client-3.0.3.jar
 - target/lib/*.jar
 
 ## Getting Started

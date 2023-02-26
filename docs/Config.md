@@ -20,7 +20,10 @@ AGEESTIMATION | &quot;ageEstimation&quot;
 ILLEGALSYMBOLS | &quot;illegalSymbols&quot;
 TEXTRECOGNITION | &quot;textRecognition&quot;
 ATTRIBUTESCHECK | &quot;attributesCheck&quot;
+BODYATTRIBUTES | &quot;bodyAttributes&quot;
 NIPPLECHECK | &quot;nippleCheck&quot;
+UNWANTEDSUBSTANCES | &quot;unwantedSubstances&quot;
+VIOLENCECHECK | &quot;violenceCheck&quot;
 
 
 

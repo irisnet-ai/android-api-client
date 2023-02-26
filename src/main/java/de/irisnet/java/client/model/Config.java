@@ -26,7 +26,7 @@ public class Config {
   @SerializedName("id")
   private UUID id = null;
   public enum Set&lt;PrototypesEnum&gt; {
-     nudityCheck,  ageVerification,  ageEstimation,  illegalSymbols,  textRecognition,  attributesCheck,  nippleCheck, 
+     nudityCheck,  ageVerification,  ageEstimation,  illegalSymbols,  textRecognition,  attributesCheck,  bodyAttributes,  nippleCheck,  unwantedSubstances,  violenceCheck, 
   };
   @SerializedName("prototypes")
   private Set<PrototypesEnum> prototypes = null;
