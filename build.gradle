@@ -1,5 +1,5 @@
 group = 'de.irisnet.java.client'
-project.version = '3.0.3'
+project.version = '3.0.5'
 
 buildscript {
     repositories {
