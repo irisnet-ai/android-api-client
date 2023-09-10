@@ -24,8 +24,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import de.irisnet.java.client.model.ApiNotice;
-import de.irisnet.java.client.model.Callback;
 import de.irisnet.java.client.model.CheckResult;
+import de.irisnet.java.client.model.Config;
+import java.util.*;
 import java.util.UUID;
 
 import org.apache.http.HttpEntity;
@@ -62,22 +63,18 @@ public class AICheckOperationsApi {
   * Check an image with the AI.
   * The response (_CheckResult_ schema) is returned immediately after the request.
    * @param configId The configuration id from the Basic Configuration operations.
-   * @param url The url to the image that needs to be checked.
+   * @param url &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt;
+   * @param data The http(s) url or base64 encoded data uri of the image that needs to be checked.
    * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
    * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
    * @return CheckResult
   */
-  public CheckResult checkImage (UUID configId, String url, Integer detail, Boolean imageEncode) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+  public CheckResult checkImage (UUID configId, String url, String data, Integer detail, Boolean imageEncode) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
     Object postBody = null;
     // verify the required parameter 'configId' is set
     if (configId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkImage",
         new ApiException(400, "Missing the required parameter 'configId' when calling checkImage"));
-    }
-    // verify the required parameter 'url' is set
-    if (url == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'url' when calling checkImage",
-        new ApiException(400, "Missing the required parameter 'url' when calling checkImage"));
     }
 
     // create path and map variables
@@ -90,6 +87,7 @@ public class AICheckOperationsApi {
     // form params
     Map<String, String> formParams = new HashMap<String, String>();
     queryParams.addAll(ApiInvoker.parameterToPairs("", "url", url));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "data", data));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "detail", detail));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "imageEncode", imageEncode));
     String[] contentTypes = {
@@ -134,20 +132,15 @@ public class AICheckOperationsApi {
       /**
    * Check an image with the AI.
    * The response (_CheckResult_ schema) is returned immediately after the request.
-   * @param configId The configuration id from the Basic Configuration operations.   * @param url The url to the image that needs to be checked.   * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.   * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param url &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt;   * @param data The http(s) url or base64 encoded data uri of the image that needs to be checked.   * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.   * @param imageEncode Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
   */
-  public void checkImage (UUID configId, String url, Integer detail, Boolean imageEncode, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
+  public void checkImage (UUID configId, String url, String data, Integer detail, Boolean imageEncode, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
     Object postBody = null;
 
     // verify the required parameter 'configId' is set
     if (configId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkImage",
         new ApiException(400, "Missing the required parameter 'configId' when calling checkImage"));
-    }
-    // verify the required parameter 'url' is set
-    if (url == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'url' when calling checkImage",
-        new ApiException(400, "Missing the required parameter 'url' when calling checkImage"));
     }
 
     // create path and map variables
@@ -161,6 +154,7 @@ public class AICheckOperationsApi {
     Map<String, String> formParams = new HashMap<String, String>();
 
     queryParams.addAll(ApiInvoker.parameterToPairs("", "url", url));
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "data", data));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "detail", detail));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "imageEncode", imageEncode));
 
@@ -358,14 +352,14 @@ public class AICheckOperationsApi {
   * An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.  &lt;b&gt;NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.&lt;b&gt;
    * @param configId The configuration id from the Basic Configuration operations.
    * @param url The url to the video that needs to be checked.
-   * @param callback 
+   * @param config 
    * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.
    * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response.
    * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;.
    * @return void
   */
-  public void checkVideo (UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
-    Object postBody = callback;
+  public void checkVideo (UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = config;
     // verify the required parameter 'configId' is set
     if (configId == null) {
       VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkVideo",
@@ -376,10 +370,10 @@ public class AICheckOperationsApi {
       VolleyError error = new VolleyError("Missing the required parameter 'url' when calling checkVideo",
         new ApiException(400, "Missing the required parameter 'url' when calling checkVideo"));
     }
-    // verify the required parameter 'callback' is set
-    if (callback == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'callback' when calling checkVideo",
-        new ApiException(400, "Missing the required parameter 'callback' when calling checkVideo"));
+    // verify the required parameter 'config' is set
+    if (config == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'config' when calling checkVideo",
+        new ApiException(400, "Missing the required parameter 'config' when calling checkVideo"));
     }
 
     // create path and map variables
@@ -438,10 +432,10 @@ public class AICheckOperationsApi {
       /**
    * Check a video with the AI.
    * An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.  &lt;b&gt;NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.&lt;b&gt;
-   * @param configId The configuration id from the Basic Configuration operations.   * @param url The url to the video that needs to be checked.   * @param callback    * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.   * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response.   * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param url The url to the video that needs to be checked.   * @param config    * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.   * @param imageEncode Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response.   * @param checkRate The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;.
   */
-  public void checkVideo (UUID configId, String url, Callback callback, Integer detail, Boolean imageEncode, Integer checkRate, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
-    Object postBody = callback;
+  public void checkVideo (UUID configId, String url, Config config, Integer detail, Boolean imageEncode, Integer checkRate, final Response.Listener<String> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = config;
 
     // verify the required parameter 'configId' is set
     if (configId == null) {
@@ -453,10 +447,10 @@ public class AICheckOperationsApi {
       VolleyError error = new VolleyError("Missing the required parameter 'url' when calling checkVideo",
         new ApiException(400, "Missing the required parameter 'url' when calling checkVideo"));
     }
-    // verify the required parameter 'callback' is set
-    if (callback == null) {
-      VolleyError error = new VolleyError("Missing the required parameter 'callback' when calling checkVideo",
-        new ApiException(400, "Missing the required parameter 'callback' when calling checkVideo"));
+    // verify the required parameter 'config' is set
+    if (config == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'config' when calling checkVideo",
+        new ApiException(400, "Missing the required parameter 'config' when calling checkVideo"));
     }
 
     // create path and map variables

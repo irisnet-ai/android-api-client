@@ -73,16 +73,8 @@ public class JsonUtil {
       return new TypeToken<List<BreastDetection>>(){}.getType();
     }
     
-    if ("BreastDetectionAllOf".equalsIgnoreCase(className)) {
-      return new TypeToken<List<BreastDetectionAllOf>>(){}.getType();
-    }
-    
     if ("BrokenRule".equalsIgnoreCase(className)) {
       return new TypeToken<List<BrokenRule>>(){}.getType();
-    }
-    
-    if ("Callback".equalsIgnoreCase(className)) {
-      return new TypeToken<List<Callback>>(){}.getType();
     }
     
     if ("CheckResult".equalsIgnoreCase(className)) {
@@ -113,20 +105,12 @@ public class JsonUtil {
       return new TypeToken<List<FaceDetection>>(){}.getType();
     }
     
-    if ("FaceDetectionAllOf".equalsIgnoreCase(className)) {
-      return new TypeToken<List<FaceDetectionAllOf>>(){}.getType();
-    }
-    
     if ("HairAttribute".equalsIgnoreCase(className)) {
       return new TypeToken<List<HairAttribute>>(){}.getType();
     }
     
     if ("HairDetection".equalsIgnoreCase(className)) {
       return new TypeToken<List<HairDetection>>(){}.getType();
-    }
-    
-    if ("HairDetectionAllOf".equalsIgnoreCase(className)) {
-      return new TypeToken<List<HairDetectionAllOf>>(){}.getType();
     }
     
     if ("LicenseInfo".equalsIgnoreCase(className)) {
@@ -175,16 +159,8 @@ public class JsonUtil {
       return new TypeToken<BreastDetection>(){}.getType();
     }
     
-    if ("BreastDetectionAllOf".equalsIgnoreCase(className)) {
-      return new TypeToken<BreastDetectionAllOf>(){}.getType();
-    }
-    
     if ("BrokenRule".equalsIgnoreCase(className)) {
       return new TypeToken<BrokenRule>(){}.getType();
-    }
-    
-    if ("Callback".equalsIgnoreCase(className)) {
-      return new TypeToken<Callback>(){}.getType();
     }
     
     if ("CheckResult".equalsIgnoreCase(className)) {
@@ -215,20 +191,12 @@ public class JsonUtil {
       return new TypeToken<FaceDetection>(){}.getType();
     }
     
-    if ("FaceDetectionAllOf".equalsIgnoreCase(className)) {
-      return new TypeToken<FaceDetectionAllOf>(){}.getType();
-    }
-    
     if ("HairAttribute".equalsIgnoreCase(className)) {
       return new TypeToken<HairAttribute>(){}.getType();
     }
     
     if ("HairDetection".equalsIgnoreCase(className)) {
       return new TypeToken<HairDetection>(){}.getType();
-    }
-    
-    if ("HairDetectionAllOf".equalsIgnoreCase(className)) {
-      return new TypeToken<HairDetectionAllOf>(){}.getType();
     }
     
     if ("LicenseInfo".equalsIgnoreCase(className)) {

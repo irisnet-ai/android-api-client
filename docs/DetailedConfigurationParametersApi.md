@@ -117,7 +117,7 @@ Save or modify the parameters stored in the AI configuration.
 
 DetailedConfigurationParametersApi apiInstance = new DetailedConfigurationParametersApi();
 UUID configId = null; // UUID | The id of the configuration where the parameters should be added.
-ParamSet paramSet = new ParamSet(); // ParamSet | Define the parameters to use for an AI check operation. View the _ParamSet_ and _Param_ schema to see the available parameters.
+ParamSet paramSet = {"params":[{"classification":"breast","drawMode":3},{"classification":"vulva","drawMode":3},{"classification":"penis","drawMode":3},{"classification":"vagina","drawMode":3},{"classification":"buttocks","drawMode":3},{"classification":"anus","drawMode":3},{"classification":"toy","drawMode":3},{"classification":"oral","drawMode":3},{"classification":"penetration","drawMode":3}]}; // ParamSet | Define the parameters to use for an AI check operation. View the _ParamSet_ and _Param_ schema to see the available parameters.
 try {
     ParamSet result = apiInstance.setParameters(configId, paramSet);
     System.out.println(result);

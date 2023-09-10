@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.irisnet.java.client</groupId>
     <artifactId>irisnet-java-client</artifactId>
-    <version>3.0.6</version>
+    <version>3.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:3.0.6"
+compile "de.irisnet.java.client:irisnet-java-client:3.3.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/irisnet-java-client-3.0.6.jar
+- target/irisnet-java-client-3.3.0.jar
 - target/lib/*.jar
 
 ## Getting Started
@@ -65,11 +65,12 @@ public class AICheckOperationsApiExample {
     public static void main(String[] args) {
         AICheckOperationsApi apiInstance = new AICheckOperationsApi();
         UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
-        String url = null; // String | The url to the image that needs to be checked.
+        String url = null; // String | <s>The url to the image that needs to be checked.</s> Deprecated: Use 'data' parameter instead. <b>This parameter will be removed in future releases.</b>
+        String data = null; // String | The http(s) url or base64 encoded data uri of the image that needs to be checked.
         Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
         Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
         try {
-            CheckResult result = apiInstance.checkImage(configId, url, detail, imageEncode);
+            CheckResult result = apiInstance.checkImage(configId, url, data, detail, imageEncode);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AICheckOperationsApi#checkImage");
@@ -108,9 +109,7 @@ Class | Method | HTTP request | Description
  - [BaseAttribute](docs/BaseAttribute.md)
  - [BaseDetection](docs/BaseDetection.md)
  - [BreastDetection](docs/BreastDetection.md)
- - [BreastDetectionAllOf](docs/BreastDetectionAllOf.md)
  - [BrokenRule](docs/BrokenRule.md)
- - [Callback](docs/Callback.md)
  - [CheckResult](docs/CheckResult.md)
  - [CheckResultDetectionsInner](docs/CheckResultDetectionsInner.md)
  - [Config](docs/Config.md)
@@ -118,10 +117,8 @@ Class | Method | HTTP request | Description
  - [Encoded](docs/Encoded.md)
  - [Event](docs/Event.md)
  - [FaceDetection](docs/FaceDetection.md)
- - [FaceDetectionAllOf](docs/FaceDetectionAllOf.md)
  - [HairAttribute](docs/HairAttribute.md)
  - [HairDetection](docs/HairDetection.md)
- - [HairDetectionAllOf](docs/HairDetectionAllOf.md)
  - [LicenseInfo](docs/LicenseInfo.md)
  - [Param](docs/Param.md)
  - [ParamSet](docs/ParamSet.md)

@@ -159,7 +159,7 @@ Create a new AI configuration with the desired prototypes.
 //import de.irisnet.java.client.ConfigurationManagementApi;
 
 ConfigurationManagementApi apiInstance = new ConfigurationManagementApi();
-Config config = new Config(); // Config | Define the prototypes to use for an AI check operation. View the _Config_ schema to see the available prototypes.
+Config config = {"prototypes":["nudityCheck","ageEstimation","illegalSymbols","attributesCheck","nippleCheck","textRecognition","bodyAttributes","unwantedSubstances","violenceCheck"]}; // Config | Define the prototypes to use for an AI check operation. View the _Config_ schema to see the available prototypes.
 try {
     Config result = apiInstance.setConfig(config);
     System.out.println(result);

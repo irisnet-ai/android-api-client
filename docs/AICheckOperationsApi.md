@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## checkImage
 
-> CheckResult checkImage(configId, url, detail, imageEncode)
+> CheckResult checkImage(configId, url, data, detail, imageEncode)
 
 Check an image with the AI.
 
@@ -26,11 +26,12 @@ The response (_CheckResult_ schema) is returned immediately after the request.
 
 AICheckOperationsApi apiInstance = new AICheckOperationsApi();
 UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
-String url = null; // String | The url to the image that needs to be checked.
+String url = null; // String | <s>The url to the image that needs to be checked.</s> Deprecated: Use 'data' parameter instead. <b>This parameter will be removed in future releases.</b>
+String data = null; // String | The http(s) url or base64 encoded data uri of the image that needs to be checked.
 Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
 Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response.
 try {
-    CheckResult result = apiInstance.checkImage(configId, url, detail, imageEncode);
+    CheckResult result = apiInstance.checkImage(configId, url, data, detail, imageEncode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AICheckOperationsApi#checkImage");
@@ -44,7 +45,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configId** | **UUID**| The configuration id from the Basic Configuration operations. | [default to null]
- **url** | **String**| The url to the image that needs to be checked. | [default to null]
+ **url** | **String**| &lt;s&gt;The url to the image that needs to be checked.&lt;/s&gt; Deprecated: Use &#39;data&#39; parameter instead. &lt;b&gt;This parameter will be removed in future releases.&lt;/b&gt; | [optional] [default to null]
+ **data** | **String**| The http(s) url or base64 encoded data uri of the image that needs to be checked. | [optional] [default to null]
  **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. | [optional] [default to 1]
  **imageEncode** | **Boolean**| Specifies whether or not to draw an output image that will be delivered in the response body as base64 encoded string. The _Encoded_ schema will be available in the response. | [optional] [default to false]
 
@@ -118,7 +120,7 @@ Name | Type | Description  | Notes
 
 ## checkVideo
 
-> checkVideo(configId, url, callback, detail, imageEncode, checkRate)
+> checkVideo(configId, url, config, detail, imageEncode, checkRate)
 
 Check a video with the AI.
 
@@ -133,12 +135,12 @@ An empty response is returned immediately. The actual body (_CheckResult_ schema
 AICheckOperationsApi apiInstance = new AICheckOperationsApi();
 UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
 String url = null; // String | The url to the video that needs to be checked.
-Callback callback = new Callback(); // Callback | 
+Config config = {"callbackUrl":"http://www.example.com/callback?video","headers":{"Authorization":"Basic Rm9yemEgTmFwb2xpLCBzZW1wcmUh"}}; // Config | 
 Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object.
 Boolean imageEncode = false; // Boolean | Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response.
 Integer checkRate = 0; // Integer | The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to '1000'.
 try {
-    apiInstance.checkVideo(configId, url, callback, detail, imageEncode, checkRate);
+    apiInstance.checkVideo(configId, url, config, detail, imageEncode, checkRate);
 } catch (ApiException e) {
     System.err.println("Exception when calling AICheckOperationsApi#checkVideo");
     e.printStackTrace();
@@ -152,7 +154,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **configId** | **UUID**| The configuration id from the Basic Configuration operations. | [default to null]
  **url** | **String**| The url to the video that needs to be checked. | [default to null]
- **callback** | [**Callback**](Callback.md)|  |
+ **config** | [**Config**](Config.md)|  |
  **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows events (_Event_ schema) that contains extended features to each found object. | [optional] [default to 1]
  **imageEncode** | **Boolean**| Specifies whether or not to draw an output video that can be downloaded afterwards. The _Encoded_ schema will be available in the response. | [optional] [default to false]
  **checkRate** | **Integer**| The milliseconds between each AI check. E.g. The AI will check 1 frame per second when checkRate is set to &#39;1000&#39;. | [optional] [default to 0]

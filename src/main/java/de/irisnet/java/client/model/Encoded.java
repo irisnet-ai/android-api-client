@@ -30,9 +30,9 @@ public class Encoded {
   private String downloadUrl = null;
 
   /**
-   * The original filename of the image or video.
+   * <s>The original filename of the image or video.</s> Contains a randomly generated filename. <b>This property will be removed in future releases.</b>
    **/
-  @ApiModelProperty(value = "The original filename of the image or video.")
+  @ApiModelProperty(value = "<s>The original filename of the image or video.</s> Contains a randomly generated filename. <b>This property will be removed in future releases.</b>")
   public String getName() {
     return name;
   }
@@ -41,9 +41,9 @@ public class Encoded {
   }
 
   /**
-   * The encoded media in base64 format.
+   * The encoded image in base64 format.
    **/
-  @ApiModelProperty(value = "The encoded media in base64 format.")
+  @ApiModelProperty(value = "The encoded image in base64 format.")
   public File getData() {
     return data;
   }
@@ -52,9 +52,9 @@ public class Encoded {
   }
 
   /**
-   * A one time URL to download the resulting media. The URL is only valid for 24 hours.
+   * A one time URL to download the resulting video. The URL is only valid for 24 hours.
    **/
-  @ApiModelProperty(value = "A one time URL to download the resulting media. The URL is only valid for 24 hours.")
+  @ApiModelProperty(value = "A one time URL to download the resulting video. The URL is only valid for 24 hours.")
   public String getDownloadUrl() {
     return downloadUrl;
   }
