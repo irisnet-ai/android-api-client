@@ -24,6 +24,7 @@ BODYATTRIBUTES | &quot;bodyAttributes&quot;
 NIPPLECHECK | &quot;nippleCheck&quot;
 UNWANTEDSUBSTANCES | &quot;unwantedSubstances&quot;
 VIOLENCECHECK | &quot;violenceCheck&quot;
+SELFIECHECK | &quot;selfieCheck&quot;
 
 
 
