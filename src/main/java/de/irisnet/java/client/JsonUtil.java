@@ -77,6 +77,10 @@ public class JsonUtil {
       return new TypeToken<List<BrokenRule>>(){}.getType();
     }
     
+    if ("Callback".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Callback>>(){}.getType();
+    }
+    
     if ("CheckResult".equalsIgnoreCase(className)) {
       return new TypeToken<List<CheckResult>>(){}.getType();
     }
@@ -91,6 +95,10 @@ public class JsonUtil {
     
     if ("Coordinates".equalsIgnoreCase(className)) {
       return new TypeToken<List<Coordinates>>(){}.getType();
+    }
+    
+    if ("Data".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Data>>(){}.getType();
     }
     
     if ("Encoded".equalsIgnoreCase(className)) {
@@ -163,6 +171,10 @@ public class JsonUtil {
       return new TypeToken<BrokenRule>(){}.getType();
     }
     
+    if ("Callback".equalsIgnoreCase(className)) {
+      return new TypeToken<Callback>(){}.getType();
+    }
+    
     if ("CheckResult".equalsIgnoreCase(className)) {
       return new TypeToken<CheckResult>(){}.getType();
     }
@@ -177,6 +189,10 @@ public class JsonUtil {
     
     if ("Coordinates".equalsIgnoreCase(className)) {
       return new TypeToken<Coordinates>(){}.getType();
+    }
+    
+    if ("Data".equalsIgnoreCase(className)) {
+      return new TypeToken<Data>(){}.getType();
     }
     
     if ("Encoded".equalsIgnoreCase(className)) {
