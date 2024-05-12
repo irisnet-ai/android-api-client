@@ -40,6 +40,8 @@ public class CheckResult {
   private List<Event> events = null;
   @SerializedName("notifications")
   private List<ApiNotice> notifications = null;
+  @SerializedName("checkId")
+  private String checkId = null;
 
   /**
    **/
@@ -101,6 +103,17 @@ public class CheckResult {
     this.notifications = notifications;
   }
 
+  /**
+   * The id of the async running check
+   **/
+  @ApiModelProperty(value = "The id of the async running check")
+  public String getCheckId() {
+    return checkId;
+  }
+  public void setCheckId(String checkId) {
+    this.checkId = checkId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -116,7 +129,8 @@ public class CheckResult {
         (this.brokenRules == null ? checkResult.brokenRules == null : this.brokenRules.equals(checkResult.brokenRules)) &&
         (this.detections == null ? checkResult.detections == null : this.detections.equals(checkResult.detections)) &&
         (this.events == null ? checkResult.events == null : this.events.equals(checkResult.events)) &&
-        (this.notifications == null ? checkResult.notifications == null : this.notifications.equals(checkResult.notifications));
+        (this.notifications == null ? checkResult.notifications == null : this.notifications.equals(checkResult.notifications)) &&
+        (this.checkId == null ? checkResult.checkId == null : this.checkId.equals(checkResult.checkId));
   }
 
   @Override
@@ -128,6 +142,7 @@ public class CheckResult {
     result = 31 * result + (this.detections == null ? 0: this.detections.hashCode());
     result = 31 * result + (this.events == null ? 0: this.events.hashCode());
     result = 31 * result + (this.notifications == null ? 0: this.notifications.hashCode());
+    result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
     return result;
   }
 
@@ -142,6 +157,7 @@ public class CheckResult {
     sb.append("  detections: ").append(detections).append("\n");
     sb.append("  events: ").append(events).append("\n");
     sb.append("  notifications: ").append(notifications).append("\n");
+    sb.append("  checkId: ").append(checkId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

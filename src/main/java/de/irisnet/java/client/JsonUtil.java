@@ -93,10 +93,6 @@ public class JsonUtil {
       return new TypeToken<List<Config>>(){}.getType();
     }
     
-    if ("Coordinates".equalsIgnoreCase(className)) {
-      return new TypeToken<List<Coordinates>>(){}.getType();
-    }
-    
     if ("Data".equalsIgnoreCase(className)) {
       return new TypeToken<List<Data>>(){}.getType();
     }
@@ -121,6 +117,18 @@ public class JsonUtil {
       return new TypeToken<List<HairDetection>>(){}.getType();
     }
     
+    if ("IdDocumentAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<IdDocumentAttribute>>(){}.getType();
+    }
+    
+    if ("IdDocumentDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<IdDocumentDetection>>(){}.getType();
+    }
+    
+    if ("IdDocumentSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<List<IdDocumentSubChecks>>(){}.getType();
+    }
+    
     if ("LicenseInfo".equalsIgnoreCase(className)) {
       return new TypeToken<List<LicenseInfo>>(){}.getType();
     }
@@ -135,10 +143,6 @@ public class JsonUtil {
     
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<List<Pricing>>(){}.getType();
-    }
-    
-    if ("Rectangle".equalsIgnoreCase(className)) {
-      return new TypeToken<List<Rectangle>>(){}.getType();
     }
     
     if ("Summary".equalsIgnoreCase(className)) {
@@ -187,10 +191,6 @@ public class JsonUtil {
       return new TypeToken<Config>(){}.getType();
     }
     
-    if ("Coordinates".equalsIgnoreCase(className)) {
-      return new TypeToken<Coordinates>(){}.getType();
-    }
-    
     if ("Data".equalsIgnoreCase(className)) {
       return new TypeToken<Data>(){}.getType();
     }
@@ -215,6 +215,18 @@ public class JsonUtil {
       return new TypeToken<HairDetection>(){}.getType();
     }
     
+    if ("IdDocumentAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<IdDocumentAttribute>(){}.getType();
+    }
+    
+    if ("IdDocumentDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<IdDocumentDetection>(){}.getType();
+    }
+    
+    if ("IdDocumentSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<IdDocumentSubChecks>(){}.getType();
+    }
+    
     if ("LicenseInfo".equalsIgnoreCase(className)) {
       return new TypeToken<LicenseInfo>(){}.getType();
     }
@@ -229,10 +241,6 @@ public class JsonUtil {
     
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<Pricing>(){}.getType();
-    }
-    
-    if ("Rectangle".equalsIgnoreCase(className)) {
-      return new TypeToken<Rectangle>(){}.getType();
     }
     
     if ("Summary".equalsIgnoreCase(className)) {

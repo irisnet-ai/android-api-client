@@ -13,22 +13,22 @@
 package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.BaseDetection;
-import de.irisnet.java.client.model.HairAttribute;
+import de.irisnet.java.client.model.IdDocumentAttribute;
 import de.irisnet.java.client.model.IdDocumentSubChecks;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Contains further characteristics particular to _hair_ detection.
+ * Contains further characteristics particular to _idDocument_ detection.
  **/
-@ApiModel(description = "Contains further characteristics particular to _hair_ detection.")
-public class HairDetection extends BaseDetection {
+@ApiModel(description = "Contains further characteristics particular to _idDocument_ detection.")
+public class IdDocumentDetection extends BaseDetection {
   
   @SerializedName("type")
   private String type = null;
   @SerializedName("attributes")
-  private List<HairAttribute> attributes = null;
+  private List<IdDocumentAttribute> attributes = null;
   @SerializedName("subDetections")
   private List<BaseDetection> subDetections = null;
   @SerializedName("checkId")
@@ -59,13 +59,13 @@ public class HairDetection extends BaseDetection {
   }
 
   /**
-   * Contains attributes for the _hair_ classification.
+   * Attributes of the _idDocument_ detection.
    **/
-  @ApiModelProperty(value = "Contains attributes for the _hair_ classification.")
-  public List<HairAttribute> getAttributes() {
+  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
+  public List<IdDocumentAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<HairAttribute> attributes) {
+  public void setAttributes(List<IdDocumentAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -176,18 +176,18 @@ public class HairDetection extends BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HairDetection hairDetection = (HairDetection) o;
-    return (this.type == null ? hairDetection.type == null : this.type.equals(hairDetection.type)) &&
-        (this.attributes == null ? hairDetection.attributes == null : this.attributes.equals(hairDetection.attributes)) &&
-        (this.subDetections == null ? hairDetection.subDetections == null : this.subDetections.equals(hairDetection.subDetections)) &&
-        (this.checkId == null ? hairDetection.checkId == null : this.checkId.equals(hairDetection.checkId)) &&
-        (this.hasOfficialDocument == null ? hairDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(hairDetection.hasOfficialDocument)) &&
-        (this.comparable == null ? hairDetection.comparable == null : this.comparable.equals(hairDetection.comparable)) &&
-        (this.faceSimilarity == null ? hairDetection.faceSimilarity == null : this.faceSimilarity.equals(hairDetection.faceSimilarity)) &&
-        (this.faceLivenessCheckScore == null ? hairDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(hairDetection.faceLivenessCheckScore)) &&
-        (this.documentFrontLivenessScore == null ? hairDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(hairDetection.documentFrontLivenessScore)) &&
-        (this.documentBackLivenessScore == null ? hairDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(hairDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? hairDetection.processedChecks == null : this.processedChecks.equals(hairDetection.processedChecks));
+    IdDocumentDetection idDocumentDetection = (IdDocumentDetection) o;
+    return (this.type == null ? idDocumentDetection.type == null : this.type.equals(idDocumentDetection.type)) &&
+        (this.attributes == null ? idDocumentDetection.attributes == null : this.attributes.equals(idDocumentDetection.attributes)) &&
+        (this.subDetections == null ? idDocumentDetection.subDetections == null : this.subDetections.equals(idDocumentDetection.subDetections)) &&
+        (this.checkId == null ? idDocumentDetection.checkId == null : this.checkId.equals(idDocumentDetection.checkId)) &&
+        (this.hasOfficialDocument == null ? idDocumentDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(idDocumentDetection.hasOfficialDocument)) &&
+        (this.comparable == null ? idDocumentDetection.comparable == null : this.comparable.equals(idDocumentDetection.comparable)) &&
+        (this.faceSimilarity == null ? idDocumentDetection.faceSimilarity == null : this.faceSimilarity.equals(idDocumentDetection.faceSimilarity)) &&
+        (this.faceLivenessCheckScore == null ? idDocumentDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(idDocumentDetection.faceLivenessCheckScore)) &&
+        (this.documentFrontLivenessScore == null ? idDocumentDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(idDocumentDetection.documentFrontLivenessScore)) &&
+        (this.documentBackLivenessScore == null ? idDocumentDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(idDocumentDetection.documentBackLivenessScore)) &&
+        (this.processedChecks == null ? idDocumentDetection.processedChecks == null : this.processedChecks.equals(idDocumentDetection.processedChecks));
   }
 
   @Override
@@ -210,7 +210,7 @@ public class HairDetection extends BaseDetection {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HairDetection {\n");
+    sb.append("class IdDocumentDetection {\n");
     sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");

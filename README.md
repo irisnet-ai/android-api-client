@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.irisnet.java.client</groupId>
     <artifactId>irisnet-java-client</artifactId>
-    <version>3.5.4</version>
+    <version>3.5.5</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:3.5.4"
+compile "de.irisnet.java.client:irisnet-java-client:3.5.5"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/irisnet-java-client-3.5.4.jar
+- target/irisnet-java-client-3.5.5.jar
 - target/lib/*.jar
 
 ## Getting Started
@@ -114,18 +114,19 @@ Class | Method | HTTP request | Description
  - [CheckResult](docs/CheckResult.md)
  - [CheckResultDetectionsInner](docs/CheckResultDetectionsInner.md)
  - [Config](docs/Config.md)
- - [Coordinates](docs/Coordinates.md)
  - [Data](docs/Data.md)
  - [Encoded](docs/Encoded.md)
  - [Event](docs/Event.md)
  - [FaceDetection](docs/FaceDetection.md)
  - [HairAttribute](docs/HairAttribute.md)
  - [HairDetection](docs/HairDetection.md)
+ - [IdDocumentAttribute](docs/IdDocumentAttribute.md)
+ - [IdDocumentDetection](docs/IdDocumentDetection.md)
+ - [IdDocumentSubChecks](docs/IdDocumentSubChecks.md)
  - [LicenseInfo](docs/LicenseInfo.md)
  - [Param](docs/Param.md)
  - [ParamSet](docs/ParamSet.md)
  - [Pricing](docs/Pricing.md)
- - [Rectangle](docs/Rectangle.md)
  - [Summary](docs/Summary.md)
 
 
