@@ -47,6 +47,8 @@ public class BreastDetection extends BaseDetection {
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
   private IdDocumentSubChecks processedChecks = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
 
   /**
    **/
@@ -167,6 +169,17 @@ public class BreastDetection extends BaseDetection {
     this.processedChecks = processedChecks;
   }
 
+  /**
+   * The id of the documentHolder
+   **/
+  @ApiModelProperty(value = "The id of the documentHolder")
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -187,7 +200,8 @@ public class BreastDetection extends BaseDetection {
         (this.faceLivenessCheckScore == null ? breastDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(breastDetection.faceLivenessCheckScore)) &&
         (this.documentFrontLivenessScore == null ? breastDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(breastDetection.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? breastDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(breastDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? breastDetection.processedChecks == null : this.processedChecks.equals(breastDetection.processedChecks));
+        (this.processedChecks == null ? breastDetection.processedChecks == null : this.processedChecks.equals(breastDetection.processedChecks)) &&
+        (this.documentHolderId == null ? breastDetection.documentHolderId == null : this.documentHolderId.equals(breastDetection.documentHolderId));
   }
 
   @Override
@@ -204,6 +218,7 @@ public class BreastDetection extends BaseDetection {
     result = 31 * result + (this.documentFrontLivenessScore == null ? 0: this.documentFrontLivenessScore.hashCode());
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
     result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
     return result;
   }
 
@@ -223,6 +238,7 @@ public class BreastDetection extends BaseDetection {
     sb.append("  documentFrontLivenessScore: ").append(documentFrontLivenessScore).append("\n");
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
     sb.append("  processedChecks: ").append(processedChecks).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

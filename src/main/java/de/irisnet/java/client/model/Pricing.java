@@ -22,15 +22,15 @@ import com.google.gson.annotations.SerializedName;
 public class Pricing {
   
   @SerializedName("cost")
-  private Integer cost = null;
+  private Long cost = null;
 
   /**
    **/
   @ApiModelProperty(value = "")
-  public Integer getCost() {
+  public Long getCost() {
     return cost;
   }
-  public void setCost(Integer cost) {
+  public void setCost(Long cost) {
     this.cost = cost;
   }
 

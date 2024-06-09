@@ -47,6 +47,8 @@ public class FaceDetection extends BaseDetection {
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
   private IdDocumentSubChecks processedChecks = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
 
   /**
    **/
@@ -167,6 +169,17 @@ public class FaceDetection extends BaseDetection {
     this.processedChecks = processedChecks;
   }
 
+  /**
+   * The id of the documentHolder
+   **/
+  @ApiModelProperty(value = "The id of the documentHolder")
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -187,7 +200,8 @@ public class FaceDetection extends BaseDetection {
         (this.faceLivenessCheckScore == null ? faceDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(faceDetection.faceLivenessCheckScore)) &&
         (this.documentFrontLivenessScore == null ? faceDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(faceDetection.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? faceDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(faceDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? faceDetection.processedChecks == null : this.processedChecks.equals(faceDetection.processedChecks));
+        (this.processedChecks == null ? faceDetection.processedChecks == null : this.processedChecks.equals(faceDetection.processedChecks)) &&
+        (this.documentHolderId == null ? faceDetection.documentHolderId == null : this.documentHolderId.equals(faceDetection.documentHolderId));
   }
 
   @Override
@@ -204,6 +218,7 @@ public class FaceDetection extends BaseDetection {
     result = 31 * result + (this.documentFrontLivenessScore == null ? 0: this.documentFrontLivenessScore.hashCode());
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
     result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
     return result;
   }
 
@@ -223,6 +238,7 @@ public class FaceDetection extends BaseDetection {
     sb.append("  documentFrontLivenessScore: ").append(documentFrontLivenessScore).append("\n");
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
     sb.append("  processedChecks: ").append(processedChecks).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

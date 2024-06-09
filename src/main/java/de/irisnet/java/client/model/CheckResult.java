@@ -13,8 +13,8 @@
 package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.ApiNotice;
+import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.BrokenRule;
-import de.irisnet.java.client.model.CheckResultDetectionsInner;
 import de.irisnet.java.client.model.Encoded;
 import de.irisnet.java.client.model.Event;
 import de.irisnet.java.client.model.Summary;
@@ -35,7 +35,7 @@ public class CheckResult {
   @SerializedName("brokenRules")
   private List<BrokenRule> brokenRules = null;
   @SerializedName("detections")
-  private List<CheckResultDetectionsInner> detections = null;
+  private List<BaseDetection> detections = null;
   @SerializedName("events")
   private List<Event> events = null;
   @SerializedName("notifications")
@@ -76,10 +76,10 @@ public class CheckResult {
   /**
    **/
   @ApiModelProperty(value = "")
-  public List<CheckResultDetectionsInner> getDetections() {
+  public List<BaseDetection> getDetections() {
     return detections;
   }
-  public void setDetections(List<CheckResultDetectionsInner> detections) {
+  public void setDetections(List<BaseDetection> detections) {
     this.detections = detections;
   }
 

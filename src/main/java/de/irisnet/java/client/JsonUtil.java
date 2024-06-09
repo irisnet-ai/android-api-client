@@ -85,16 +85,16 @@ public class JsonUtil {
       return new TypeToken<List<CheckResult>>(){}.getType();
     }
     
-    if ("CheckResultDetectionsInner".equalsIgnoreCase(className)) {
-      return new TypeToken<List<CheckResultDetectionsInner>>(){}.getType();
-    }
-    
     if ("Config".equalsIgnoreCase(className)) {
       return new TypeToken<List<Config>>(){}.getType();
     }
     
     if ("Data".equalsIgnoreCase(className)) {
       return new TypeToken<List<Data>>(){}.getType();
+    }
+    
+    if ("DocumentCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<DocumentCheckRequestData>>(){}.getType();
     }
     
     if ("Encoded".equalsIgnoreCase(className)) {
@@ -183,16 +183,16 @@ public class JsonUtil {
       return new TypeToken<CheckResult>(){}.getType();
     }
     
-    if ("CheckResultDetectionsInner".equalsIgnoreCase(className)) {
-      return new TypeToken<CheckResultDetectionsInner>(){}.getType();
-    }
-    
     if ("Config".equalsIgnoreCase(className)) {
       return new TypeToken<Config>(){}.getType();
     }
     
     if ("Data".equalsIgnoreCase(className)) {
       return new TypeToken<Data>(){}.getType();
+    }
+    
+    if ("DocumentCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<DocumentCheckRequestData>(){}.getType();
     }
     
     if ("Encoded".equalsIgnoreCase(className)) {

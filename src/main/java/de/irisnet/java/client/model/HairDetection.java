@@ -47,6 +47,8 @@ public class HairDetection extends BaseDetection {
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
   private IdDocumentSubChecks processedChecks = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
 
   /**
    **/
@@ -167,6 +169,17 @@ public class HairDetection extends BaseDetection {
     this.processedChecks = processedChecks;
   }
 
+  /**
+   * The id of the documentHolder
+   **/
+  @ApiModelProperty(value = "The id of the documentHolder")
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -187,7 +200,8 @@ public class HairDetection extends BaseDetection {
         (this.faceLivenessCheckScore == null ? hairDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(hairDetection.faceLivenessCheckScore)) &&
         (this.documentFrontLivenessScore == null ? hairDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(hairDetection.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? hairDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(hairDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? hairDetection.processedChecks == null : this.processedChecks.equals(hairDetection.processedChecks));
+        (this.processedChecks == null ? hairDetection.processedChecks == null : this.processedChecks.equals(hairDetection.processedChecks)) &&
+        (this.documentHolderId == null ? hairDetection.documentHolderId == null : this.documentHolderId.equals(hairDetection.documentHolderId));
   }
 
   @Override
@@ -204,6 +218,7 @@ public class HairDetection extends BaseDetection {
     result = 31 * result + (this.documentFrontLivenessScore == null ? 0: this.documentFrontLivenessScore.hashCode());
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
     result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
     return result;
   }
 
@@ -223,6 +238,7 @@ public class HairDetection extends BaseDetection {
     sb.append("  documentFrontLivenessScore: ").append(documentFrontLivenessScore).append("\n");
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
     sb.append("  processedChecks: ").append(processedChecks).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

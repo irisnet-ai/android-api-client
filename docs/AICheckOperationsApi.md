@@ -4,10 +4,59 @@ All URIs are relative to *https://api.irisnet.de*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**checkIdDocument**](AICheckOperationsApi.md#checkIdDocument) | **POST** /v2/check-id-document/{configId} | Check an id document with the AI.
 [**checkImage**](AICheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
 [**checkStream**](AICheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
 [**checkVideo**](AICheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
 
+
+
+## checkIdDocument
+
+> CheckResult checkIdDocument(configId, documentCheckRequestData)
+
+Check an id document with the AI.
+
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+
+### Example
+
+```java
+// Import classes:
+//import de.irisnet.java.client.AICheckOperationsApi;
+
+AICheckOperationsApi apiInstance = new AICheckOperationsApi();
+UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
+DocumentCheckRequestData documentCheckRequestData = {"callback":{"callbackUrl":"https://www.example.com/callback?idcheck"},"documentCountry":"DE","documentType":"national_identity_card","frontImage":"/9j/4AAQSkZJRgABAQEASABIAAD...","backImage":"/9j/4AAQSkZJRgABAQEASABIAAD...","selfieImage":"/9j/4AAQSkZJRgABAQEASABIAAD..."}; // DocumentCheckRequestData | The DocumentCheckRequestData containing data needed for the id document check.
+try {
+    CheckResult result = apiInstance.checkIdDocument(configId, documentCheckRequestData);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AICheckOperationsApi#checkIdDocument");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configId** | **UUID**| The configuration id from the Basic Configuration operations. | [default to null]
+ **documentCheckRequestData** | [**DocumentCheckRequestData**](DocumentCheckRequestData.md)| The DocumentCheckRequestData containing data needed for the id document check. |
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## checkImage

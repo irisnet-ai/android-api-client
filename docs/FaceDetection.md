@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **documentFrontLivenessScore** | **Integer** | Indicates the liveness score of the front side image of the document |  [optional]
 **documentBackLivenessScore** | **Integer** | Indicates the liveness score of the back side image of the document |  [optional]
 **processedChecks** | [**IdDocumentSubChecks**](IdDocumentSubChecks.md) |  |  [optional]
+**documentHolderId** | **String** | The id of the documentHolder |  [optional]
 
 
 

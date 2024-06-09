@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**UUID**](UUID.md) | The unique identifier for the AI configuration. Use this for any check operation to tell the AI how to behave. |  [optional]
 **prototypes** | [**Set&lt;PrototypesEnum&gt;**](#Set&lt;PrototypesEnum&gt;) | Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation. |  [optional]
+**kycCheckParameters** | [**Set&lt;KycCheckParametersEnum&gt;**](#Set&lt;KycCheckParametersEnum&gt;) | Configures your kyc checks. You can combine certain parameters to customize a single check operation. |  [optional]
 
 
 ## Enum: Set&lt;PrototypesEnum&gt;
@@ -25,6 +26,17 @@ NIPPLECHECK | &quot;nippleCheck&quot;
 UNWANTEDSUBSTANCES | &quot;unwantedSubstances&quot;
 VIOLENCECHECK | &quot;violenceCheck&quot;
 SELFIECHECK | &quot;selfieCheck&quot;
+
+
+## Enum: Set&lt;KycCheckParametersEnum&gt;
+
+Name | Value
+---- | -----
+IDENTITYDOCUMENTCHECK | &quot;identityDocumentCheck&quot;
+AUTOMATEDDOCUMENTRECOGNITION | &quot;automatedDocumentRecognition&quot;
+BIOMETRICCHECK | &quot;biometricCheck&quot;
+FORMAUTOFILL | &quot;formAutofill&quot;
+AGEESTIMATION | &quot;ageEstimation&quot;
 
 
 

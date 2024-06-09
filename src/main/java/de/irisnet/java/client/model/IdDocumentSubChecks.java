@@ -61,11 +61,6 @@ public class IdDocumentSubChecks {
   };
   @SerializedName("photocopyCheck")
   private PhotocopyCheckEnum photocopyCheck = null;
-  public enum TamperingCheckEnum {
-     passed,  failed,  not_processed, 
-  };
-  @SerializedName("tamperingCheck")
-  private TamperingCheckEnum tamperingCheck = null;
   public enum SpecimenCheckEnum {
      passed,  failed,  not_processed, 
   };
@@ -181,17 +176,6 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates whether the document image has been digitally tampered with
-   **/
-  @ApiModelProperty(value = "Indicates whether the document image has been digitally tampered with")
-  public TamperingCheckEnum getTamperingCheck() {
-    return tamperingCheck;
-  }
-  public void setTamperingCheck(TamperingCheckEnum tamperingCheck) {
-    this.tamperingCheck = tamperingCheck;
-  }
-
-  /**
    * Indicates whether the document has been copied from the Internet
    **/
   @ApiModelProperty(value = "Indicates whether the document has been copied from the Internet")
@@ -264,7 +248,6 @@ public class IdDocumentSubChecks {
         (this.photoLocation == null ? idDocumentSubChecks.photoLocation == null : this.photoLocation.equals(idDocumentSubChecks.photoLocation)) &&
         (this.blacklistCheck == null ? idDocumentSubChecks.blacklistCheck == null : this.blacklistCheck.equals(idDocumentSubChecks.blacklistCheck)) &&
         (this.photocopyCheck == null ? idDocumentSubChecks.photocopyCheck == null : this.photocopyCheck.equals(idDocumentSubChecks.photocopyCheck)) &&
-        (this.tamperingCheck == null ? idDocumentSubChecks.tamperingCheck == null : this.tamperingCheck.equals(idDocumentSubChecks.tamperingCheck)) &&
         (this.specimenCheck == null ? idDocumentSubChecks.specimenCheck == null : this.specimenCheck.equals(idDocumentSubChecks.specimenCheck)) &&
         (this.documentModelIdentification == null ? idDocumentSubChecks.documentModelIdentification == null : this.documentModelIdentification.equals(idDocumentSubChecks.documentModelIdentification)) &&
         (this.documentLivenessCheck == null ? idDocumentSubChecks.documentLivenessCheck == null : this.documentLivenessCheck.equals(idDocumentSubChecks.documentLivenessCheck)) &&
@@ -283,7 +266,6 @@ public class IdDocumentSubChecks {
     result = 31 * result + (this.photoLocation == null ? 0: this.photoLocation.hashCode());
     result = 31 * result + (this.blacklistCheck == null ? 0: this.blacklistCheck.hashCode());
     result = 31 * result + (this.photocopyCheck == null ? 0: this.photocopyCheck.hashCode());
-    result = 31 * result + (this.tamperingCheck == null ? 0: this.tamperingCheck.hashCode());
     result = 31 * result + (this.specimenCheck == null ? 0: this.specimenCheck.hashCode());
     result = 31 * result + (this.documentModelIdentification == null ? 0: this.documentModelIdentification.hashCode());
     result = 31 * result + (this.documentLivenessCheck == null ? 0: this.documentLivenessCheck.hashCode());
@@ -305,7 +287,6 @@ public class IdDocumentSubChecks {
     sb.append("  photoLocation: ").append(photoLocation).append("\n");
     sb.append("  blacklistCheck: ").append(blacklistCheck).append("\n");
     sb.append("  photocopyCheck: ").append(photocopyCheck).append("\n");
-    sb.append("  tamperingCheck: ").append(tamperingCheck).append("\n");
     sb.append("  specimenCheck: ").append(specimenCheck).append("\n");
     sb.append("  documentModelIdentification: ").append(documentModelIdentification).append("\n");
     sb.append("  documentLivenessCheck: ").append(documentLivenessCheck).append("\n");

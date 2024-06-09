@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cost** | **Integer** |  |  [optional]
+**cost** | **Long** |  |  [optional]
 
 
 

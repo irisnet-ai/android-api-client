@@ -27,6 +27,7 @@ import de.irisnet.java.client.model.ApiNotice;
 import de.irisnet.java.client.model.Callback;
 import de.irisnet.java.client.model.CheckResult;
 import de.irisnet.java.client.model.Data;
+import de.irisnet.java.client.model.DocumentCheckRequestData;
 import java.util.*;
 import java.util.UUID;
 
@@ -60,6 +61,145 @@ public class AICheckOperationsApi {
     return basePath;
   }
 
+  /**
+  * Check an id document with the AI.
+  * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.
+   * @param documentCheckRequestData The DocumentCheckRequestData containing data needed for the id document check.
+   * @return CheckResult
+  */
+  public CheckResult checkIdDocument (UUID configId, DocumentCheckRequestData documentCheckRequestData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = documentCheckRequestData;
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkIdDocument",
+        new ApiException(400, "Missing the required parameter 'configId' when calling checkIdDocument"));
+    }
+    // verify the required parameter 'documentCheckRequestData' is set
+    if (documentCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'documentCheckRequestData' when calling checkIdDocument",
+        new ApiException(400, "Missing the required parameter 'documentCheckRequestData' when calling checkIdDocument"));
+    }
+
+    // create path and map variables
+    String path = "/v2/check-id-document/{configId}".replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (CheckResult) ApiInvoker.deserialize(localVarResponse, "", CheckResult.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Check an id document with the AI.
+   * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param documentCheckRequestData The DocumentCheckRequestData containing data needed for the id document check.
+  */
+  public void checkIdDocument (UUID configId, DocumentCheckRequestData documentCheckRequestData, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = documentCheckRequestData;
+
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkIdDocument",
+        new ApiException(400, "Missing the required parameter 'configId' when calling checkIdDocument"));
+    }
+    // verify the required parameter 'documentCheckRequestData' is set
+    if (documentCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'documentCheckRequestData' when calling checkIdDocument",
+        new ApiException(400, "Missing the required parameter 'documentCheckRequestData' when calling checkIdDocument"));
+    }
+
+    // create path and map variables
+    String path = "/v2/check-id-document/{configId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((CheckResult) ApiInvoker.deserialize(localVarResponse,  "", CheckResult.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
   /**
   * Check an image with the AI.
   * The response (_CheckResult_ schema) is returned immediately after the request.
