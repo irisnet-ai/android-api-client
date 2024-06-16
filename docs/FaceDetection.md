@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **faceLivenessCheckScore** | **Integer** | Indicates the liveness score of the selfie image |  [optional]
 **documentFrontLivenessScore** | **Integer** | Indicates the liveness score of the front side image of the document |  [optional]
 **documentBackLivenessScore** | **Integer** | Indicates the liveness score of the back side image of the document |  [optional]
-**processedChecks** | [**IdDocumentSubChecks**](IdDocumentSubChecks.md) |  |  [optional]
+**processedChecks** | [**AgeEstimationSubChecks**](AgeEstimationSubChecks.md) |  |  [optional]
 **documentHolderId** | **String** | The id of the documentHolder |  [optional]
 
 

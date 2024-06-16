@@ -12,23 +12,23 @@
 
 package de.irisnet.java.client.model;
 
+import de.irisnet.java.client.model.AgeEstimationAttribute;
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
-import de.irisnet.java.client.model.BaseAttribute;
 import de.irisnet.java.client.model.BaseDetection;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Contains further characteristics particular to _face_ detection.
+ * Contains further characteristics particular to _ageEstimation_ detection.
  **/
-@ApiModel(description = "Contains further characteristics particular to _face_ detection.")
-public class FaceDetection extends BaseDetection {
+@ApiModel(description = "Contains further characteristics particular to _ageEstimation_ detection.")
+public class AgeEstimationDetection extends BaseDetection {
   
   @SerializedName("type")
   private String type = null;
   @SerializedName("attributes")
-  private List<BaseAttribute> attributes = null;
+  private List<AgeEstimationAttribute> attributes = null;
   @SerializedName("subDetections")
   private List<BaseDetection> subDetections = null;
   @SerializedName("checkId")
@@ -61,13 +61,13 @@ public class FaceDetection extends BaseDetection {
   }
 
   /**
-   * Attributes characterizing the _face_ detection. Mainly contains attributes that were activated with the _ageEstimation_ prototype.
+   * Attributes of the _idDocument_ detection.
    **/
-  @ApiModelProperty(value = "Attributes characterizing the _face_ detection. Mainly contains attributes that were activated with the _ageEstimation_ prototype.")
-  public List<BaseAttribute> getAttributes() {
+  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
+  public List<AgeEstimationAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<BaseAttribute> attributes) {
+  public void setAttributes(List<AgeEstimationAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -189,19 +189,19 @@ public class FaceDetection extends BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    FaceDetection faceDetection = (FaceDetection) o;
-    return (this.type == null ? faceDetection.type == null : this.type.equals(faceDetection.type)) &&
-        (this.attributes == null ? faceDetection.attributes == null : this.attributes.equals(faceDetection.attributes)) &&
-        (this.subDetections == null ? faceDetection.subDetections == null : this.subDetections.equals(faceDetection.subDetections)) &&
-        (this.checkId == null ? faceDetection.checkId == null : this.checkId.equals(faceDetection.checkId)) &&
-        (this.hasOfficialDocument == null ? faceDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(faceDetection.hasOfficialDocument)) &&
-        (this.comparable == null ? faceDetection.comparable == null : this.comparable.equals(faceDetection.comparable)) &&
-        (this.faceSimilarity == null ? faceDetection.faceSimilarity == null : this.faceSimilarity.equals(faceDetection.faceSimilarity)) &&
-        (this.faceLivenessCheckScore == null ? faceDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(faceDetection.faceLivenessCheckScore)) &&
-        (this.documentFrontLivenessScore == null ? faceDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(faceDetection.documentFrontLivenessScore)) &&
-        (this.documentBackLivenessScore == null ? faceDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(faceDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? faceDetection.processedChecks == null : this.processedChecks.equals(faceDetection.processedChecks)) &&
-        (this.documentHolderId == null ? faceDetection.documentHolderId == null : this.documentHolderId.equals(faceDetection.documentHolderId));
+    AgeEstimationDetection ageEstimationDetection = (AgeEstimationDetection) o;
+    return (this.type == null ? ageEstimationDetection.type == null : this.type.equals(ageEstimationDetection.type)) &&
+        (this.attributes == null ? ageEstimationDetection.attributes == null : this.attributes.equals(ageEstimationDetection.attributes)) &&
+        (this.subDetections == null ? ageEstimationDetection.subDetections == null : this.subDetections.equals(ageEstimationDetection.subDetections)) &&
+        (this.checkId == null ? ageEstimationDetection.checkId == null : this.checkId.equals(ageEstimationDetection.checkId)) &&
+        (this.hasOfficialDocument == null ? ageEstimationDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(ageEstimationDetection.hasOfficialDocument)) &&
+        (this.comparable == null ? ageEstimationDetection.comparable == null : this.comparable.equals(ageEstimationDetection.comparable)) &&
+        (this.faceSimilarity == null ? ageEstimationDetection.faceSimilarity == null : this.faceSimilarity.equals(ageEstimationDetection.faceSimilarity)) &&
+        (this.faceLivenessCheckScore == null ? ageEstimationDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(ageEstimationDetection.faceLivenessCheckScore)) &&
+        (this.documentFrontLivenessScore == null ? ageEstimationDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(ageEstimationDetection.documentFrontLivenessScore)) &&
+        (this.documentBackLivenessScore == null ? ageEstimationDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(ageEstimationDetection.documentBackLivenessScore)) &&
+        (this.processedChecks == null ? ageEstimationDetection.processedChecks == null : this.processedChecks.equals(ageEstimationDetection.processedChecks)) &&
+        (this.documentHolderId == null ? ageEstimationDetection.documentHolderId == null : this.documentHolderId.equals(ageEstimationDetection.documentHolderId));
   }
 
   @Override
@@ -225,7 +225,7 @@ public class FaceDetection extends BaseDetection {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class FaceDetection {\n");
+    sb.append("class AgeEstimationDetection {\n");
     sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");

@@ -12,12 +12,13 @@
 
 package de.irisnet.java.client.model;
 
+import de.irisnet.java.client.model.AgeEstimationAttribute;
+import de.irisnet.java.client.model.AgeEstimationDetection;
+import de.irisnet.java.client.model.AgeEstimationSubChecks;
 import de.irisnet.java.client.model.BreastDetection;
 import de.irisnet.java.client.model.FaceDetection;
 import de.irisnet.java.client.model.HairDetection;
-import de.irisnet.java.client.model.IdDocumentAttribute;
 import de.irisnet.java.client.model.IdDocumentDetection;
-import de.irisnet.java.client.model.IdDocumentSubChecks;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -31,7 +32,7 @@ public class BaseDetection {
   @SerializedName("type")
   private String type = null;
   @SerializedName("attributes")
-  private List<IdDocumentAttribute> attributes = null;
+  private List<AgeEstimationAttribute> attributes = null;
   @SerializedName("subDetections")
   private List<BaseDetection> subDetections = null;
   @SerializedName("checkId")
@@ -49,7 +50,7 @@ public class BaseDetection {
   @SerializedName("documentBackLivenessScore")
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
-  private IdDocumentSubChecks processedChecks = null;
+  private AgeEstimationSubChecks processedChecks = null;
   @SerializedName("documentHolderId")
   private String documentHolderId = null;
 
@@ -67,10 +68,10 @@ public class BaseDetection {
    * Attributes of the _idDocument_ detection.
    **/
   @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
-  public List<IdDocumentAttribute> getAttributes() {
+  public List<AgeEstimationAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<IdDocumentAttribute> attributes) {
+  public void setAttributes(List<AgeEstimationAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -165,10 +166,10 @@ public class BaseDetection {
   /**
    **/
   @ApiModelProperty(value = "")
-  public IdDocumentSubChecks getProcessedChecks() {
+  public AgeEstimationSubChecks getProcessedChecks() {
     return processedChecks;
   }
-  public void setProcessedChecks(IdDocumentSubChecks processedChecks) {
+  public void setProcessedChecks(AgeEstimationSubChecks processedChecks) {
     this.processedChecks = processedChecks;
   }
 

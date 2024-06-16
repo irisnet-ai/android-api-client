@@ -57,6 +57,18 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
+    if ("AgeEstimationAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeEstimationAttribute>>(){}.getType();
+    }
+    
+    if ("AgeEstimationDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeEstimationDetection>>(){}.getType();
+    }
+    
+    if ("AgeEstimationSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeEstimationSubChecks>>(){}.getType();
+    }
+    
     if ("ApiNotice".equalsIgnoreCase(className)) {
       return new TypeToken<List<ApiNotice>>(){}.getType();
     }
@@ -154,6 +166,18 @@ public class JsonUtil {
 
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
+    
+    if ("AgeEstimationAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeEstimationAttribute>(){}.getType();
+    }
+    
+    if ("AgeEstimationDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeEstimationDetection>(){}.getType();
+    }
+    
+    if ("AgeEstimationSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeEstimationSubChecks>(){}.getType();
+    }
     
     if ("ApiNotice".equalsIgnoreCase(className)) {
       return new TypeToken<ApiNotice>(){}.getType();
