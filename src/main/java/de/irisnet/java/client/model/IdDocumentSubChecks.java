@@ -86,6 +86,21 @@ public class IdDocumentSubChecks {
   };
   @SerializedName("faceLivenessCheck")
   private FaceLivenessCheckEnum faceLivenessCheck = null;
+  public enum DataIntegrityCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("dataIntegrityCheck")
+  private DataIntegrityCheckEnum dataIntegrityCheck = null;
+  public enum DataConsistencyCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("dataConsistencyCheck")
+  private DataConsistencyCheckEnum dataConsistencyCheck = null;
+  public enum AgeValidationCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("ageValidationCheck")
+  private AgeValidationCheckEnum ageValidationCheck = null;
 
   /**
    * Indicates whether the MRZ checksum is correct
@@ -187,9 +202,9 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates whether the document model has been identified
+   * Indicates whether the document model has been identified and whether or not the document conforms to official specifications
    **/
-  @ApiModelProperty(value = "Indicates whether the document model has been identified")
+  @ApiModelProperty(value = "Indicates whether the document model has been identified and whether or not the document conforms to official specifications")
   public DocumentModelIdentificationEnum getDocumentModelIdentification() {
     return documentModelIdentification;
   }
@@ -230,6 +245,39 @@ public class IdDocumentSubChecks {
     this.faceLivenessCheck = faceLivenessCheck;
   }
 
+  /**
+   * Indicates whether the data fields contain the correct type of content
+   **/
+  @ApiModelProperty(value = "Indicates whether the data fields contain the correct type of content")
+  public DataIntegrityCheckEnum getDataIntegrityCheck() {
+    return dataIntegrityCheck;
+  }
+  public void setDataIntegrityCheck(DataIntegrityCheckEnum dataIntegrityCheck) {
+    this.dataIntegrityCheck = dataIntegrityCheck;
+  }
+
+  /**
+   * Indicates whether the information on both sides of the document is consistent
+   **/
+  @ApiModelProperty(value = "Indicates whether the information on both sides of the document is consistent")
+  public DataConsistencyCheckEnum getDataConsistencyCheck() {
+    return dataConsistencyCheck;
+  }
+  public void setDataConsistencyCheck(DataConsistencyCheckEnum dataConsistencyCheck) {
+    this.dataConsistencyCheck = dataConsistencyCheck;
+  }
+
+  /**
+   * Indicates if the extracted age is greater than or equal to a predefined minimum accepted age
+   **/
+  @ApiModelProperty(value = "Indicates if the extracted age is greater than or equal to a predefined minimum accepted age")
+  public AgeValidationCheckEnum getAgeValidationCheck() {
+    return ageValidationCheck;
+  }
+  public void setAgeValidationCheck(AgeValidationCheckEnum ageValidationCheck) {
+    this.ageValidationCheck = ageValidationCheck;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -252,7 +300,10 @@ public class IdDocumentSubChecks {
         (this.documentModelIdentification == null ? idDocumentSubChecks.documentModelIdentification == null : this.documentModelIdentification.equals(idDocumentSubChecks.documentModelIdentification)) &&
         (this.documentLivenessCheck == null ? idDocumentSubChecks.documentLivenessCheck == null : this.documentLivenessCheck.equals(idDocumentSubChecks.documentLivenessCheck)) &&
         (this.spoofedImageAnalysis == null ? idDocumentSubChecks.spoofedImageAnalysis == null : this.spoofedImageAnalysis.equals(idDocumentSubChecks.spoofedImageAnalysis)) &&
-        (this.faceLivenessCheck == null ? idDocumentSubChecks.faceLivenessCheck == null : this.faceLivenessCheck.equals(idDocumentSubChecks.faceLivenessCheck));
+        (this.faceLivenessCheck == null ? idDocumentSubChecks.faceLivenessCheck == null : this.faceLivenessCheck.equals(idDocumentSubChecks.faceLivenessCheck)) &&
+        (this.dataIntegrityCheck == null ? idDocumentSubChecks.dataIntegrityCheck == null : this.dataIntegrityCheck.equals(idDocumentSubChecks.dataIntegrityCheck)) &&
+        (this.dataConsistencyCheck == null ? idDocumentSubChecks.dataConsistencyCheck == null : this.dataConsistencyCheck.equals(idDocumentSubChecks.dataConsistencyCheck)) &&
+        (this.ageValidationCheck == null ? idDocumentSubChecks.ageValidationCheck == null : this.ageValidationCheck.equals(idDocumentSubChecks.ageValidationCheck));
   }
 
   @Override
@@ -271,6 +322,9 @@ public class IdDocumentSubChecks {
     result = 31 * result + (this.documentLivenessCheck == null ? 0: this.documentLivenessCheck.hashCode());
     result = 31 * result + (this.spoofedImageAnalysis == null ? 0: this.spoofedImageAnalysis.hashCode());
     result = 31 * result + (this.faceLivenessCheck == null ? 0: this.faceLivenessCheck.hashCode());
+    result = 31 * result + (this.dataIntegrityCheck == null ? 0: this.dataIntegrityCheck.hashCode());
+    result = 31 * result + (this.dataConsistencyCheck == null ? 0: this.dataConsistencyCheck.hashCode());
+    result = 31 * result + (this.ageValidationCheck == null ? 0: this.ageValidationCheck.hashCode());
     return result;
   }
 
@@ -292,6 +346,9 @@ public class IdDocumentSubChecks {
     sb.append("  documentLivenessCheck: ").append(documentLivenessCheck).append("\n");
     sb.append("  spoofedImageAnalysis: ").append(spoofedImageAnalysis).append("\n");
     sb.append("  faceLivenessCheck: ").append(faceLivenessCheck).append("\n");
+    sb.append("  dataIntegrityCheck: ").append(dataIntegrityCheck).append("\n");
+    sb.append("  dataConsistencyCheck: ").append(dataConsistencyCheck).append("\n");
+    sb.append("  ageValidationCheck: ").append(ageValidationCheck).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

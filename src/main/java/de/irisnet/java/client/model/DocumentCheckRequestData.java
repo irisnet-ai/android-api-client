@@ -27,6 +27,8 @@ public class DocumentCheckRequestData {
   private String backImage = null;
   @SerializedName("selfieImage")
   private String selfieImage = null;
+  @SerializedName("minimumAcceptedAge")
+  private Integer minimumAcceptedAge = null;
   public enum DocumentTypeEnum {
      passport,  driving_license,  national_identity_card,  residence_permit,  visa,  unknown, 
   };
@@ -79,6 +81,17 @@ public class DocumentCheckRequestData {
   }
 
   /**
+   * The minimum accepted age in years for a DocumentCheck. Defaults to 18 if not provided
+   **/
+  @ApiModelProperty(value = "The minimum accepted age in years for a DocumentCheck. Defaults to 18 if not provided")
+  public Integer getMinimumAcceptedAge() {
+    return minimumAcceptedAge;
+  }
+  public void setMinimumAcceptedAge(Integer minimumAcceptedAge) {
+    this.minimumAcceptedAge = minimumAcceptedAge;
+  }
+
+  /**
    * The type of the document
    **/
   @ApiModelProperty(value = "The type of the document")
@@ -114,6 +127,7 @@ public class DocumentCheckRequestData {
         (this.frontImage == null ? documentCheckRequestData.frontImage == null : this.frontImage.equals(documentCheckRequestData.frontImage)) &&
         (this.backImage == null ? documentCheckRequestData.backImage == null : this.backImage.equals(documentCheckRequestData.backImage)) &&
         (this.selfieImage == null ? documentCheckRequestData.selfieImage == null : this.selfieImage.equals(documentCheckRequestData.selfieImage)) &&
+        (this.minimumAcceptedAge == null ? documentCheckRequestData.minimumAcceptedAge == null : this.minimumAcceptedAge.equals(documentCheckRequestData.minimumAcceptedAge)) &&
         (this.documentType == null ? documentCheckRequestData.documentType == null : this.documentType.equals(documentCheckRequestData.documentType)) &&
         (this.documentCountry == null ? documentCheckRequestData.documentCountry == null : this.documentCountry.equals(documentCheckRequestData.documentCountry));
   }
@@ -125,6 +139,7 @@ public class DocumentCheckRequestData {
     result = 31 * result + (this.frontImage == null ? 0: this.frontImage.hashCode());
     result = 31 * result + (this.backImage == null ? 0: this.backImage.hashCode());
     result = 31 * result + (this.selfieImage == null ? 0: this.selfieImage.hashCode());
+    result = 31 * result + (this.minimumAcceptedAge == null ? 0: this.minimumAcceptedAge.hashCode());
     result = 31 * result + (this.documentType == null ? 0: this.documentType.hashCode());
     result = 31 * result + (this.documentCountry == null ? 0: this.documentCountry.hashCode());
     return result;
@@ -139,6 +154,7 @@ public class DocumentCheckRequestData {
     sb.append("  frontImage: ").append(frontImage).append("\n");
     sb.append("  backImage: ").append(backImage).append("\n");
     sb.append("  selfieImage: ").append(selfieImage).append("\n");
+    sb.append("  minimumAcceptedAge: ").append(minimumAcceptedAge).append("\n");
     sb.append("  documentType: ").append(documentType).append("\n");
     sb.append("  documentCountry: ").append(documentCountry).append("\n");
     sb.append("}\n");
