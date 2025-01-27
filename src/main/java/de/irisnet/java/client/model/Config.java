@@ -25,16 +25,16 @@ public class Config {
   
   @SerializedName("id")
   private UUID id = null;
-  public enum Set&lt;PrototypesEnum&gt; {
-     nudityCheck,  ageVerification,  ageEstimation,  illegalSymbols,  textRecognition,  attributesCheck,  bodyAttributes,  nippleCheck,  unwantedSubstances,  violenceCheck,  selfieCheck, 
-  };
-  @SerializedName("prototypes")
-  private Set<PrototypesEnum> prototypes = null;
   public enum Set&lt;KycCheckParametersEnum&gt; {
-     identityDocumentCheck,  automatedDocumentRecognition,  biometricCheck,  formAutofill,  ageEstimation, 
+     identityDocumentCheck,  automatedDocumentRecognition,  biometricCheck,  considerKnownFaces,  formAutofill,  liveIdentification,  ageVerificationCheck,  liveAgeVerificationCheck,  liveSelfie,  proofOfAddress,  videoUploadIdentification,  iFrameFlow,  redirectFlow,  addEncodingsToResult, 
   };
   @SerializedName("kycCheckParameters")
   private Set<KycCheckParametersEnum> kycCheckParameters = null;
+  public enum Set&lt;PrototypesEnum&gt; {
+     nudityCheck,  ageEstimation,  illegalSymbols,  textRecognition,  attributesCheck,  bodyAttributes,  nippleCheck,  unwantedSubstances,  violenceCheck,  selfieCheck, 
+  };
+  @SerializedName("prototypes")
+  private Set<PrototypesEnum> prototypes = null;
 
   /**
    * The unique identifier for the AI configuration. Use this for any check operation to tell the AI how to behave.
@@ -48,17 +48,6 @@ public class Config {
   }
 
   /**
-   * Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.
-   **/
-  @ApiModelProperty(value = "Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.")
-  public Set<PrototypesEnum> getPrototypes() {
-    return prototypes;
-  }
-  public void setPrototypes(Set<PrototypesEnum> prototypes) {
-    this.prototypes = prototypes;
-  }
-
-  /**
    * Configures your kyc checks. You can combine certain parameters to customize a single check operation.
    **/
   @ApiModelProperty(value = "Configures your kyc checks. You can combine certain parameters to customize a single check operation.")
@@ -67,6 +56,17 @@ public class Config {
   }
   public void setKycCheckParameters(Set<KycCheckParametersEnum> kycCheckParameters) {
     this.kycCheckParameters = kycCheckParameters;
+  }
+
+  /**
+   * Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.
+   **/
+  @ApiModelProperty(value = "Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.")
+  public Set<PrototypesEnum> getPrototypes() {
+    return prototypes;
+  }
+  public void setPrototypes(Set<PrototypesEnum> prototypes) {
+    this.prototypes = prototypes;
   }
 
 
@@ -80,16 +80,16 @@ public class Config {
     }
     Config config = (Config) o;
     return (this.id == null ? config.id == null : this.id.equals(config.id)) &&
-        (this.prototypes == null ? config.prototypes == null : this.prototypes.equals(config.prototypes)) &&
-        (this.kycCheckParameters == null ? config.kycCheckParameters == null : this.kycCheckParameters.equals(config.kycCheckParameters));
+        (this.kycCheckParameters == null ? config.kycCheckParameters == null : this.kycCheckParameters.equals(config.kycCheckParameters)) &&
+        (this.prototypes == null ? config.prototypes == null : this.prototypes.equals(config.prototypes));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
-    result = 31 * result + (this.prototypes == null ? 0: this.prototypes.hashCode());
     result = 31 * result + (this.kycCheckParameters == null ? 0: this.kycCheckParameters.hashCode());
+    result = 31 * result + (this.prototypes == null ? 0: this.prototypes.hashCode());
     return result;
   }
 
@@ -99,8 +99,8 @@ public class Config {
     sb.append("class Config {\n");
     
     sb.append("  id: ").append(id).append("\n");
-    sb.append("  prototypes: ").append(prototypes).append("\n");
     sb.append("  kycCheckParameters: ").append(kycCheckParameters).append("\n");
+    sb.append("  prototypes: ").append(prototypes).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

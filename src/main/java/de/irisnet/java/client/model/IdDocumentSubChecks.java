@@ -76,16 +76,6 @@ public class IdDocumentSubChecks {
   };
   @SerializedName("documentLivenessCheck")
   private DocumentLivenessCheckEnum documentLivenessCheck = null;
-  public enum SpoofedImageAnalysisEnum {
-     passed,  failed,  not_processed, 
-  };
-  @SerializedName("spoofedImageAnalysis")
-  private SpoofedImageAnalysisEnum spoofedImageAnalysis = null;
-  public enum FaceLivenessCheckEnum {
-     passed,  failed,  not_processed, 
-  };
-  @SerializedName("faceLivenessCheck")
-  private FaceLivenessCheckEnum faceLivenessCheck = null;
   public enum DataIntegrityCheckEnum {
      passed,  failed,  not_processed, 
   };
@@ -101,6 +91,31 @@ public class IdDocumentSubChecks {
   };
   @SerializedName("ageValidationCheck")
   private AgeValidationCheckEnum ageValidationCheck = null;
+  public enum SpoofedImageAnalysisEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("spoofedImageAnalysis")
+  private SpoofedImageAnalysisEnum spoofedImageAnalysis = null;
+  public enum FaceLivenessCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("faceLivenessCheck")
+  private FaceLivenessCheckEnum faceLivenessCheck = null;
+  public enum VoiceChallengeCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("voiceChallengeCheck")
+  private VoiceChallengeCheckEnum voiceChallengeCheck = null;
+  public enum ActionChallengeCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("actionChallengeCheck")
+  private ActionChallengeCheckEnum actionChallengeCheck = null;
+  public enum KnownFacesCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("knownFacesCheck")
+  private KnownFacesCheckEnum knownFacesCheck = null;
 
   /**
    * Indicates whether the MRZ checksum is correct
@@ -224,28 +239,6 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
-   **/
-  @ApiModelProperty(value = "Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image")
-  public SpoofedImageAnalysisEnum getSpoofedImageAnalysis() {
-    return spoofedImageAnalysis;
-  }
-  public void setSpoofedImageAnalysis(SpoofedImageAnalysisEnum spoofedImageAnalysis) {
-    this.spoofedImageAnalysis = spoofedImageAnalysis;
-  }
-
-  /**
-   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
-   **/
-  @ApiModelProperty(value = "Indicates if the selfie image is genuine and not a photo of an image or of a screen")
-  public FaceLivenessCheckEnum getFaceLivenessCheck() {
-    return faceLivenessCheck;
-  }
-  public void setFaceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
-    this.faceLivenessCheck = faceLivenessCheck;
-  }
-
-  /**
    * Indicates whether the data fields contain the correct type of content
    **/
   @ApiModelProperty(value = "Indicates whether the data fields contain the correct type of content")
@@ -278,6 +271,61 @@ public class IdDocumentSubChecks {
     this.ageValidationCheck = ageValidationCheck;
   }
 
+  /**
+   * Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image
+   **/
+  @ApiModelProperty(value = "Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image")
+  public SpoofedImageAnalysisEnum getSpoofedImageAnalysis() {
+    return spoofedImageAnalysis;
+  }
+  public void setSpoofedImageAnalysis(SpoofedImageAnalysisEnum spoofedImageAnalysis) {
+    this.spoofedImageAnalysis = spoofedImageAnalysis;
+  }
+
+  /**
+   * Indicates if the selfie image is genuine and not a photo of an image or of a screen
+   **/
+  @ApiModelProperty(value = "Indicates if the selfie image is genuine and not a photo of an image or of a screen")
+  public FaceLivenessCheckEnum getFaceLivenessCheck() {
+    return faceLivenessCheck;
+  }
+  public void setFaceLivenessCheck(FaceLivenessCheckEnum faceLivenessCheck) {
+    this.faceLivenessCheck = faceLivenessCheck;
+  }
+
+  /**
+   * Indicates if the enduser had answered correctly during the voice challenge.
+   **/
+  @ApiModelProperty(value = "Indicates if the enduser had answered correctly during the voice challenge.")
+  public VoiceChallengeCheckEnum getVoiceChallengeCheck() {
+    return voiceChallengeCheck;
+  }
+  public void setVoiceChallengeCheck(VoiceChallengeCheckEnum voiceChallengeCheck) {
+    this.voiceChallengeCheck = voiceChallengeCheck;
+  }
+
+  /**
+   * Indicates if the enduser had moved correctly during the actions challenge.
+   **/
+  @ApiModelProperty(value = "Indicates if the enduser had moved correctly during the actions challenge.")
+  public ActionChallengeCheckEnum getActionChallengeCheck() {
+    return actionChallengeCheck;
+  }
+  public void setActionChallengeCheck(ActionChallengeCheckEnum actionChallengeCheck) {
+    this.actionChallengeCheck = actionChallengeCheck;
+  }
+
+  /**
+   * Indicates if the selfie image matches an aready existing client/customer
+   **/
+  @ApiModelProperty(value = "Indicates if the selfie image matches an aready existing client/customer")
+  public KnownFacesCheckEnum getKnownFacesCheck() {
+    return knownFacesCheck;
+  }
+  public void setKnownFacesCheck(KnownFacesCheckEnum knownFacesCheck) {
+    this.knownFacesCheck = knownFacesCheck;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -299,11 +347,14 @@ public class IdDocumentSubChecks {
         (this.specimenCheck == null ? idDocumentSubChecks.specimenCheck == null : this.specimenCheck.equals(idDocumentSubChecks.specimenCheck)) &&
         (this.documentModelIdentification == null ? idDocumentSubChecks.documentModelIdentification == null : this.documentModelIdentification.equals(idDocumentSubChecks.documentModelIdentification)) &&
         (this.documentLivenessCheck == null ? idDocumentSubChecks.documentLivenessCheck == null : this.documentLivenessCheck.equals(idDocumentSubChecks.documentLivenessCheck)) &&
-        (this.spoofedImageAnalysis == null ? idDocumentSubChecks.spoofedImageAnalysis == null : this.spoofedImageAnalysis.equals(idDocumentSubChecks.spoofedImageAnalysis)) &&
-        (this.faceLivenessCheck == null ? idDocumentSubChecks.faceLivenessCheck == null : this.faceLivenessCheck.equals(idDocumentSubChecks.faceLivenessCheck)) &&
         (this.dataIntegrityCheck == null ? idDocumentSubChecks.dataIntegrityCheck == null : this.dataIntegrityCheck.equals(idDocumentSubChecks.dataIntegrityCheck)) &&
         (this.dataConsistencyCheck == null ? idDocumentSubChecks.dataConsistencyCheck == null : this.dataConsistencyCheck.equals(idDocumentSubChecks.dataConsistencyCheck)) &&
-        (this.ageValidationCheck == null ? idDocumentSubChecks.ageValidationCheck == null : this.ageValidationCheck.equals(idDocumentSubChecks.ageValidationCheck));
+        (this.ageValidationCheck == null ? idDocumentSubChecks.ageValidationCheck == null : this.ageValidationCheck.equals(idDocumentSubChecks.ageValidationCheck)) &&
+        (this.spoofedImageAnalysis == null ? idDocumentSubChecks.spoofedImageAnalysis == null : this.spoofedImageAnalysis.equals(idDocumentSubChecks.spoofedImageAnalysis)) &&
+        (this.faceLivenessCheck == null ? idDocumentSubChecks.faceLivenessCheck == null : this.faceLivenessCheck.equals(idDocumentSubChecks.faceLivenessCheck)) &&
+        (this.voiceChallengeCheck == null ? idDocumentSubChecks.voiceChallengeCheck == null : this.voiceChallengeCheck.equals(idDocumentSubChecks.voiceChallengeCheck)) &&
+        (this.actionChallengeCheck == null ? idDocumentSubChecks.actionChallengeCheck == null : this.actionChallengeCheck.equals(idDocumentSubChecks.actionChallengeCheck)) &&
+        (this.knownFacesCheck == null ? idDocumentSubChecks.knownFacesCheck == null : this.knownFacesCheck.equals(idDocumentSubChecks.knownFacesCheck));
   }
 
   @Override
@@ -320,11 +371,14 @@ public class IdDocumentSubChecks {
     result = 31 * result + (this.specimenCheck == null ? 0: this.specimenCheck.hashCode());
     result = 31 * result + (this.documentModelIdentification == null ? 0: this.documentModelIdentification.hashCode());
     result = 31 * result + (this.documentLivenessCheck == null ? 0: this.documentLivenessCheck.hashCode());
-    result = 31 * result + (this.spoofedImageAnalysis == null ? 0: this.spoofedImageAnalysis.hashCode());
-    result = 31 * result + (this.faceLivenessCheck == null ? 0: this.faceLivenessCheck.hashCode());
     result = 31 * result + (this.dataIntegrityCheck == null ? 0: this.dataIntegrityCheck.hashCode());
     result = 31 * result + (this.dataConsistencyCheck == null ? 0: this.dataConsistencyCheck.hashCode());
     result = 31 * result + (this.ageValidationCheck == null ? 0: this.ageValidationCheck.hashCode());
+    result = 31 * result + (this.spoofedImageAnalysis == null ? 0: this.spoofedImageAnalysis.hashCode());
+    result = 31 * result + (this.faceLivenessCheck == null ? 0: this.faceLivenessCheck.hashCode());
+    result = 31 * result + (this.voiceChallengeCheck == null ? 0: this.voiceChallengeCheck.hashCode());
+    result = 31 * result + (this.actionChallengeCheck == null ? 0: this.actionChallengeCheck.hashCode());
+    result = 31 * result + (this.knownFacesCheck == null ? 0: this.knownFacesCheck.hashCode());
     return result;
   }
 
@@ -344,11 +398,14 @@ public class IdDocumentSubChecks {
     sb.append("  specimenCheck: ").append(specimenCheck).append("\n");
     sb.append("  documentModelIdentification: ").append(documentModelIdentification).append("\n");
     sb.append("  documentLivenessCheck: ").append(documentLivenessCheck).append("\n");
-    sb.append("  spoofedImageAnalysis: ").append(spoofedImageAnalysis).append("\n");
-    sb.append("  faceLivenessCheck: ").append(faceLivenessCheck).append("\n");
     sb.append("  dataIntegrityCheck: ").append(dataIntegrityCheck).append("\n");
     sb.append("  dataConsistencyCheck: ").append(dataConsistencyCheck).append("\n");
     sb.append("  ageValidationCheck: ").append(ageValidationCheck).append("\n");
+    sb.append("  spoofedImageAnalysis: ").append(spoofedImageAnalysis).append("\n");
+    sb.append("  faceLivenessCheck: ").append(faceLivenessCheck).append("\n");
+    sb.append("  voiceChallengeCheck: ").append(voiceChallengeCheck).append("\n");
+    sb.append("  actionChallengeCheck: ").append(actionChallengeCheck).append("\n");
+    sb.append("  knownFacesCheck: ").append(knownFacesCheck).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

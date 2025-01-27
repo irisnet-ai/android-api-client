@@ -101,8 +101,16 @@ public class JsonUtil {
       return new TypeToken<List<Config>>(){}.getType();
     }
     
+    if ("Coordinates".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Coordinates>>(){}.getType();
+    }
+    
     if ("Data".equalsIgnoreCase(className)) {
       return new TypeToken<List<Data>>(){}.getType();
+    }
+    
+    if ("Detection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Detection>>(){}.getType();
     }
     
     if ("DocumentCheckRequestData".equalsIgnoreCase(className)) {
@@ -141,8 +149,24 @@ public class JsonUtil {
       return new TypeToken<List<IdDocumentSubChecks>>(){}.getType();
     }
     
+    if ("KnownFace".equalsIgnoreCase(className)) {
+      return new TypeToken<List<KnownFace>>(){}.getType();
+    }
+    
+    if ("KycUiParameter".equalsIgnoreCase(className)) {
+      return new TypeToken<List<KycUiParameter>>(){}.getType();
+    }
+    
     if ("LicenseInfo".equalsIgnoreCase(className)) {
       return new TypeToken<List<LicenseInfo>>(){}.getType();
+    }
+    
+    if ("LiveDocumentCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<LiveDocumentCheckRequestData>>(){}.getType();
+    }
+    
+    if ("LiveDocumentCheckResponseData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<LiveDocumentCheckResponseData>>(){}.getType();
     }
     
     if ("Param".equalsIgnoreCase(className)) {
@@ -155,6 +179,10 @@ public class JsonUtil {
     
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<List<Pricing>>(){}.getType();
+    }
+    
+    if ("Rectangle".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Rectangle>>(){}.getType();
     }
     
     if ("Summary".equalsIgnoreCase(className)) {
@@ -211,8 +239,16 @@ public class JsonUtil {
       return new TypeToken<Config>(){}.getType();
     }
     
+    if ("Coordinates".equalsIgnoreCase(className)) {
+      return new TypeToken<Coordinates>(){}.getType();
+    }
+    
     if ("Data".equalsIgnoreCase(className)) {
       return new TypeToken<Data>(){}.getType();
+    }
+    
+    if ("Detection".equalsIgnoreCase(className)) {
+      return new TypeToken<Detection>(){}.getType();
     }
     
     if ("DocumentCheckRequestData".equalsIgnoreCase(className)) {
@@ -251,8 +287,24 @@ public class JsonUtil {
       return new TypeToken<IdDocumentSubChecks>(){}.getType();
     }
     
+    if ("KnownFace".equalsIgnoreCase(className)) {
+      return new TypeToken<KnownFace>(){}.getType();
+    }
+    
+    if ("KycUiParameter".equalsIgnoreCase(className)) {
+      return new TypeToken<KycUiParameter>(){}.getType();
+    }
+    
     if ("LicenseInfo".equalsIgnoreCase(className)) {
       return new TypeToken<LicenseInfo>(){}.getType();
+    }
+    
+    if ("LiveDocumentCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<LiveDocumentCheckRequestData>(){}.getType();
+    }
+    
+    if ("LiveDocumentCheckResponseData".equalsIgnoreCase(className)) {
+      return new TypeToken<LiveDocumentCheckResponseData>(){}.getType();
     }
     
     if ("Param".equalsIgnoreCase(className)) {
@@ -265,6 +317,10 @@ public class JsonUtil {
     
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<Pricing>(){}.getType();
+    }
+    
+    if ("Rectangle".equalsIgnoreCase(className)) {
+      return new TypeToken<Rectangle>(){}.getType();
     }
     
     if ("Summary".equalsIgnoreCase(className)) {

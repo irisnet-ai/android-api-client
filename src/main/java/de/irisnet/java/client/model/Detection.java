@@ -13,19 +13,21 @@
 package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.AgeEstimationAttribute;
+import de.irisnet.java.client.model.AgeEstimationDetection;
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
+import de.irisnet.java.client.model.BaseDetection;
+import de.irisnet.java.client.model.BreastDetection;
 import de.irisnet.java.client.model.Coordinates;
-import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.FaceDetection;
+import de.irisnet.java.client.model.HairDetection;
+import de.irisnet.java.client.model.IdDocumentDetection;
 import de.irisnet.java.client.model.KnownFace;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Contains further characteristics particular to _ageEstimation_ detection.
- **/
-@ApiModel(description = "Contains further characteristics particular to _ageEstimation_ detection.")
-public class AgeEstimationDetection extends Detection {
+@ApiModel(description = "")
+public class Detection {
   
   @SerializedName("type")
   private String type = null;
@@ -269,25 +271,25 @@ public class AgeEstimationDetection extends Detection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AgeEstimationDetection ageEstimationDetection = (AgeEstimationDetection) o;
-    return (this.type == null ? ageEstimationDetection.type == null : this.type.equals(ageEstimationDetection.type)) &&
-        (this.classification == null ? ageEstimationDetection.classification == null : this.classification.equals(ageEstimationDetection.classification)) &&
-        (this.group == null ? ageEstimationDetection.group == null : this.group.equals(ageEstimationDetection.group)) &&
-        (this.id == null ? ageEstimationDetection.id == null : this.id.equals(ageEstimationDetection.id)) &&
-        (this.probability == null ? ageEstimationDetection.probability == null : this.probability.equals(ageEstimationDetection.probability)) &&
-        (this.coordinates == null ? ageEstimationDetection.coordinates == null : this.coordinates.equals(ageEstimationDetection.coordinates)) &&
-        (this.attributes == null ? ageEstimationDetection.attributes == null : this.attributes.equals(ageEstimationDetection.attributes)) &&
-        (this.subDetections == null ? ageEstimationDetection.subDetections == null : this.subDetections.equals(ageEstimationDetection.subDetections)) &&
-        (this.checkId == null ? ageEstimationDetection.checkId == null : this.checkId.equals(ageEstimationDetection.checkId)) &&
-        (this.hasOfficialDocument == null ? ageEstimationDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(ageEstimationDetection.hasOfficialDocument)) &&
-        (this.comparable == null ? ageEstimationDetection.comparable == null : this.comparable.equals(ageEstimationDetection.comparable)) &&
-        (this.faceSimilarity == null ? ageEstimationDetection.faceSimilarity == null : this.faceSimilarity.equals(ageEstimationDetection.faceSimilarity)) &&
-        (this.faceLivenessCheckScore == null ? ageEstimationDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(ageEstimationDetection.faceLivenessCheckScore)) &&
-        (this.documentFrontLivenessScore == null ? ageEstimationDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(ageEstimationDetection.documentFrontLivenessScore)) &&
-        (this.documentBackLivenessScore == null ? ageEstimationDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(ageEstimationDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? ageEstimationDetection.processedChecks == null : this.processedChecks.equals(ageEstimationDetection.processedChecks)) &&
-        (this.documentHolderId == null ? ageEstimationDetection.documentHolderId == null : this.documentHolderId.equals(ageEstimationDetection.documentHolderId)) &&
-        (this.knownFaces == null ? ageEstimationDetection.knownFaces == null : this.knownFaces.equals(ageEstimationDetection.knownFaces));
+    Detection detection = (Detection) o;
+    return (this.type == null ? detection.type == null : this.type.equals(detection.type)) &&
+        (this.classification == null ? detection.classification == null : this.classification.equals(detection.classification)) &&
+        (this.group == null ? detection.group == null : this.group.equals(detection.group)) &&
+        (this.id == null ? detection.id == null : this.id.equals(detection.id)) &&
+        (this.probability == null ? detection.probability == null : this.probability.equals(detection.probability)) &&
+        (this.coordinates == null ? detection.coordinates == null : this.coordinates.equals(detection.coordinates)) &&
+        (this.attributes == null ? detection.attributes == null : this.attributes.equals(detection.attributes)) &&
+        (this.subDetections == null ? detection.subDetections == null : this.subDetections.equals(detection.subDetections)) &&
+        (this.checkId == null ? detection.checkId == null : this.checkId.equals(detection.checkId)) &&
+        (this.hasOfficialDocument == null ? detection.hasOfficialDocument == null : this.hasOfficialDocument.equals(detection.hasOfficialDocument)) &&
+        (this.comparable == null ? detection.comparable == null : this.comparable.equals(detection.comparable)) &&
+        (this.faceSimilarity == null ? detection.faceSimilarity == null : this.faceSimilarity.equals(detection.faceSimilarity)) &&
+        (this.faceLivenessCheckScore == null ? detection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(detection.faceLivenessCheckScore)) &&
+        (this.documentFrontLivenessScore == null ? detection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(detection.documentFrontLivenessScore)) &&
+        (this.documentBackLivenessScore == null ? detection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(detection.documentBackLivenessScore)) &&
+        (this.processedChecks == null ? detection.processedChecks == null : this.processedChecks.equals(detection.processedChecks)) &&
+        (this.documentHolderId == null ? detection.documentHolderId == null : this.documentHolderId.equals(detection.documentHolderId)) &&
+        (this.knownFaces == null ? detection.knownFaces == null : this.knownFaces.equals(detection.knownFaces));
   }
 
   @Override
@@ -317,8 +319,8 @@ public class AgeEstimationDetection extends Detection {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AgeEstimationDetection {\n");
-    sb.append("  " + super.toString()).append("\n");
+    sb.append("class Detection {\n");
+    
     sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");
     sb.append("  group: ").append(group).append("\n");

@@ -21,12 +21,23 @@ import com.google.gson.annotations.SerializedName;
 @ApiModel(description = "An attribute describes a quality or characteristic that a detection object has.")
 public class BaseAttribute {
   
+  @SerializedName("type")
+  private String type = null;
   @SerializedName("classification")
   private String classification = null;
   @SerializedName("probability")
   private Integer probability = null;
-  @SerializedName("type")
-  private String type = null;
+
+  /**
+   * Used as a type discriminator for json to object conversion.
+   **/
+  @ApiModelProperty(value = "Used as a type discriminator for json to object conversion.")
+  public String getType() {
+    return type;
+  }
+  public void setType(String type) {
+    this.type = type;
+  }
 
   /**
    * The classification of the recognized attribute.
@@ -50,17 +61,6 @@ public class BaseAttribute {
     this.probability = probability;
   }
 
-  /**
-   * Used as a type discriminator for json to object conversion.
-   **/
-  @ApiModelProperty(value = "Used as a type discriminator for json to object conversion.")
-  public String getType() {
-    return type;
-  }
-  public void setType(String type) {
-    this.type = type;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -71,17 +71,17 @@ public class BaseAttribute {
       return false;
     }
     BaseAttribute baseAttribute = (BaseAttribute) o;
-    return (this.classification == null ? baseAttribute.classification == null : this.classification.equals(baseAttribute.classification)) &&
-        (this.probability == null ? baseAttribute.probability == null : this.probability.equals(baseAttribute.probability)) &&
-        (this.type == null ? baseAttribute.type == null : this.type.equals(baseAttribute.type));
+    return (this.type == null ? baseAttribute.type == null : this.type.equals(baseAttribute.type)) &&
+        (this.classification == null ? baseAttribute.classification == null : this.classification.equals(baseAttribute.classification)) &&
+        (this.probability == null ? baseAttribute.probability == null : this.probability.equals(baseAttribute.probability));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
+    result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.classification == null ? 0: this.classification.hashCode());
     result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
-    result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     return result;
   }
 
@@ -90,9 +90,9 @@ public class BaseAttribute {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseAttribute {\n");
     
+    sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");
     sb.append("  probability: ").append(probability).append("\n");
-    sb.append("  type: ").append(type).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

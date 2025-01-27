@@ -14,7 +14,9 @@ package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
 import de.irisnet.java.client.model.BaseAttribute;
-import de.irisnet.java.client.model.BaseDetection;
+import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.KnownFace;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -23,14 +25,24 @@ import com.google.gson.annotations.SerializedName;
  * Contains further characteristics particular to _face_ detection.
  **/
 @ApiModel(description = "Contains further characteristics particular to _face_ detection.")
-public class FaceDetection extends BaseDetection {
+public class FaceDetection extends Detection {
   
   @SerializedName("type")
   private String type = null;
+  @SerializedName("classification")
+  private String classification = null;
+  @SerializedName("group")
+  private String group = null;
+  @SerializedName("id")
+  private Integer id = null;
+  @SerializedName("probability")
+  private Integer probability = null;
+  @SerializedName("coordinates")
+  private Coordinates coordinates = null;
   @SerializedName("attributes")
   private List<BaseAttribute> attributes = null;
   @SerializedName("subDetections")
-  private List<BaseDetection> subDetections = null;
+  private List<Detection> subDetections = null;
   @SerializedName("checkId")
   private String checkId = null;
   @SerializedName("hasOfficialDocument")
@@ -49,15 +61,72 @@ public class FaceDetection extends BaseDetection {
   private AgeEstimationSubChecks processedChecks = null;
   @SerializedName("documentHolderId")
   private String documentHolderId = null;
+  @SerializedName("knownFaces")
+  private List<KnownFace> knownFaces = null;
 
   /**
+   * Used as a type discriminator for json to object conversion.
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "Used as a type discriminator for json to object conversion.")
   public String getType() {
     return type;
   }
   public void setType(String type) {
     this.type = type;
+  }
+
+  /**
+   * The classification of the recognized object.
+   **/
+  @ApiModelProperty(value = "The classification of the recognized object.")
+  public String getClassification() {
+    return classification;
+  }
+  public void setClassification(String classification) {
+    this.classification = classification;
+  }
+
+  /**
+   * The group of the classification.
+   **/
+  @ApiModelProperty(value = "The group of the classification.")
+  public String getGroup() {
+    return group;
+  }
+  public void setGroup(String group) {
+    this.group = group;
+  }
+
+  /**
+   * The id of the detection object.
+   **/
+  @ApiModelProperty(value = "The id of the detection object.")
+  public Integer getId() {
+    return id;
+  }
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  /**
+   * The probability that the object found matches the classification.
+   **/
+  @ApiModelProperty(value = "The probability that the object found matches the classification.")
+  public Integer getProbability() {
+    return probability;
+  }
+  public void setProbability(Integer probability) {
+    this.probability = probability;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
   }
 
   /**
@@ -75,10 +144,10 @@ public class FaceDetection extends BaseDetection {
    * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
    **/
   @ApiModelProperty(value = "A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.")
-  public List<BaseDetection> getSubDetections() {
+  public List<Detection> getSubDetections() {
     return subDetections;
   }
-  public void setSubDetections(List<BaseDetection> subDetections) {
+  public void setSubDetections(List<Detection> subDetections) {
     this.subDetections = subDetections;
   }
 
@@ -180,6 +249,17 @@ public class FaceDetection extends BaseDetection {
     this.documentHolderId = documentHolderId;
   }
 
+  /**
+   * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
+   **/
+  @ApiModelProperty(value = "A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity")
+  public List<KnownFace> getKnownFaces() {
+    return knownFaces;
+  }
+  public void setKnownFaces(List<KnownFace> knownFaces) {
+    this.knownFaces = knownFaces;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -191,6 +271,11 @@ public class FaceDetection extends BaseDetection {
     }
     FaceDetection faceDetection = (FaceDetection) o;
     return (this.type == null ? faceDetection.type == null : this.type.equals(faceDetection.type)) &&
+        (this.classification == null ? faceDetection.classification == null : this.classification.equals(faceDetection.classification)) &&
+        (this.group == null ? faceDetection.group == null : this.group.equals(faceDetection.group)) &&
+        (this.id == null ? faceDetection.id == null : this.id.equals(faceDetection.id)) &&
+        (this.probability == null ? faceDetection.probability == null : this.probability.equals(faceDetection.probability)) &&
+        (this.coordinates == null ? faceDetection.coordinates == null : this.coordinates.equals(faceDetection.coordinates)) &&
         (this.attributes == null ? faceDetection.attributes == null : this.attributes.equals(faceDetection.attributes)) &&
         (this.subDetections == null ? faceDetection.subDetections == null : this.subDetections.equals(faceDetection.subDetections)) &&
         (this.checkId == null ? faceDetection.checkId == null : this.checkId.equals(faceDetection.checkId)) &&
@@ -201,13 +286,19 @@ public class FaceDetection extends BaseDetection {
         (this.documentFrontLivenessScore == null ? faceDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(faceDetection.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? faceDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(faceDetection.documentBackLivenessScore)) &&
         (this.processedChecks == null ? faceDetection.processedChecks == null : this.processedChecks.equals(faceDetection.processedChecks)) &&
-        (this.documentHolderId == null ? faceDetection.documentHolderId == null : this.documentHolderId.equals(faceDetection.documentHolderId));
+        (this.documentHolderId == null ? faceDetection.documentHolderId == null : this.documentHolderId.equals(faceDetection.documentHolderId)) &&
+        (this.knownFaces == null ? faceDetection.knownFaces == null : this.knownFaces.equals(faceDetection.knownFaces));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
+    result = 31 * result + (this.classification == null ? 0: this.classification.hashCode());
+    result = 31 * result + (this.group == null ? 0: this.group.hashCode());
+    result = 31 * result + (this.id == null ? 0: this.id.hashCode());
+    result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
+    result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
     result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
     result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
     result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
@@ -219,6 +310,7 @@ public class FaceDetection extends BaseDetection {
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
     result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
     result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
+    result = 31 * result + (this.knownFaces == null ? 0: this.knownFaces.hashCode());
     return result;
   }
 
@@ -228,6 +320,11 @@ public class FaceDetection extends BaseDetection {
     sb.append("class FaceDetection {\n");
     sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
+    sb.append("  classification: ").append(classification).append("\n");
+    sb.append("  group: ").append(group).append("\n");
+    sb.append("  id: ").append(id).append("\n");
+    sb.append("  probability: ").append(probability).append("\n");
+    sb.append("  coordinates: ").append(coordinates).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");
     sb.append("  subDetections: ").append(subDetections).append("\n");
     sb.append("  checkId: ").append(checkId).append("\n");
@@ -239,6 +336,7 @@ public class FaceDetection extends BaseDetection {
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
     sb.append("  processedChecks: ").append(processedChecks).append("\n");
     sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
+    sb.append("  knownFaces: ").append(knownFaces).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

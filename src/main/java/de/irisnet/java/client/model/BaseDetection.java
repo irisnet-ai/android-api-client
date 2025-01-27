@@ -12,13 +12,11 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.AgeEstimationAttribute;
-import de.irisnet.java.client.model.AgeEstimationDetection;
 import de.irisnet.java.client.model.AgeEstimationSubChecks;
-import de.irisnet.java.client.model.BreastDetection;
-import de.irisnet.java.client.model.FaceDetection;
-import de.irisnet.java.client.model.HairDetection;
-import de.irisnet.java.client.model.IdDocumentDetection;
+import de.irisnet.java.client.model.BaseAttribute;
+import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.KnownFace;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -27,14 +25,24 @@ import com.google.gson.annotations.SerializedName;
  * A detection describes the object found with all its details.
  **/
 @ApiModel(description = "A detection describes the object found with all its details.")
-public class BaseDetection {
+public class BaseDetection extends Detection {
   
   @SerializedName("type")
   private String type = null;
+  @SerializedName("classification")
+  private String classification = null;
+  @SerializedName("group")
+  private String group = null;
+  @SerializedName("id")
+  private Integer id = null;
+  @SerializedName("probability")
+  private Integer probability = null;
+  @SerializedName("coordinates")
+  private Coordinates coordinates = null;
   @SerializedName("attributes")
-  private List<AgeEstimationAttribute> attributes = null;
+  private List<BaseAttribute> attributes = null;
   @SerializedName("subDetections")
-  private List<BaseDetection> subDetections = null;
+  private List<Detection> subDetections = null;
   @SerializedName("checkId")
   private String checkId = null;
   @SerializedName("hasOfficialDocument")
@@ -53,10 +61,13 @@ public class BaseDetection {
   private AgeEstimationSubChecks processedChecks = null;
   @SerializedName("documentHolderId")
   private String documentHolderId = null;
+  @SerializedName("knownFaces")
+  private List<KnownFace> knownFaces = null;
 
   /**
+   * Used as a type discriminator for json to object conversion.
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "Used as a type discriminator for json to object conversion.")
   public String getType() {
     return type;
   }
@@ -65,13 +76,67 @@ public class BaseDetection {
   }
 
   /**
-   * Attributes of the _idDocument_ detection.
+   * The classification of the recognized object.
    **/
-  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
-  public List<AgeEstimationAttribute> getAttributes() {
+  @ApiModelProperty(value = "The classification of the recognized object.")
+  public String getClassification() {
+    return classification;
+  }
+  public void setClassification(String classification) {
+    this.classification = classification;
+  }
+
+  /**
+   * The group of the classification.
+   **/
+  @ApiModelProperty(value = "The group of the classification.")
+  public String getGroup() {
+    return group;
+  }
+  public void setGroup(String group) {
+    this.group = group;
+  }
+
+  /**
+   * The id of the detection object.
+   **/
+  @ApiModelProperty(value = "The id of the detection object.")
+  public Integer getId() {
+    return id;
+  }
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  /**
+   * The probability that the object found matches the classification.
+   **/
+  @ApiModelProperty(value = "The probability that the object found matches the classification.")
+  public Integer getProbability() {
+    return probability;
+  }
+  public void setProbability(Integer probability) {
+    this.probability = probability;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
+  }
+
+  /**
+   * Attributes characterizing the _base_ detection.
+   **/
+  @ApiModelProperty(value = "Attributes characterizing the _base_ detection.")
+  public List<BaseAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<AgeEstimationAttribute> attributes) {
+  public void setAttributes(List<BaseAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -79,10 +144,10 @@ public class BaseDetection {
    * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
    **/
   @ApiModelProperty(value = "A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.")
-  public List<BaseDetection> getSubDetections() {
+  public List<Detection> getSubDetections() {
     return subDetections;
   }
-  public void setSubDetections(List<BaseDetection> subDetections) {
+  public void setSubDetections(List<Detection> subDetections) {
     this.subDetections = subDetections;
   }
 
@@ -184,6 +249,17 @@ public class BaseDetection {
     this.documentHolderId = documentHolderId;
   }
 
+  /**
+   * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
+   **/
+  @ApiModelProperty(value = "A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity")
+  public List<KnownFace> getKnownFaces() {
+    return knownFaces;
+  }
+  public void setKnownFaces(List<KnownFace> knownFaces) {
+    this.knownFaces = knownFaces;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -195,6 +271,11 @@ public class BaseDetection {
     }
     BaseDetection baseDetection = (BaseDetection) o;
     return (this.type == null ? baseDetection.type == null : this.type.equals(baseDetection.type)) &&
+        (this.classification == null ? baseDetection.classification == null : this.classification.equals(baseDetection.classification)) &&
+        (this.group == null ? baseDetection.group == null : this.group.equals(baseDetection.group)) &&
+        (this.id == null ? baseDetection.id == null : this.id.equals(baseDetection.id)) &&
+        (this.probability == null ? baseDetection.probability == null : this.probability.equals(baseDetection.probability)) &&
+        (this.coordinates == null ? baseDetection.coordinates == null : this.coordinates.equals(baseDetection.coordinates)) &&
         (this.attributes == null ? baseDetection.attributes == null : this.attributes.equals(baseDetection.attributes)) &&
         (this.subDetections == null ? baseDetection.subDetections == null : this.subDetections.equals(baseDetection.subDetections)) &&
         (this.checkId == null ? baseDetection.checkId == null : this.checkId.equals(baseDetection.checkId)) &&
@@ -205,13 +286,19 @@ public class BaseDetection {
         (this.documentFrontLivenessScore == null ? baseDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(baseDetection.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? baseDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(baseDetection.documentBackLivenessScore)) &&
         (this.processedChecks == null ? baseDetection.processedChecks == null : this.processedChecks.equals(baseDetection.processedChecks)) &&
-        (this.documentHolderId == null ? baseDetection.documentHolderId == null : this.documentHolderId.equals(baseDetection.documentHolderId));
+        (this.documentHolderId == null ? baseDetection.documentHolderId == null : this.documentHolderId.equals(baseDetection.documentHolderId)) &&
+        (this.knownFaces == null ? baseDetection.knownFaces == null : this.knownFaces.equals(baseDetection.knownFaces));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
+    result = 31 * result + (this.classification == null ? 0: this.classification.hashCode());
+    result = 31 * result + (this.group == null ? 0: this.group.hashCode());
+    result = 31 * result + (this.id == null ? 0: this.id.hashCode());
+    result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
+    result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
     result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
     result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
     result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
@@ -223,6 +310,7 @@ public class BaseDetection {
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
     result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
     result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
+    result = 31 * result + (this.knownFaces == null ? 0: this.knownFaces.hashCode());
     return result;
   }
 
@@ -230,8 +318,13 @@ public class BaseDetection {
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseDetection {\n");
-    
+    sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
+    sb.append("  classification: ").append(classification).append("\n");
+    sb.append("  group: ").append(group).append("\n");
+    sb.append("  id: ").append(id).append("\n");
+    sb.append("  probability: ").append(probability).append("\n");
+    sb.append("  coordinates: ").append(coordinates).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");
     sb.append("  subDetections: ").append(subDetections).append("\n");
     sb.append("  checkId: ").append(checkId).append("\n");
@@ -243,6 +336,7 @@ public class BaseDetection {
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
     sb.append("  processedChecks: ").append(processedChecks).append("\n");
     sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
+    sb.append("  knownFaces: ").append(knownFaces).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -12,54 +12,40 @@
 
 package de.irisnet.java.client.model;
 
-import java.io.File;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Contains the resulting media as a data URL (RFC 2397) encoded string or an URL to download that media.
+ * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
  **/
-@ApiModel(description = "Contains the resulting media as a data URL (RFC 2397) encoded string or an URL to download that media.")
-public class Encoded {
+@ApiModel(description = "A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity")
+public class KnownFace {
   
-  @SerializedName("name")
-  private String name = null;
-  @SerializedName("data")
-  private File data = null;
-  @SerializedName("downloadUrl")
-  private String downloadUrl = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
+  @SerializedName("faceSimilarity")
+  private Integer faceSimilarity = null;
 
   /**
-   * Contains a randomly generated filename, might be null.
+   * The id of the documentHolder
    **/
-  @ApiModelProperty(value = "Contains a randomly generated filename, might be null.")
-  public String getName() {
-    return name;
+  @ApiModelProperty(value = "The id of the documentHolder")
+  public String getDocumentHolderId() {
+    return documentHolderId;
   }
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  /**
-   * The encoded image in data URL format (RFC 2397).
-   **/
-  @ApiModelProperty(value = "The encoded image in data URL format (RFC 2397).")
-  public File getData() {
-    return data;
-  }
-  public void setData(File data) {
-    this.data = data;
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
   }
 
   /**
-   * A one time URL to download the resulting video. The URL is only valid for 24 hours.
+   * Indicates the similarity-level between the known face and the documentHolder's selfie
    **/
-  @ApiModelProperty(value = "A one time URL to download the resulting video. The URL is only valid for 24 hours.")
-  public String getDownloadUrl() {
-    return downloadUrl;
+  @ApiModelProperty(value = "Indicates the similarity-level between the known face and the documentHolder's selfie")
+  public Integer getFaceSimilarity() {
+    return faceSimilarity;
   }
-  public void setDownloadUrl(String downloadUrl) {
-    this.downloadUrl = downloadUrl;
+  public void setFaceSimilarity(Integer faceSimilarity) {
+    this.faceSimilarity = faceSimilarity;
   }
 
 
@@ -71,29 +57,26 @@ public class Encoded {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Encoded encoded = (Encoded) o;
-    return (this.name == null ? encoded.name == null : this.name.equals(encoded.name)) &&
-        (this.data == null ? encoded.data == null : this.data.equals(encoded.data)) &&
-        (this.downloadUrl == null ? encoded.downloadUrl == null : this.downloadUrl.equals(encoded.downloadUrl));
+    KnownFace knownFace = (KnownFace) o;
+    return (this.documentHolderId == null ? knownFace.documentHolderId == null : this.documentHolderId.equals(knownFace.documentHolderId)) &&
+        (this.faceSimilarity == null ? knownFace.faceSimilarity == null : this.faceSimilarity.equals(knownFace.faceSimilarity));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.name == null ? 0: this.name.hashCode());
-    result = 31 * result + (this.data == null ? 0: this.data.hashCode());
-    result = 31 * result + (this.downloadUrl == null ? 0: this.downloadUrl.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
+    result = 31 * result + (this.faceSimilarity == null ? 0: this.faceSimilarity.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Encoded {\n");
+    sb.append("class KnownFace {\n");
     
-    sb.append("  name: ").append(name).append("\n");
-    sb.append("  data: ").append(data).append("\n");
-    sb.append("  downloadUrl: ").append(downloadUrl).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
+    sb.append("  faceSimilarity: ").append(faceSimilarity).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

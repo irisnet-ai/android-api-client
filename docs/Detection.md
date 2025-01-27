@@ -1,6 +1,6 @@
 
 
-# BreastDetection
+# Detection
 
 ## Properties
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | The id of the detection object. |  [optional]
 **probability** | **Integer** | The probability that the object found matches the classification. |  [optional]
 **coordinates** | [**Coordinates**](Coordinates.md) |  |  [optional]
-**attributes** | [**List&lt;BaseAttribute&gt;**](BaseAttribute.md) | Attributes characterizing the _breast_ detection. Mainly contains attributes that were activated with the _nippleCheck_ prototype. |  [optional]
+**attributes** | [**List&lt;AgeEstimationAttribute&gt;**](AgeEstimationAttribute.md) | Attributes of the _idDocument_ detection. |  [optional]
 **subDetections** | [**List&lt;Detection&gt;**](Detection.md) | A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype. |  [optional]
 **checkId** | **String** | The id of the check that lead to the detection |  [optional]
 **hasOfficialDocument** | **Boolean** | Indicates whether the identified document is official |  [optional]

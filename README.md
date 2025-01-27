@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.irisnet.java.client</groupId>
     <artifactId>irisnet-java-client</artifactId>
-    <version>3.6.4</version>
+    <version>3.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:3.6.4"
+compile "de.irisnet.java.client:irisnet-java-client:3.7.0"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/irisnet-java-client-3.6.4.jar
+- target/irisnet-java-client-3.7.0.jar
 - target/lib/*.jar
 
 ## Getting Started
@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *AICheckOperationsApi* | [**checkImage**](docs/AICheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
 *AICheckOperationsApi* | [**checkStream**](docs/AICheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
 *AICheckOperationsApi* | [**checkVideo**](docs/AICheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
+*AICheckOperationsApi* | [**liveDocumentCheck**](docs/AICheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI.
 *BalanceEndpointsApi* | [**getCost**](docs/BalanceEndpointsApi.md#getCost) | **GET** /v2/cost/{configId} | Get the cost of the configuration for a single image.
 *BalanceEndpointsApi* | [**getLicenseInfo**](docs/BalanceEndpointsApi.md#getLicenseInfo) | **GET** /v2/info/ | Get information for the given license key.
 *BalanceEndpointsApi* | [**getVideoCost**](docs/BalanceEndpointsApi.md#getVideoCost) | **GET** /v2/cost/{configId}/{frames} | Get the cost of the configuration for moving images.
@@ -114,7 +115,9 @@ Class | Method | HTTP request | Description
  - [Callback](docs/Callback.md)
  - [CheckResult](docs/CheckResult.md)
  - [Config](docs/Config.md)
+ - [Coordinates](docs/Coordinates.md)
  - [Data](docs/Data.md)
+ - [Detection](docs/Detection.md)
  - [DocumentCheckRequestData](docs/DocumentCheckRequestData.md)
  - [Encoded](docs/Encoded.md)
  - [Event](docs/Event.md)
@@ -124,10 +127,15 @@ Class | Method | HTTP request | Description
  - [IdDocumentAttribute](docs/IdDocumentAttribute.md)
  - [IdDocumentDetection](docs/IdDocumentDetection.md)
  - [IdDocumentSubChecks](docs/IdDocumentSubChecks.md)
+ - [KnownFace](docs/KnownFace.md)
+ - [KycUiParameter](docs/KycUiParameter.md)
  - [LicenseInfo](docs/LicenseInfo.md)
+ - [LiveDocumentCheckRequestData](docs/LiveDocumentCheckRequestData.md)
+ - [LiveDocumentCheckResponseData](docs/LiveDocumentCheckResponseData.md)
  - [Param](docs/Param.md)
  - [ParamSet](docs/ParamSet.md)
  - [Pricing](docs/Pricing.md)
+ - [Rectangle](docs/Rectangle.md)
  - [Summary](docs/Summary.md)
 
 

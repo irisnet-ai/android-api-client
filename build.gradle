@@ -58,7 +58,7 @@ publishing {
         release(MavenPublication) {
             groupId = 'de.irisnet.java.client'
             artifactId = 'irisnet-java-client'
-            version = '3.6.4'
+            version = '3.7.0'
 
             afterEvaluate {
                 from components.release

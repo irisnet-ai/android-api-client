@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**checkImage**](AICheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
 [**checkStream**](AICheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
 [**checkVideo**](AICheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
+[**liveDocumentCheck**](AICheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI.
 
 
 
@@ -17,7 +18,7 @@ Method | HTTP request | Description
 
 Check an id document with the AI.
 
-The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.
+The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
 
 ### Example
 
@@ -211,6 +212,54 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## liveDocumentCheck
+
+> LiveDocumentCheckResponseData liveDocumentCheck(configId, liveDocumentCheckRequestData)
+
+Start a guided live id document check with the AI.
+
+The synchronous response (_LiveDocumentCheckResponseData_ schema) contains an eventId, possibly a token and an URL to send the enduser to. The actual result (_CheckResult_ schema) of the document check is sent to the provided _callbackUrl_ after the AI has finished processing.
+
+### Example
+
+```java
+// Import classes:
+//import de.irisnet.java.client.AICheckOperationsApi;
+
+AICheckOperationsApi apiInstance = new AICheckOperationsApi();
+UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
+LiveDocumentCheckRequestData liveDocumentCheckRequestData = {"callback":{"callbackUrl":"https://www.example.com/callback?liveident"},"endUserRedirectUrl":"https://www.example.com/user"}; // LiveDocumentCheckRequestData | The LiveDocumentCheckRequestData containing data needed for the live id document check.
+try {
+    LiveDocumentCheckResponseData result = apiInstance.liveDocumentCheck(configId, liveDocumentCheckRequestData);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AICheckOperationsApi#liveDocumentCheck");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configId** | **UUID**| The configuration id from the Basic Configuration operations. | [default to null]
+ **liveDocumentCheckRequestData** | [**LiveDocumentCheckRequestData**](LiveDocumentCheckRequestData.md)| The LiveDocumentCheckRequestData containing data needed for the live id document check. |
+
+### Return type
+
+[**LiveDocumentCheckResponseData**](LiveDocumentCheckResponseData.md)
 
 ### Authorization
 

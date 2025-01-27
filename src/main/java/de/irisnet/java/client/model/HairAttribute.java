@@ -24,7 +24,7 @@ public class HairAttribute {
   @SerializedName("type")
   private String type = null;
   public enum ColorEnum {
-     black,  brown,  blonde,  grey,  red,  other, 
+     black,  darkBrown,  brown,  lightBrown,  darkBlonde,  blonde,  darkGrey,  grey,  red,  white,  other, 
   };
   @SerializedName("color")
   private ColorEnum color = null;
