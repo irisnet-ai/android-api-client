@@ -12,20 +12,20 @@
 
 package de.irisnet.java.client.model;
 
+import de.irisnet.java.client.model.AgeVerificationAttribute;
 import de.irisnet.java.client.model.AgeVerificationSubChecks;
 import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.Detection;
-import de.irisnet.java.client.model.HairAttribute;
 import de.irisnet.java.client.model.KnownFace;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Contains further characteristics particular to _hair_ detection.
+ * Contains other features specific to _ageVerification_ detection.
  **/
-@ApiModel(description = "Contains further characteristics particular to _hair_ detection.")
-public class HairDetection extends Detection {
+@ApiModel(description = "Contains other features specific to _ageVerification_ detection.")
+public class AgeVerificationDetection extends Detection {
   
   @SerializedName("type")
   private String type = null;
@@ -40,7 +40,7 @@ public class HairDetection extends Detection {
   @SerializedName("coordinates")
   private Coordinates coordinates = null;
   @SerializedName("attributes")
-  private List<HairAttribute> attributes = null;
+  private List<AgeVerificationAttribute> attributes = null;
   @SerializedName("subDetections")
   private List<Detection> subDetections = null;
   @SerializedName("checkId")
@@ -130,13 +130,13 @@ public class HairDetection extends Detection {
   }
 
   /**
-   * Contains attributes for the _hair_ classification.
+   * Attributes of the _ageVerification_ detection.
    **/
-  @ApiModelProperty(value = "Contains attributes for the _hair_ classification.")
-  public List<HairAttribute> getAttributes() {
+  @ApiModelProperty(value = "Attributes of the _ageVerification_ detection.")
+  public List<AgeVerificationAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<HairAttribute> attributes) {
+  public void setAttributes(List<AgeVerificationAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -269,25 +269,25 @@ public class HairDetection extends Detection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HairDetection hairDetection = (HairDetection) o;
-    return (this.type == null ? hairDetection.type == null : this.type.equals(hairDetection.type)) &&
-        (this.classification == null ? hairDetection.classification == null : this.classification.equals(hairDetection.classification)) &&
-        (this.group == null ? hairDetection.group == null : this.group.equals(hairDetection.group)) &&
-        (this.id == null ? hairDetection.id == null : this.id.equals(hairDetection.id)) &&
-        (this.probability == null ? hairDetection.probability == null : this.probability.equals(hairDetection.probability)) &&
-        (this.coordinates == null ? hairDetection.coordinates == null : this.coordinates.equals(hairDetection.coordinates)) &&
-        (this.attributes == null ? hairDetection.attributes == null : this.attributes.equals(hairDetection.attributes)) &&
-        (this.subDetections == null ? hairDetection.subDetections == null : this.subDetections.equals(hairDetection.subDetections)) &&
-        (this.checkId == null ? hairDetection.checkId == null : this.checkId.equals(hairDetection.checkId)) &&
-        (this.hasOfficialDocument == null ? hairDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(hairDetection.hasOfficialDocument)) &&
-        (this.comparable == null ? hairDetection.comparable == null : this.comparable.equals(hairDetection.comparable)) &&
-        (this.faceSimilarity == null ? hairDetection.faceSimilarity == null : this.faceSimilarity.equals(hairDetection.faceSimilarity)) &&
-        (this.faceLivenessCheckScore == null ? hairDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(hairDetection.faceLivenessCheckScore)) &&
-        (this.documentFrontLivenessScore == null ? hairDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(hairDetection.documentFrontLivenessScore)) &&
-        (this.documentBackLivenessScore == null ? hairDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(hairDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? hairDetection.processedChecks == null : this.processedChecks.equals(hairDetection.processedChecks)) &&
-        (this.documentHolderId == null ? hairDetection.documentHolderId == null : this.documentHolderId.equals(hairDetection.documentHolderId)) &&
-        (this.knownFaces == null ? hairDetection.knownFaces == null : this.knownFaces.equals(hairDetection.knownFaces));
+    AgeVerificationDetection ageVerificationDetection = (AgeVerificationDetection) o;
+    return (this.type == null ? ageVerificationDetection.type == null : this.type.equals(ageVerificationDetection.type)) &&
+        (this.classification == null ? ageVerificationDetection.classification == null : this.classification.equals(ageVerificationDetection.classification)) &&
+        (this.group == null ? ageVerificationDetection.group == null : this.group.equals(ageVerificationDetection.group)) &&
+        (this.id == null ? ageVerificationDetection.id == null : this.id.equals(ageVerificationDetection.id)) &&
+        (this.probability == null ? ageVerificationDetection.probability == null : this.probability.equals(ageVerificationDetection.probability)) &&
+        (this.coordinates == null ? ageVerificationDetection.coordinates == null : this.coordinates.equals(ageVerificationDetection.coordinates)) &&
+        (this.attributes == null ? ageVerificationDetection.attributes == null : this.attributes.equals(ageVerificationDetection.attributes)) &&
+        (this.subDetections == null ? ageVerificationDetection.subDetections == null : this.subDetections.equals(ageVerificationDetection.subDetections)) &&
+        (this.checkId == null ? ageVerificationDetection.checkId == null : this.checkId.equals(ageVerificationDetection.checkId)) &&
+        (this.hasOfficialDocument == null ? ageVerificationDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(ageVerificationDetection.hasOfficialDocument)) &&
+        (this.comparable == null ? ageVerificationDetection.comparable == null : this.comparable.equals(ageVerificationDetection.comparable)) &&
+        (this.faceSimilarity == null ? ageVerificationDetection.faceSimilarity == null : this.faceSimilarity.equals(ageVerificationDetection.faceSimilarity)) &&
+        (this.faceLivenessCheckScore == null ? ageVerificationDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(ageVerificationDetection.faceLivenessCheckScore)) &&
+        (this.documentFrontLivenessScore == null ? ageVerificationDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(ageVerificationDetection.documentFrontLivenessScore)) &&
+        (this.documentBackLivenessScore == null ? ageVerificationDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(ageVerificationDetection.documentBackLivenessScore)) &&
+        (this.processedChecks == null ? ageVerificationDetection.processedChecks == null : this.processedChecks.equals(ageVerificationDetection.processedChecks)) &&
+        (this.documentHolderId == null ? ageVerificationDetection.documentHolderId == null : this.documentHolderId.equals(ageVerificationDetection.documentHolderId)) &&
+        (this.knownFaces == null ? ageVerificationDetection.knownFaces == null : this.knownFaces.equals(ageVerificationDetection.knownFaces));
   }
 
   @Override
@@ -317,7 +317,7 @@ public class HairDetection extends Detection {
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HairDetection {\n");
+    sb.append("class AgeVerificationDetection {\n");
     sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");

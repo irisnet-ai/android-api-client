@@ -62,7 +62,7 @@ null (empty response body)
 
 List all saved AI configurations.
 
-Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
 
 ### Example
 
@@ -159,7 +159,7 @@ Create a new AI configuration with the desired prototypes.
 //import de.irisnet.java.client.ConfigurationManagementApi;
 
 ConfigurationManagementApi apiInstance = new ConfigurationManagementApi();
-Config config = {"prototypes":["nudityCheck","ageEstimation","illegalSymbols","attributesCheck","nippleCheck","textRecognition","bodyAttributes","unwantedSubstances","violenceCheck","selfieCheck"]}; // Config | Define the prototypes to use for an AI check operation. View the _Config_ schema to see the available prototypes.
+Config config = {"name":"first attempt","prototypes":["nudityCheck","ageEstimation","illegalSymbols","attributesCheck","nippleCheck","textRecognition","bodyAttributes","unwantedSubstances","violenceCheck","selfieCheck"]}; // Config | Define the prototypes to use for an AI check operation. View the _Config_ schema to see the available prototypes.
 try {
     Config result = apiInstance.setConfig(config);
     System.out.println(result);

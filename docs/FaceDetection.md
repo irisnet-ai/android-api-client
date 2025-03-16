@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **faceLivenessCheckScore** | **Integer** | Indicates the liveness score of the selfie image |  [optional]
 **documentFrontLivenessScore** | **Integer** | Indicates the liveness score of the front side image of the document |  [optional]
 **documentBackLivenessScore** | **Integer** | Indicates the liveness score of the back side image of the document |  [optional]
-**processedChecks** | [**AgeEstimationSubChecks**](AgeEstimationSubChecks.md) |  |  [optional]
+**processedChecks** | [**AgeVerificationSubChecks**](AgeVerificationSubChecks.md) |  |  [optional]
 **documentHolderId** | **String** | The id of the documentHolder |  [optional]
 **knownFaces** | [**List&lt;KnownFace&gt;**](KnownFace.md) | A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity |  [optional]
 

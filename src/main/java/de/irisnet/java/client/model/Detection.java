@@ -12,9 +12,9 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.AgeEstimationAttribute;
-import de.irisnet.java.client.model.AgeEstimationDetection;
-import de.irisnet.java.client.model.AgeEstimationSubChecks;
+import de.irisnet.java.client.model.AgeVerificationAttribute;
+import de.irisnet.java.client.model.AgeVerificationDetection;
+import de.irisnet.java.client.model.AgeVerificationSubChecks;
 import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.BreastDetection;
 import de.irisnet.java.client.model.Coordinates;
@@ -42,7 +42,7 @@ public class Detection {
   @SerializedName("coordinates")
   private Coordinates coordinates = null;
   @SerializedName("attributes")
-  private List<AgeEstimationAttribute> attributes = null;
+  private List<AgeVerificationAttribute> attributes = null;
   @SerializedName("subDetections")
   private List<Detection> subDetections = null;
   @SerializedName("checkId")
@@ -60,7 +60,7 @@ public class Detection {
   @SerializedName("documentBackLivenessScore")
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
-  private AgeEstimationSubChecks processedChecks = null;
+  private AgeVerificationSubChecks processedChecks = null;
   @SerializedName("documentHolderId")
   private String documentHolderId = null;
   @SerializedName("knownFaces")
@@ -132,13 +132,13 @@ public class Detection {
   }
 
   /**
-   * Attributes of the _idDocument_ detection.
+   * Attributes of the _ageVerification_ detection.
    **/
-  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
-  public List<AgeEstimationAttribute> getAttributes() {
+  @ApiModelProperty(value = "Attributes of the _ageVerification_ detection.")
+  public List<AgeVerificationAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<AgeEstimationAttribute> attributes) {
+  public void setAttributes(List<AgeVerificationAttribute> attributes) {
     this.attributes = attributes;
   }
 
@@ -233,10 +233,10 @@ public class Detection {
   /**
    **/
   @ApiModelProperty(value = "")
-  public AgeEstimationSubChecks getProcessedChecks() {
+  public AgeVerificationSubChecks getProcessedChecks() {
     return processedChecks;
   }
-  public void setProcessedChecks(AgeEstimationSubChecks processedChecks) {
+  public void setProcessedChecks(AgeVerificationSubChecks processedChecks) {
     this.processedChecks = processedChecks;
   }
 

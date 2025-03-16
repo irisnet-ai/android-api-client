@@ -18,9 +18,9 @@ import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Data containing neccessary information to handle the enduser live document check.
+ * Data containing neccessary information to handle the enduser live check.
  **/
-@ApiModel(description = "Data containing neccessary information to handle the enduser live document check.")
+@ApiModel(description = "Data containing neccessary information to handle the enduser live check.")
 public class LiveDocumentCheckRequestData {
   
   @SerializedName("callback")
@@ -31,6 +31,10 @@ public class LiveDocumentCheckRequestData {
   private URI endUserRedirectUrl = null;
   @SerializedName("tokenValidityInSeconds")
   private Long tokenValidityInSeconds = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
+  @SerializedName("minimumAcceptedAge")
+  private Integer minimumAcceptedAge = null;
 
   /**
    **/
@@ -75,6 +79,28 @@ public class LiveDocumentCheckRequestData {
     this.tokenValidityInSeconds = tokenValidityInSeconds;
   }
 
+  /**
+   * The documentHolderId from a previous successful live identification
+   **/
+  @ApiModelProperty(value = "The documentHolderId from a previous successful live identification")
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
+  /**
+   * The minimum accepted age in years for a check. Defaults to 18 if not provided
+   **/
+  @ApiModelProperty(value = "The minimum accepted age in years for a check. Defaults to 18 if not provided")
+  public Integer getMinimumAcceptedAge() {
+    return minimumAcceptedAge;
+  }
+  public void setMinimumAcceptedAge(Integer minimumAcceptedAge) {
+    this.minimumAcceptedAge = minimumAcceptedAge;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -88,7 +114,9 @@ public class LiveDocumentCheckRequestData {
     return (this.callback == null ? liveDocumentCheckRequestData.callback == null : this.callback.equals(liveDocumentCheckRequestData.callback)) &&
         (this.statusUrl == null ? liveDocumentCheckRequestData.statusUrl == null : this.statusUrl.equals(liveDocumentCheckRequestData.statusUrl)) &&
         (this.endUserRedirectUrl == null ? liveDocumentCheckRequestData.endUserRedirectUrl == null : this.endUserRedirectUrl.equals(liveDocumentCheckRequestData.endUserRedirectUrl)) &&
-        (this.tokenValidityInSeconds == null ? liveDocumentCheckRequestData.tokenValidityInSeconds == null : this.tokenValidityInSeconds.equals(liveDocumentCheckRequestData.tokenValidityInSeconds));
+        (this.tokenValidityInSeconds == null ? liveDocumentCheckRequestData.tokenValidityInSeconds == null : this.tokenValidityInSeconds.equals(liveDocumentCheckRequestData.tokenValidityInSeconds)) &&
+        (this.documentHolderId == null ? liveDocumentCheckRequestData.documentHolderId == null : this.documentHolderId.equals(liveDocumentCheckRequestData.documentHolderId)) &&
+        (this.minimumAcceptedAge == null ? liveDocumentCheckRequestData.minimumAcceptedAge == null : this.minimumAcceptedAge.equals(liveDocumentCheckRequestData.minimumAcceptedAge));
   }
 
   @Override
@@ -98,6 +126,8 @@ public class LiveDocumentCheckRequestData {
     result = 31 * result + (this.statusUrl == null ? 0: this.statusUrl.hashCode());
     result = 31 * result + (this.endUserRedirectUrl == null ? 0: this.endUserRedirectUrl.hashCode());
     result = 31 * result + (this.tokenValidityInSeconds == null ? 0: this.tokenValidityInSeconds.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
+    result = 31 * result + (this.minimumAcceptedAge == null ? 0: this.minimumAcceptedAge.hashCode());
     return result;
   }
 
@@ -110,6 +140,8 @@ public class LiveDocumentCheckRequestData {
     sb.append("  statusUrl: ").append(statusUrl).append("\n");
     sb.append("  endUserRedirectUrl: ").append(endUserRedirectUrl).append("\n");
     sb.append("  tokenValidityInSeconds: ").append(tokenValidityInSeconds).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
+    sb.append("  minimumAcceptedAge: ").append(minimumAcceptedAge).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

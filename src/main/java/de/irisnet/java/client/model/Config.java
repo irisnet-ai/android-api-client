@@ -25,8 +25,10 @@ public class Config {
   
   @SerializedName("id")
   private UUID id = null;
+  @SerializedName("name")
+  private String name = null;
   public enum Set&lt;KycCheckParametersEnum&gt; {
-     identityDocumentCheck,  automatedDocumentRecognition,  biometricCheck,  considerKnownFaces,  formAutofill,  liveIdentification,  ageVerificationCheck,  liveAgeVerificationCheck,  liveSelfie,  proofOfAddress,  videoUploadIdentification,  iFrameFlow,  redirectFlow,  addEncodingsToResult, 
+     identityDocumentCheck,  automatedDocumentRecognition,  biometricCheck,  formAutofill,  ageVerificationCheck,  proofOfAddressCheck,  faceAuthentication,  liveIdentification,  liveIdentityDocumentCheck,  liveSelfie,  liveProofOfAddressCheck,  liveAgeVerificationCheck,  liveFaceAuthentication,  videoUploadIdentification,  considerKnownFaces,  addEncodingsToResult,  iFrameFlow,  redirectFlow,  redirectOnMobile, 
   };
   @SerializedName("kycCheckParameters")
   private Set<KycCheckParametersEnum> kycCheckParameters = null;
@@ -45,6 +47,17 @@ public class Config {
   }
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  /**
+   * The name of the AI configuration.
+   **/
+  @ApiModelProperty(value = "The name of the AI configuration.")
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
   }
 
   /**
@@ -80,6 +93,7 @@ public class Config {
     }
     Config config = (Config) o;
     return (this.id == null ? config.id == null : this.id.equals(config.id)) &&
+        (this.name == null ? config.name == null : this.name.equals(config.name)) &&
         (this.kycCheckParameters == null ? config.kycCheckParameters == null : this.kycCheckParameters.equals(config.kycCheckParameters)) &&
         (this.prototypes == null ? config.prototypes == null : this.prototypes.equals(config.prototypes));
   }
@@ -88,6 +102,7 @@ public class Config {
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
+    result = 31 * result + (this.name == null ? 0: this.name.hashCode());
     result = 31 * result + (this.kycCheckParameters == null ? 0: this.kycCheckParameters.hashCode());
     result = 31 * result + (this.prototypes == null ? 0: this.prototypes.hashCode());
     return result;
@@ -99,6 +114,7 @@ public class Config {
     sb.append("class Config {\n");
     
     sb.append("  id: ").append(id).append("\n");
+    sb.append("  name: ").append(name).append("\n");
     sb.append("  kycCheckParameters: ").append(kycCheckParameters).append("\n");
     sb.append("  prototypes: ").append(prototypes).append("\n");
     sb.append("}\n");

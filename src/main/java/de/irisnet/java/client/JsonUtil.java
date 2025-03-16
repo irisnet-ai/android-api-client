@@ -57,16 +57,16 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
-    if ("AgeEstimationAttribute".equalsIgnoreCase(className)) {
-      return new TypeToken<List<AgeEstimationAttribute>>(){}.getType();
+    if ("AgeVerificationAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeVerificationAttribute>>(){}.getType();
     }
     
-    if ("AgeEstimationDetection".equalsIgnoreCase(className)) {
-      return new TypeToken<List<AgeEstimationDetection>>(){}.getType();
+    if ("AgeVerificationDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeVerificationDetection>>(){}.getType();
     }
     
-    if ("AgeEstimationSubChecks".equalsIgnoreCase(className)) {
-      return new TypeToken<List<AgeEstimationSubChecks>>(){}.getType();
+    if ("AgeVerificationSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeVerificationSubChecks>>(){}.getType();
     }
     
     if ("ApiNotice".equalsIgnoreCase(className)) {
@@ -195,16 +195,16 @@ public class JsonUtil {
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
-    if ("AgeEstimationAttribute".equalsIgnoreCase(className)) {
-      return new TypeToken<AgeEstimationAttribute>(){}.getType();
+    if ("AgeVerificationAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeVerificationAttribute>(){}.getType();
     }
     
-    if ("AgeEstimationDetection".equalsIgnoreCase(className)) {
-      return new TypeToken<AgeEstimationDetection>(){}.getType();
+    if ("AgeVerificationDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeVerificationDetection>(){}.getType();
     }
     
-    if ("AgeEstimationSubChecks".equalsIgnoreCase(className)) {
-      return new TypeToken<AgeEstimationSubChecks>(){}.getType();
+    if ("AgeVerificationSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeVerificationSubChecks>(){}.getType();
     }
     
     if ("ApiNotice".equalsIgnoreCase(className)) {

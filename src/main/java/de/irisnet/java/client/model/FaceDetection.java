@@ -12,7 +12,7 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.AgeEstimationSubChecks;
+import de.irisnet.java.client.model.AgeVerificationSubChecks;
 import de.irisnet.java.client.model.BaseAttribute;
 import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.Detection;
@@ -58,7 +58,7 @@ public class FaceDetection extends Detection {
   @SerializedName("documentBackLivenessScore")
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
-  private AgeEstimationSubChecks processedChecks = null;
+  private AgeVerificationSubChecks processedChecks = null;
   @SerializedName("documentHolderId")
   private String documentHolderId = null;
   @SerializedName("knownFaces")
@@ -231,10 +231,10 @@ public class FaceDetection extends Detection {
   /**
    **/
   @ApiModelProperty(value = "")
-  public AgeEstimationSubChecks getProcessedChecks() {
+  public AgeVerificationSubChecks getProcessedChecks() {
     return processedChecks;
   }
-  public void setProcessedChecks(AgeEstimationSubChecks processedChecks) {
+  public void setProcessedChecks(AgeVerificationSubChecks processedChecks) {
     this.processedChecks = processedChecks;
   }
 

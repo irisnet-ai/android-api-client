@@ -183,7 +183,7 @@ public class ConfigurationManagementApi {
   }
   /**
   * List all saved AI configurations.
-  * Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+  * Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
    * @return List<Config>
   */
   public List<Config> getAllConfigs () throws TimeoutException, ExecutionException, InterruptedException, ApiException {
@@ -239,7 +239,7 @@ public class ConfigurationManagementApi {
 
       /**
    * List all saved AI configurations.
-   * Returns a list of all configurations with its id&#39;s and configured prototypes. There is a limit on how many configurations can be stored per license key. You can find this limit in the response of the info operation.
+   * Returns a list of all configurations with their ids and configured prototypes. There is a limit to the number of configurations that can be stored per license key. You can find this limit in the response of the info operation.
 
   */
   public void getAllConfigs (final Response.Listener<List<Config>> responseListener, final Response.ErrorListener errorListener) {

@@ -2,9 +2,9 @@
 README.md
 build.gradle
 docs/AICheckOperationsApi.md
-docs/AgeEstimationAttribute.md
-docs/AgeEstimationDetection.md
-docs/AgeEstimationSubChecks.md
+docs/AgeVerificationAttribute.md
+docs/AgeVerificationDetection.md
+docs/AgeVerificationSubChecks.md
 docs/ApiNotice.md
 docs/BalanceEndpointsApi.md
 docs/BaseAttribute.md
@@ -57,9 +57,9 @@ src/main/java/de/irisnet/java/client/Pair.java
 src/main/java/de/irisnet/java/client/auth/ApiKeyAuth.java
 src/main/java/de/irisnet/java/client/auth/Authentication.java
 src/main/java/de/irisnet/java/client/auth/HttpBasicAuth.java
-src/main/java/de/irisnet/java/client/model/AgeEstimationAttribute.java
-src/main/java/de/irisnet/java/client/model/AgeEstimationDetection.java
-src/main/java/de/irisnet/java/client/model/AgeEstimationSubChecks.java
+src/main/java/de/irisnet/java/client/model/AgeVerificationAttribute.java
+src/main/java/de/irisnet/java/client/model/AgeVerificationDetection.java
+src/main/java/de/irisnet/java/client/model/AgeVerificationSubChecks.java
 src/main/java/de/irisnet/java/client/model/ApiNotice.java
 src/main/java/de/irisnet/java/client/model/BaseAttribute.java
 src/main/java/de/irisnet/java/client/model/BaseDetection.java

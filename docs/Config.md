@@ -7,6 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**UUID**](UUID.md) | The unique identifier for the AI configuration. Use this for any check operation to tell the AI how to behave. |  [optional]
+**name** | **String** | The name of the AI configuration. |  [optional]
 **kycCheckParameters** | [**Set&lt;KycCheckParametersEnum&gt;**](#Set&lt;KycCheckParametersEnum&gt;) | Configures your kyc checks. You can combine certain parameters to customize a single check operation. |  [optional]
 **prototypes** | [**Set&lt;PrototypesEnum&gt;**](#Set&lt;PrototypesEnum&gt;) | Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation. |  [optional]
 
@@ -18,17 +19,22 @@ Name | Value
 IDENTITYDOCUMENTCHECK | &quot;identityDocumentCheck&quot;
 AUTOMATEDDOCUMENTRECOGNITION | &quot;automatedDocumentRecognition&quot;
 BIOMETRICCHECK | &quot;biometricCheck&quot;
-CONSIDERKNOWNFACES | &quot;considerKnownFaces&quot;
 FORMAUTOFILL | &quot;formAutofill&quot;
-LIVEIDENTIFICATION | &quot;liveIdentification&quot;
 AGEVERIFICATIONCHECK | &quot;ageVerificationCheck&quot;
-LIVEAGEVERIFICATIONCHECK | &quot;liveAgeVerificationCheck&quot;
+PROOFOFADDRESSCHECK | &quot;proofOfAddressCheck&quot;
+FACEAUTHENTICATION | &quot;faceAuthentication&quot;
+LIVEIDENTIFICATION | &quot;liveIdentification&quot;
+LIVEIDENTITYDOCUMENTCHECK | &quot;liveIdentityDocumentCheck&quot;
 LIVESELFIE | &quot;liveSelfie&quot;
-PROOFOFADDRESS | &quot;proofOfAddress&quot;
+LIVEPROOFOFADDRESSCHECK | &quot;liveProofOfAddressCheck&quot;
+LIVEAGEVERIFICATIONCHECK | &quot;liveAgeVerificationCheck&quot;
+LIVEFACEAUTHENTICATION | &quot;liveFaceAuthentication&quot;
 VIDEOUPLOADIDENTIFICATION | &quot;videoUploadIdentification&quot;
+CONSIDERKNOWNFACES | &quot;considerKnownFaces&quot;
+ADDENCODINGSTORESULT | &quot;addEncodingsToResult&quot;
 IFRAMEFLOW | &quot;iFrameFlow&quot;
 REDIRECTFLOW | &quot;redirectFlow&quot;
-ADDENCODINGSTORESULT | &quot;addEncodingsToResult&quot;
+REDIRECTONMOBILE | &quot;redirectOnMobile&quot;
 
 
 ## Enum: Set&lt;PrototypesEnum&gt;
