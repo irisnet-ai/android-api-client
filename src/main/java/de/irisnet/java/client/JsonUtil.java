@@ -81,6 +81,10 @@ public class JsonUtil {
       return new TypeToken<List<BaseDetection>>(){}.getType();
     }
     
+    if ("BiometricCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<BiometricCheckRequestData>>(){}.getType();
+    }
+    
     if ("BreastDetection".equalsIgnoreCase(className)) {
       return new TypeToken<List<BreastDetection>>(){}.getType();
     }
@@ -177,6 +181,10 @@ public class JsonUtil {
       return new TypeToken<List<ParamSet>>(){}.getType();
     }
     
+    if ("PoaCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<List<PoaCheckRequestData>>(){}.getType();
+    }
+    
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<List<Pricing>>(){}.getType();
     }
@@ -217,6 +225,10 @@ public class JsonUtil {
     
     if ("BaseDetection".equalsIgnoreCase(className)) {
       return new TypeToken<BaseDetection>(){}.getType();
+    }
+    
+    if ("BiometricCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<BiometricCheckRequestData>(){}.getType();
     }
     
     if ("BreastDetection".equalsIgnoreCase(className)) {
@@ -313,6 +325,10 @@ public class JsonUtil {
     
     if ("ParamSet".equalsIgnoreCase(className)) {
       return new TypeToken<ParamSet>(){}.getType();
+    }
+    
+    if ("PoaCheckRequestData".equalsIgnoreCase(className)) {
+      return new TypeToken<PoaCheckRequestData>(){}.getType();
     }
     
     if ("Pricing".equalsIgnoreCase(className)) {

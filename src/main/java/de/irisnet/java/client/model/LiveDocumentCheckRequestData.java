@@ -80,9 +80,9 @@ public class LiveDocumentCheckRequestData {
   }
 
   /**
-   * The documentHolderId from a previous successful live identification
+   * The documentHolderId from a previous successful live identification.
    **/
-  @ApiModelProperty(value = "The documentHolderId from a previous successful live identification")
+  @ApiModelProperty(value = "The documentHolderId from a previous successful live identification.")
   public String getDocumentHolderId() {
     return documentHolderId;
   }
@@ -91,9 +91,9 @@ public class LiveDocumentCheckRequestData {
   }
 
   /**
-   * The minimum accepted age in years for a check. Defaults to 18 if not provided
+   * The minimum age in years accepted for a check, if applicable. Defaults to 18 if not specified.
    **/
-  @ApiModelProperty(value = "The minimum accepted age in years for a check. Defaults to 18 if not provided")
+  @ApiModelProperty(value = "The minimum age in years accepted for a check, if applicable. Defaults to 18 if not specified.")
   public Integer getMinimumAcceptedAge() {
     return minimumAcceptedAge;
   }

@@ -28,7 +28,7 @@ public class Config {
   @SerializedName("name")
   private String name = null;
   public enum Set&lt;KycCheckParametersEnum&gt; {
-     identityDocumentCheck,  automatedDocumentRecognition,  biometricCheck,  formAutofill,  ageVerificationCheck,  proofOfAddressCheck,  faceAuthentication,  liveIdentification,  liveIdentityDocumentCheck,  liveSelfie,  liveProofOfAddressCheck,  liveAgeVerificationCheck,  liveFaceAuthentication,  videoUploadIdentification,  considerKnownFaces,  addEncodingsToResult,  iFrameFlow,  redirectFlow,  redirectOnMobile, 
+     identityDocumentCheck,  automatedDocumentRecognition,  biometricCheck,  formAutofill,  ageVerificationCheck,  proofOfAddressCheck,  faceAuthentication,  liveIdentification,  liveIdentityDocumentCheck,  liveSelfie,  liveProofOfAddressCheck,  liveAgeVerificationCheck,  liveFaceAuthentication,  videoUploadIdentification,  considerKnownFaces,  addEncodingsToResult,  iFrameFlow,  redirectFlow, 
   };
   @SerializedName("kycCheckParameters")
   private Set<KycCheckParametersEnum> kycCheckParameters = null;

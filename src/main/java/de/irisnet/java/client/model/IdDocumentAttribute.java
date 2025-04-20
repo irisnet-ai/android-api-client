@@ -26,7 +26,7 @@ public class IdDocumentAttribute {
   @SerializedName("type")
   private String type = null;
   public enum DocumentTypeEnum {
-     passport,  driving_license,  national_identity_card,  residence_permit,  visa,  unknown, 
+     passport,  driving_license,  national_identity_card,  residence_permit,  visa,  bank_statement,  utility_bill,  tax_document,  unidentified,  unknown, 
   };
   @SerializedName("documentType")
   private DocumentTypeEnum documentType = null;

@@ -28,7 +28,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>de.irisnet.java.client</groupId>
     <artifactId>irisnet-java-client</artifactId>
-    <version>3.7.1</version>
+    <version>3.7.2</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "de.irisnet.java.client:irisnet-java-client:3.7.1"
+compile "de.irisnet.java.client:irisnet-java-client:3.7.2"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-- target/irisnet-java-client-3.7.1.jar
+- target/irisnet-java-client-3.7.2.jar
 - target/lib/*.jar
 
 ## Getting Started
@@ -65,12 +65,12 @@ public class AICheckOperationsApiExample {
     public static void main(String[] args) {
         AICheckOperationsApi apiInstance = new AICheckOperationsApi();
         UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
-        DocumentCheckRequestData documentCheckRequestData = {"callback":{"callbackUrl":"https://www.example.com/callback?idcheck"},"documentCountry":"DE","documentType":"national_identity_card","frontImage":"/9j/4AAQSkZJRgABAQEASABIAAD...","backImage":"/9j/4AAQSkZJRgABAQEASABIAAD...","selfieImage":"/9j/4AAQSkZJRgABAQEASABIAAD..."}; // DocumentCheckRequestData | The DocumentCheckRequestData containing data needed for the id document check.
+        BiometricCheckRequestData biometricCheckRequestData = {"callback":{"callbackUrl":"https://www.example.com/callback?ageestimation"},"selfieImage":"/9j/4AAQSkZJRgABAQEASABIAAD..."}; // BiometricCheckRequestData | The BiometricCheckRequestData containing data needed for the age verification check.
         try {
-            CheckResult result = apiInstance.checkIdDocument(configId, documentCheckRequestData);
+            CheckResult result = apiInstance.ageVerification(configId, biometricCheckRequestData);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling AICheckOperationsApi#checkIdDocument");
+            System.err.println("Exception when calling AICheckOperationsApi#ageVerification");
             e.printStackTrace();
         }
     }
@@ -84,10 +84,13 @@ All URIs are relative to *https://api.irisnet.de*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AICheckOperationsApi* | [**ageVerification**](docs/AICheckOperationsApi.md#ageVerification) | **POST** /v2/age-verification/{configId} | Perform an age verfication check for a given selfie with the AI.
 *AICheckOperationsApi* | [**checkIdDocument**](docs/AICheckOperationsApi.md#checkIdDocument) | **POST** /v2/check-id-document/{configId} | Check an id document with the AI.
 *AICheckOperationsApi* | [**checkImage**](docs/AICheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
+*AICheckOperationsApi* | [**checkPoaDocument**](docs/AICheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform an proof of address check with the AI.
 *AICheckOperationsApi* | [**checkStream**](docs/AICheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
 *AICheckOperationsApi* | [**checkVideo**](docs/AICheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
+*AICheckOperationsApi* | [**faceAuthentication**](docs/AICheckOperationsApi.md#faceAuthentication) | **POST** /v2/face-authentication/{configId} | Perform a face authentication for a given selfie with the AI.
 *AICheckOperationsApi* | [**liveDocumentCheck**](docs/AICheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI.
 *BalanceEndpointsApi* | [**getCost**](docs/BalanceEndpointsApi.md#getCost) | **GET** /v2/cost/{configId} | Get the cost of the configuration for a single image.
 *BalanceEndpointsApi* | [**getLicenseInfo**](docs/BalanceEndpointsApi.md#getLicenseInfo) | **GET** /v2/info/ | Get information for the given license key.
@@ -110,6 +113,7 @@ Class | Method | HTTP request | Description
  - [ApiNotice](docs/ApiNotice.md)
  - [BaseAttribute](docs/BaseAttribute.md)
  - [BaseDetection](docs/BaseDetection.md)
+ - [BiometricCheckRequestData](docs/BiometricCheckRequestData.md)
  - [BreastDetection](docs/BreastDetection.md)
  - [BrokenRule](docs/BrokenRule.md)
  - [Callback](docs/Callback.md)
@@ -134,6 +138,7 @@ Class | Method | HTTP request | Description
  - [LiveDocumentCheckResponseData](docs/LiveDocumentCheckResponseData.md)
  - [Param](docs/Param.md)
  - [ParamSet](docs/ParamSet.md)
+ - [PoaCheckRequestData](docs/PoaCheckRequestData.md)
  - [Pricing](docs/Pricing.md)
  - [Rectangle](docs/Rectangle.md)
  - [Summary](docs/Summary.md)

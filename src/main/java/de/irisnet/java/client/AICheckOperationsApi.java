@@ -24,6 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import de.irisnet.java.client.model.ApiNotice;
+import de.irisnet.java.client.model.BiometricCheckRequestData;
 import de.irisnet.java.client.model.Callback;
 import de.irisnet.java.client.model.CheckResult;
 import de.irisnet.java.client.model.Data;
@@ -31,6 +32,7 @@ import de.irisnet.java.client.model.DocumentCheckRequestData;
 import java.util.*;
 import de.irisnet.java.client.model.LiveDocumentCheckRequestData;
 import de.irisnet.java.client.model.LiveDocumentCheckResponseData;
+import de.irisnet.java.client.model.PoaCheckRequestData;
 import java.util.UUID;
 
 import org.apache.http.HttpEntity;
@@ -63,6 +65,145 @@ public class AICheckOperationsApi {
     return basePath;
   }
 
+  /**
+  * Perform an age verfication check for a given selfie with the AI.
+  * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.
+   * @param biometricCheckRequestData The BiometricCheckRequestData containing data needed for the age verification check.
+   * @return CheckResult
+  */
+  public CheckResult ageVerification (UUID configId, BiometricCheckRequestData biometricCheckRequestData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = biometricCheckRequestData;
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling ageVerification",
+        new ApiException(400, "Missing the required parameter 'configId' when calling ageVerification"));
+    }
+    // verify the required parameter 'biometricCheckRequestData' is set
+    if (biometricCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'biometricCheckRequestData' when calling ageVerification",
+        new ApiException(400, "Missing the required parameter 'biometricCheckRequestData' when calling ageVerification"));
+    }
+
+    // create path and map variables
+    String path = "/v2/age-verification/{configId}".replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (CheckResult) ApiInvoker.deserialize(localVarResponse, "", CheckResult.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Perform an age verfication check for a given selfie with the AI.
+   * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param biometricCheckRequestData The BiometricCheckRequestData containing data needed for the age verification check.
+  */
+  public void ageVerification (UUID configId, BiometricCheckRequestData biometricCheckRequestData, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = biometricCheckRequestData;
+
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling ageVerification",
+        new ApiException(400, "Missing the required parameter 'configId' when calling ageVerification"));
+    }
+    // verify the required parameter 'biometricCheckRequestData' is set
+    if (biometricCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'biometricCheckRequestData' when calling ageVerification",
+        new ApiException(400, "Missing the required parameter 'biometricCheckRequestData' when calling ageVerification"));
+    }
+
+    // create path and map variables
+    String path = "/v2/age-verification/{configId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((CheckResult) ApiInvoker.deserialize(localVarResponse,  "", CheckResult.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
   /**
   * Check an id document with the AI.
   * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
@@ -299,6 +440,145 @@ public class AICheckOperationsApi {
     queryParams.addAll(ApiInvoker.parameterToPairs("", "url", url));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "detail", detail));
     queryParams.addAll(ApiInvoker.parameterToPairs("", "imageEncode", imageEncode));
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((CheckResult) ApiInvoker.deserialize(localVarResponse,  "", CheckResult.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Perform an proof of address check with the AI.
+  * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.
+   * @param poaCheckRequestData The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either &#39;utility_bill&#39; or &#39;bank_statement&#39;.
+   * @return CheckResult
+  */
+  public CheckResult checkPoaDocument (UUID configId, PoaCheckRequestData poaCheckRequestData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = poaCheckRequestData;
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkPoaDocument",
+        new ApiException(400, "Missing the required parameter 'configId' when calling checkPoaDocument"));
+    }
+    // verify the required parameter 'poaCheckRequestData' is set
+    if (poaCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'poaCheckRequestData' when calling checkPoaDocument",
+        new ApiException(400, "Missing the required parameter 'poaCheckRequestData' when calling checkPoaDocument"));
+    }
+
+    // create path and map variables
+    String path = "/v2/check-poa-document/{configId}".replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (CheckResult) ApiInvoker.deserialize(localVarResponse, "", CheckResult.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Perform an proof of address check with the AI.
+   * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param poaCheckRequestData The PoaCheckRequestData containing data needed for the proof of address check. The DocumentType in the request data must be either &#39;utility_bill&#39; or &#39;bank_statement&#39;.
+  */
+  public void checkPoaDocument (UUID configId, PoaCheckRequestData poaCheckRequestData, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = poaCheckRequestData;
+
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkPoaDocument",
+        new ApiException(400, "Missing the required parameter 'configId' when calling checkPoaDocument"));
+    }
+    // verify the required parameter 'poaCheckRequestData' is set
+    if (poaCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'poaCheckRequestData' when calling checkPoaDocument",
+        new ApiException(400, "Missing the required parameter 'poaCheckRequestData' when calling checkPoaDocument"));
+    }
+
+    // create path and map variables
+    String path = "/v2/check-poa-document/{configId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
 
 
     String[] contentTypes = {
@@ -635,6 +915,145 @@ public class AICheckOperationsApi {
           @Override
           public void onResponse(String localVarResponse) {
               responseListener.onResponse(localVarResponse);
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
+  * Perform a face authentication for a given selfie with the AI.
+  * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.
+   * @param biometricCheckRequestData The BiometricCheckRequestData containing data needed for the face authentication.
+   * @return CheckResult
+  */
+  public CheckResult faceAuthentication (UUID configId, BiometricCheckRequestData biometricCheckRequestData) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = biometricCheckRequestData;
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling faceAuthentication",
+        new ApiException(400, "Missing the required parameter 'configId' when calling faceAuthentication"));
+    }
+    // verify the required parameter 'biometricCheckRequestData' is set
+    if (biometricCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'biometricCheckRequestData' when calling faceAuthentication",
+        new ApiException(400, "Missing the required parameter 'biometricCheckRequestData' when calling faceAuthentication"));
+    }
+
+    // create path and map variables
+    String path = "/v2/face-authentication/{configId}".replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (CheckResult) ApiInvoker.deserialize(localVarResponse, "", CheckResult.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Perform a face authentication for a given selfie with the AI.
+   * The response (_CheckResult_ schema) containing only the checkId and possibly ApiNotices is returned immediately after the request. The actual body (_CheckResult_ schema) is sent to the _callbackUrl_ after the AI has finished processing.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param biometricCheckRequestData The BiometricCheckRequestData containing data needed for the face authentication.
+  */
+  public void faceAuthentication (UUID configId, BiometricCheckRequestData biometricCheckRequestData, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = biometricCheckRequestData;
+
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling faceAuthentication",
+        new ApiException(400, "Missing the required parameter 'configId' when calling faceAuthentication"));
+    }
+    // verify the required parameter 'biometricCheckRequestData' is set
+    if (biometricCheckRequestData == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'biometricCheckRequestData' when calling faceAuthentication",
+        new ApiException(400, "Missing the required parameter 'biometricCheckRequestData' when calling faceAuthentication"));
+    }
+
+    // create path and map variables
+    String path = "/v2/face-authentication/{configId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((CheckResult) ApiInvoker.deserialize(localVarResponse,  "", CheckResult.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
           }
       }, new Response.ErrorListener() {
           @Override

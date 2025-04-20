@@ -34,7 +34,6 @@ CONSIDERKNOWNFACES | &quot;considerKnownFaces&quot;
 ADDENCODINGSTORESULT | &quot;addEncodingsToResult&quot;
 IFRAMEFLOW | &quot;iFrameFlow&quot;
 REDIRECTFLOW | &quot;redirectFlow&quot;
-REDIRECTONMOBILE | &quot;redirectOnMobile&quot;
 
 
 ## Enum: Set&lt;PrototypesEnum&gt;

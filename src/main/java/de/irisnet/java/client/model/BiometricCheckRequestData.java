@@ -17,25 +17,18 @@ import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 @ApiModel(description = "")
-public class DocumentCheckRequestData {
+public class BiometricCheckRequestData {
   
   @SerializedName("callback")
   private Callback callback = null;
   @SerializedName("frontImage")
   private String frontImage = null;
-  @SerializedName("backImage")
-  private String backImage = null;
   @SerializedName("selfieImage")
   private String selfieImage = null;
   @SerializedName("minimumAcceptedAge")
   private Integer minimumAcceptedAge = null;
-  public enum DocumentTypeEnum {
-     passport,  driving_license,  national_identity_card,  residence_permit,  visa,  bank_statement,  utility_bill,  tax_document,  unidentified,  unknown, 
-  };
-  @SerializedName("documentType")
-  private DocumentTypeEnum documentType = null;
-  @SerializedName("documentCountry")
-  private String documentCountry = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
 
   /**
    **/
@@ -50,7 +43,7 @@ public class DocumentCheckRequestData {
   /**
    * The base64-encoded front image of the document to be checked in either jpg or png file format.
    **/
-  @ApiModelProperty(required = true, value = "The base64-encoded front image of the document to be checked in either jpg or png file format.")
+  @ApiModelProperty(value = "The base64-encoded front image of the document to be checked in either jpg or png file format.")
   public String getFrontImage() {
     return frontImage;
   }
@@ -59,20 +52,9 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The base64-encoded back image of the document to be checked in either jpg or png file format.
-   **/
-  @ApiModelProperty(value = "The base64-encoded back image of the document to be checked in either jpg or png file format.")
-  public String getBackImage() {
-    return backImage;
-  }
-  public void setBackImage(String backImage) {
-    this.backImage = backImage;
-  }
-
-  /**
    * The base64-encoded selfie image to be checked in either jpg or png file format.
    **/
-  @ApiModelProperty(value = "The base64-encoded selfie image to be checked in either jpg or png file format.")
+  @ApiModelProperty(required = true, value = "The base64-encoded selfie image to be checked in either jpg or png file format.")
   public String getSelfieImage() {
     return selfieImage;
   }
@@ -92,25 +74,14 @@ public class DocumentCheckRequestData {
   }
 
   /**
-   * The type of the document
+   * The documentHolderId from a previous successful DocumentCheck.
    **/
-  @ApiModelProperty(value = "The type of the document")
-  public DocumentTypeEnum getDocumentType() {
-    return documentType;
+  @ApiModelProperty(value = "The documentHolderId from a previous successful DocumentCheck.")
+  public String getDocumentHolderId() {
+    return documentHolderId;
   }
-  public void setDocumentType(DocumentTypeEnum documentType) {
-    this.documentType = documentType;
-  }
-
-  /**
-   * The country of the document in ISO 3166-1 alpha-2 format.
-   **/
-  @ApiModelProperty(value = "The country of the document in ISO 3166-1 alpha-2 format.")
-  public String getDocumentCountry() {
-    return documentCountry;
-  }
-  public void setDocumentCountry(String documentCountry) {
-    this.documentCountry = documentCountry;
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
   }
 
 
@@ -122,14 +93,12 @@ public class DocumentCheckRequestData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DocumentCheckRequestData documentCheckRequestData = (DocumentCheckRequestData) o;
-    return (this.callback == null ? documentCheckRequestData.callback == null : this.callback.equals(documentCheckRequestData.callback)) &&
-        (this.frontImage == null ? documentCheckRequestData.frontImage == null : this.frontImage.equals(documentCheckRequestData.frontImage)) &&
-        (this.backImage == null ? documentCheckRequestData.backImage == null : this.backImage.equals(documentCheckRequestData.backImage)) &&
-        (this.selfieImage == null ? documentCheckRequestData.selfieImage == null : this.selfieImage.equals(documentCheckRequestData.selfieImage)) &&
-        (this.minimumAcceptedAge == null ? documentCheckRequestData.minimumAcceptedAge == null : this.minimumAcceptedAge.equals(documentCheckRequestData.minimumAcceptedAge)) &&
-        (this.documentType == null ? documentCheckRequestData.documentType == null : this.documentType.equals(documentCheckRequestData.documentType)) &&
-        (this.documentCountry == null ? documentCheckRequestData.documentCountry == null : this.documentCountry.equals(documentCheckRequestData.documentCountry));
+    BiometricCheckRequestData biometricCheckRequestData = (BiometricCheckRequestData) o;
+    return (this.callback == null ? biometricCheckRequestData.callback == null : this.callback.equals(biometricCheckRequestData.callback)) &&
+        (this.frontImage == null ? biometricCheckRequestData.frontImage == null : this.frontImage.equals(biometricCheckRequestData.frontImage)) &&
+        (this.selfieImage == null ? biometricCheckRequestData.selfieImage == null : this.selfieImage.equals(biometricCheckRequestData.selfieImage)) &&
+        (this.minimumAcceptedAge == null ? biometricCheckRequestData.minimumAcceptedAge == null : this.minimumAcceptedAge.equals(biometricCheckRequestData.minimumAcceptedAge)) &&
+        (this.documentHolderId == null ? biometricCheckRequestData.documentHolderId == null : this.documentHolderId.equals(biometricCheckRequestData.documentHolderId));
   }
 
   @Override
@@ -137,26 +106,22 @@ public class DocumentCheckRequestData {
     int result = 17;
     result = 31 * result + (this.callback == null ? 0: this.callback.hashCode());
     result = 31 * result + (this.frontImage == null ? 0: this.frontImage.hashCode());
-    result = 31 * result + (this.backImage == null ? 0: this.backImage.hashCode());
     result = 31 * result + (this.selfieImage == null ? 0: this.selfieImage.hashCode());
     result = 31 * result + (this.minimumAcceptedAge == null ? 0: this.minimumAcceptedAge.hashCode());
-    result = 31 * result + (this.documentType == null ? 0: this.documentType.hashCode());
-    result = 31 * result + (this.documentCountry == null ? 0: this.documentCountry.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentCheckRequestData {\n");
+    sb.append("class BiometricCheckRequestData {\n");
     
     sb.append("  callback: ").append(callback).append("\n");
     sb.append("  frontImage: ").append(frontImage).append("\n");
-    sb.append("  backImage: ").append(backImage).append("\n");
     sb.append("  selfieImage: ").append(selfieImage).append("\n");
     sb.append("  minimumAcceptedAge: ").append(minimumAcceptedAge).append("\n");
-    sb.append("  documentType: ").append(documentType).append("\n");
-    sb.append("  documentCountry: ").append(documentCountry).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -17,9 +17,9 @@ import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Response object containing neccessary information to start the enduser live document check on the client side.
+ * Response object containing necessary information to start the enduser live document check on the client side.
  **/
-@ApiModel(description = "Response object containing neccessary information to start the enduser live document check on the client side.")
+@ApiModel(description = "Response object containing necessary information to start the enduser live document check on the client side.")
 public class LiveDocumentCheckResponseData {
   
   @SerializedName("eventId")
