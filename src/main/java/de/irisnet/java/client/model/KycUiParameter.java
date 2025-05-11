@@ -29,6 +29,8 @@ public class KycUiParameter {
   private String textColor = ffffff;
   @SerializedName("logo")
   private String logo = null;
+  @SerializedName("language")
+  private String language = null;
 
   /**
    * The primary color of the UI in hex format (rrggbb).
@@ -74,6 +76,17 @@ public class KycUiParameter {
     this.logo = logo;
   }
 
+  /**
+   * The language related settings for the UI as a JSON.
+   **/
+  @ApiModelProperty(value = "The language related settings for the UI as a JSON.")
+  public String getLanguage() {
+    return language;
+  }
+  public void setLanguage(String language) {
+    this.language = language;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,7 +100,8 @@ public class KycUiParameter {
     return (this.primaryColor == null ? kycUiParameter.primaryColor == null : this.primaryColor.equals(kycUiParameter.primaryColor)) &&
         (this.backgroundColor == null ? kycUiParameter.backgroundColor == null : this.backgroundColor.equals(kycUiParameter.backgroundColor)) &&
         (this.textColor == null ? kycUiParameter.textColor == null : this.textColor.equals(kycUiParameter.textColor)) &&
-        (this.logo == null ? kycUiParameter.logo == null : this.logo.equals(kycUiParameter.logo));
+        (this.logo == null ? kycUiParameter.logo == null : this.logo.equals(kycUiParameter.logo)) &&
+        (this.language == null ? kycUiParameter.language == null : this.language.equals(kycUiParameter.language));
   }
 
   @Override
@@ -97,6 +111,7 @@ public class KycUiParameter {
     result = 31 * result + (this.backgroundColor == null ? 0: this.backgroundColor.hashCode());
     result = 31 * result + (this.textColor == null ? 0: this.textColor.hashCode());
     result = 31 * result + (this.logo == null ? 0: this.logo.hashCode());
+    result = 31 * result + (this.language == null ? 0: this.language.hashCode());
     return result;
   }
 
@@ -109,6 +124,7 @@ public class KycUiParameter {
     sb.append("  backgroundColor: ").append(backgroundColor).append("\n");
     sb.append("  textColor: ").append(textColor).append("\n");
     sb.append("  logo: ").append(logo).append("\n");
+    sb.append("  language: ").append(language).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
