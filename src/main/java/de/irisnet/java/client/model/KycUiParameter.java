@@ -22,11 +22,11 @@ import com.google.gson.annotations.SerializedName;
 public class KycUiParameter {
   
   @SerializedName("primaryColor")
-  private String primaryColor = 57a632;
+  private String primaryColor = 4caf50;
   @SerializedName("backgroundColor")
-  private String backgroundColor = 000000;
+  private String backgroundColor = 333333;
   @SerializedName("textColor")
-  private String textColor = ffffff;
+  private String textColor = 000000;
   @SerializedName("logo")
   private String logo = null;
   @SerializedName("language")

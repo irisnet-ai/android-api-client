@@ -111,6 +111,36 @@ public class IdDocumentSubChecks {
   };
   @SerializedName("actionChallengeCheck")
   private ActionChallengeCheckEnum actionChallengeCheck = null;
+  public enum FirstNameConsistencyEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("firstNameConsistency")
+  private FirstNameConsistencyEnum firstNameConsistency = null;
+  public enum LastNameConsistencyEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("lastNameConsistency")
+  private LastNameConsistencyEnum lastNameConsistency = null;
+  public enum DobConsistencyEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("dobConsistency")
+  private DobConsistencyEnum dobConsistency = null;
+  public enum DocumentNumberConsistencyEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("documentNumberConsistency")
+  private DocumentNumberConsistencyEnum documentNumberConsistency = null;
+  public enum IssuingDateConsistencyEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("issuingDateConsistency")
+  private IssuingDateConsistencyEnum issuingDateConsistency = null;
+  public enum ExpirationDateConsistencyEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("expirationDateConsistency")
+  private ExpirationDateConsistencyEnum expirationDateConsistency = null;
   public enum KnownFacesCheckEnum {
      passed,  failed,  not_processed, 
   };
@@ -294,9 +324,9 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates if the enduser had answered correctly during the voice challenge.
+   * Indicates if the enduser had answered correctly during the voice challenge
    **/
-  @ApiModelProperty(value = "Indicates if the enduser had answered correctly during the voice challenge.")
+  @ApiModelProperty(value = "Indicates if the enduser had answered correctly during the voice challenge")
   public VoiceChallengeCheckEnum getVoiceChallengeCheck() {
     return voiceChallengeCheck;
   }
@@ -305,14 +335,80 @@ public class IdDocumentSubChecks {
   }
 
   /**
-   * Indicates if the enduser had moved correctly during the actions challenge.
+   * Indicates if the enduser had moved correctly during the actions challenge
    **/
-  @ApiModelProperty(value = "Indicates if the enduser had moved correctly during the actions challenge.")
+  @ApiModelProperty(value = "Indicates if the enduser had moved correctly during the actions challenge")
   public ActionChallengeCheckEnum getActionChallengeCheck() {
     return actionChallengeCheck;
   }
   public void setActionChallengeCheck(ActionChallengeCheckEnum actionChallengeCheck) {
     this.actionChallengeCheck = actionChallengeCheck;
+  }
+
+  /**
+   * Indicates if the first name on the document and the MRZ are consistent
+   **/
+  @ApiModelProperty(value = "Indicates if the first name on the document and the MRZ are consistent")
+  public FirstNameConsistencyEnum getFirstNameConsistency() {
+    return firstNameConsistency;
+  }
+  public void setFirstNameConsistency(FirstNameConsistencyEnum firstNameConsistency) {
+    this.firstNameConsistency = firstNameConsistency;
+  }
+
+  /**
+   * Indicates if the last name on the document and the MRZ are consistent
+   **/
+  @ApiModelProperty(value = "Indicates if the last name on the document and the MRZ are consistent")
+  public LastNameConsistencyEnum getLastNameConsistency() {
+    return lastNameConsistency;
+  }
+  public void setLastNameConsistency(LastNameConsistencyEnum lastNameConsistency) {
+    this.lastNameConsistency = lastNameConsistency;
+  }
+
+  /**
+   * Indicates if the date of birth on the document and the MRZ are consistent
+   **/
+  @ApiModelProperty(value = "Indicates if the date of birth on the document and the MRZ are consistent")
+  public DobConsistencyEnum getDobConsistency() {
+    return dobConsistency;
+  }
+  public void setDobConsistency(DobConsistencyEnum dobConsistency) {
+    this.dobConsistency = dobConsistency;
+  }
+
+  /**
+   * Indicates if the document number on the document and the MRZ are consistent
+   **/
+  @ApiModelProperty(value = "Indicates if the document number on the document and the MRZ are consistent")
+  public DocumentNumberConsistencyEnum getDocumentNumberConsistency() {
+    return documentNumberConsistency;
+  }
+  public void setDocumentNumberConsistency(DocumentNumberConsistencyEnum documentNumberConsistency) {
+    this.documentNumberConsistency = documentNumberConsistency;
+  }
+
+  /**
+   * Indicates if the issuing date on the document and the MRZ are consistent
+   **/
+  @ApiModelProperty(value = "Indicates if the issuing date on the document and the MRZ are consistent")
+  public IssuingDateConsistencyEnum getIssuingDateConsistency() {
+    return issuingDateConsistency;
+  }
+  public void setIssuingDateConsistency(IssuingDateConsistencyEnum issuingDateConsistency) {
+    this.issuingDateConsistency = issuingDateConsistency;
+  }
+
+  /**
+   * Indicates if the expiration date on the document and the MRZ are consistent
+   **/
+  @ApiModelProperty(value = "Indicates if the expiration date on the document and the MRZ are consistent")
+  public ExpirationDateConsistencyEnum getExpirationDateConsistency() {
+    return expirationDateConsistency;
+  }
+  public void setExpirationDateConsistency(ExpirationDateConsistencyEnum expirationDateConsistency) {
+    this.expirationDateConsistency = expirationDateConsistency;
   }
 
   /**
@@ -354,6 +450,12 @@ public class IdDocumentSubChecks {
         (this.faceLivenessCheck == null ? idDocumentSubChecks.faceLivenessCheck == null : this.faceLivenessCheck.equals(idDocumentSubChecks.faceLivenessCheck)) &&
         (this.voiceChallengeCheck == null ? idDocumentSubChecks.voiceChallengeCheck == null : this.voiceChallengeCheck.equals(idDocumentSubChecks.voiceChallengeCheck)) &&
         (this.actionChallengeCheck == null ? idDocumentSubChecks.actionChallengeCheck == null : this.actionChallengeCheck.equals(idDocumentSubChecks.actionChallengeCheck)) &&
+        (this.firstNameConsistency == null ? idDocumentSubChecks.firstNameConsistency == null : this.firstNameConsistency.equals(idDocumentSubChecks.firstNameConsistency)) &&
+        (this.lastNameConsistency == null ? idDocumentSubChecks.lastNameConsistency == null : this.lastNameConsistency.equals(idDocumentSubChecks.lastNameConsistency)) &&
+        (this.dobConsistency == null ? idDocumentSubChecks.dobConsistency == null : this.dobConsistency.equals(idDocumentSubChecks.dobConsistency)) &&
+        (this.documentNumberConsistency == null ? idDocumentSubChecks.documentNumberConsistency == null : this.documentNumberConsistency.equals(idDocumentSubChecks.documentNumberConsistency)) &&
+        (this.issuingDateConsistency == null ? idDocumentSubChecks.issuingDateConsistency == null : this.issuingDateConsistency.equals(idDocumentSubChecks.issuingDateConsistency)) &&
+        (this.expirationDateConsistency == null ? idDocumentSubChecks.expirationDateConsistency == null : this.expirationDateConsistency.equals(idDocumentSubChecks.expirationDateConsistency)) &&
         (this.knownFacesCheck == null ? idDocumentSubChecks.knownFacesCheck == null : this.knownFacesCheck.equals(idDocumentSubChecks.knownFacesCheck));
   }
 
@@ -378,6 +480,12 @@ public class IdDocumentSubChecks {
     result = 31 * result + (this.faceLivenessCheck == null ? 0: this.faceLivenessCheck.hashCode());
     result = 31 * result + (this.voiceChallengeCheck == null ? 0: this.voiceChallengeCheck.hashCode());
     result = 31 * result + (this.actionChallengeCheck == null ? 0: this.actionChallengeCheck.hashCode());
+    result = 31 * result + (this.firstNameConsistency == null ? 0: this.firstNameConsistency.hashCode());
+    result = 31 * result + (this.lastNameConsistency == null ? 0: this.lastNameConsistency.hashCode());
+    result = 31 * result + (this.dobConsistency == null ? 0: this.dobConsistency.hashCode());
+    result = 31 * result + (this.documentNumberConsistency == null ? 0: this.documentNumberConsistency.hashCode());
+    result = 31 * result + (this.issuingDateConsistency == null ? 0: this.issuingDateConsistency.hashCode());
+    result = 31 * result + (this.expirationDateConsistency == null ? 0: this.expirationDateConsistency.hashCode());
     result = 31 * result + (this.knownFacesCheck == null ? 0: this.knownFacesCheck.hashCode());
     return result;
   }
@@ -405,6 +513,12 @@ public class IdDocumentSubChecks {
     sb.append("  faceLivenessCheck: ").append(faceLivenessCheck).append("\n");
     sb.append("  voiceChallengeCheck: ").append(voiceChallengeCheck).append("\n");
     sb.append("  actionChallengeCheck: ").append(actionChallengeCheck).append("\n");
+    sb.append("  firstNameConsistency: ").append(firstNameConsistency).append("\n");
+    sb.append("  lastNameConsistency: ").append(lastNameConsistency).append("\n");
+    sb.append("  dobConsistency: ").append(dobConsistency).append("\n");
+    sb.append("  documentNumberConsistency: ").append(documentNumberConsistency).append("\n");
+    sb.append("  issuingDateConsistency: ").append(issuingDateConsistency).append("\n");
+    sb.append("  expirationDateConsistency: ").append(expirationDateConsistency).append("\n");
     sb.append("  knownFacesCheck: ").append(knownFacesCheck).append("\n");
     sb.append("}\n");
     return sb.toString();

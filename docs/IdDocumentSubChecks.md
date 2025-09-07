@@ -22,8 +22,14 @@ Name | Type | Description | Notes
 **ageValidationCheck** | [**AgeValidationCheckEnum**](#AgeValidationCheckEnum) | Indicates if the extracted age is greater than or equal to a predefined minimum accepted age |  [optional]
 **spoofedImageAnalysis** | [**SpoofedImageAnalysisEnum**](#SpoofedImageAnalysisEnum) | Indicates whether the selfie image is spoofed, copied from the Internet, or is a known deny-listed image |  [optional]
 **faceLivenessCheck** | [**FaceLivenessCheckEnum**](#FaceLivenessCheckEnum) | Indicates if the selfie image is genuine and not a photo of an image or of a screen |  [optional]
-**voiceChallengeCheck** | [**VoiceChallengeCheckEnum**](#VoiceChallengeCheckEnum) | Indicates if the enduser had answered correctly during the voice challenge. |  [optional]
-**actionChallengeCheck** | [**ActionChallengeCheckEnum**](#ActionChallengeCheckEnum) | Indicates if the enduser had moved correctly during the actions challenge. |  [optional]
+**voiceChallengeCheck** | [**VoiceChallengeCheckEnum**](#VoiceChallengeCheckEnum) | Indicates if the enduser had answered correctly during the voice challenge |  [optional]
+**actionChallengeCheck** | [**ActionChallengeCheckEnum**](#ActionChallengeCheckEnum) | Indicates if the enduser had moved correctly during the actions challenge |  [optional]
+**firstNameConsistency** | [**FirstNameConsistencyEnum**](#FirstNameConsistencyEnum) | Indicates if the first name on the document and the MRZ are consistent |  [optional]
+**lastNameConsistency** | [**LastNameConsistencyEnum**](#LastNameConsistencyEnum) | Indicates if the last name on the document and the MRZ are consistent |  [optional]
+**dobConsistency** | [**DobConsistencyEnum**](#DobConsistencyEnum) | Indicates if the date of birth on the document and the MRZ are consistent |  [optional]
+**documentNumberConsistency** | [**DocumentNumberConsistencyEnum**](#DocumentNumberConsistencyEnum) | Indicates if the document number on the document and the MRZ are consistent |  [optional]
+**issuingDateConsistency** | [**IssuingDateConsistencyEnum**](#IssuingDateConsistencyEnum) | Indicates if the issuing date on the document and the MRZ are consistent |  [optional]
+**expirationDateConsistency** | [**ExpirationDateConsistencyEnum**](#ExpirationDateConsistencyEnum) | Indicates if the expiration date on the document and the MRZ are consistent |  [optional]
 **knownFacesCheck** | [**KnownFacesCheckEnum**](#KnownFacesCheckEnum) | Indicates if the selfie image matches an aready existing client/customer |  [optional]
 
 
@@ -130,6 +136,42 @@ Name | Value
 
 
 ## Enum: ActionChallengeCheckEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: FirstNameConsistencyEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: LastNameConsistencyEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: DobConsistencyEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: DocumentNumberConsistencyEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: IssuingDateConsistencyEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: ExpirationDateConsistencyEnum
 
 Name | Value
 ---- | -----
