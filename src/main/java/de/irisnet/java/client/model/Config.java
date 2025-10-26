@@ -32,11 +32,8 @@ public class Config {
   };
   @SerializedName("kycCheckParameters")
   private Set<KycCheckParametersEnum> kycCheckParameters = null;
-  public enum Set&lt;PrototypesEnum&gt; {
-     nudityCheck,  ageEstimation,  illegalSymbols,  textRecognition,  attributesCheck,  bodyAttributes,  nippleCheck,  unwantedSubstances,  violenceCheck,  selfieCheck, 
-  };
   @SerializedName("prototypes")
-  private Set<PrototypesEnum> prototypes = null;
+  private Set<String> prototypes = null;
 
   /**
    * The unique identifier for the AI configuration. Use this for any check operation to tell the AI how to behave.
@@ -75,10 +72,10 @@ public class Config {
    * Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.
    **/
   @ApiModelProperty(value = "Configures your detection. As there are literally hundreds of parameters, prototypes can be used to get useful behaviour. This includes a default setting for parameters and rules that should be applied to the check operations. You can use multiple prototypes for a single check operation.")
-  public Set<PrototypesEnum> getPrototypes() {
+  public Set<String> getPrototypes() {
     return prototypes;
   }
-  public void setPrototypes(Set<PrototypesEnum> prototypes) {
+  public void setPrototypes(Set<String> prototypes) {
     this.prototypes = prototypes;
   }
 

@@ -37,8 +37,9 @@ public class LiveDocumentCheckRequestData {
   private Integer minimumAcceptedAge = null;
 
   /**
+   * The URL the final check result is being sent to.
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(required = true, value = "The URL the final check result is being sent to.")
   public Callback getCallback() {
     return callback;
   }

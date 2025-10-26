@@ -15,10 +15,7 @@ package de.irisnet.java.client.model;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
- **/
-@ApiModel(description = "A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity")
+@ApiModel(description = "")
 public class KnownFace {
   
   @SerializedName("documentHolderId")

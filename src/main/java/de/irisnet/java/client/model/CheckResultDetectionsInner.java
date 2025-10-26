@@ -12,13 +12,19 @@
 
 package de.irisnet.java.client.model;
 
+import de.irisnet.java.client.model.AgeVerificationDetection;
+import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.BreastDetection;
+import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.FaceDetection;
 import de.irisnet.java.client.model.HairDetection;
-import de.irisnet.java.client.model.IdDocumentAttribute;
 import de.irisnet.java.client.model.IdDocumentDetection;
-import de.irisnet.java.client.model.IdDocumentSubChecks;
+import de.irisnet.java.client.model.ImageAnalysisDetection;
+import de.irisnet.java.client.model.KnownFace;
+import de.irisnet.java.client.model.PoaDocumentDetection;
+import de.irisnet.java.client.model.PoaDocumentSubChecks;
+import de.irisnet.java.client.model.TextDetection;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -28,30 +34,47 @@ public class CheckResultDetectionsInner {
   
   @SerializedName("type")
   private String type = null;
-  @SerializedName("attributes")
-  private List<IdDocumentAttribute> attributes = null;
-  @SerializedName("subDetections")
-  private List<BaseDetection> subDetections = null;
+  @SerializedName("classification")
+  private String classification = null;
+  @SerializedName("group")
+  private String group = null;
+  @SerializedName("id")
+  private Integer id = null;
+  @SerializedName("probability")
+  private Integer probability = null;
+  @SerializedName("coordinates")
+  private Coordinates coordinates = null;
   @SerializedName("checkId")
   private String checkId = null;
-  @SerializedName("hasOfficialDocument")
-  private Boolean hasOfficialDocument = null;
-  @SerializedName("comparable")
-  private Boolean comparable = null;
   @SerializedName("faceSimilarity")
   private Integer faceSimilarity = null;
   @SerializedName("faceLivenessCheckScore")
   private Integer faceLivenessCheckScore = null;
+  @SerializedName("processedChecks")
+  private PoaDocumentSubChecks processedChecks = null;
+  @SerializedName("attributes")
+  private List<Attribute> attributes = null;
+  @SerializedName("subDetections")
+  private List<BaseDetection> subDetections = null;
+  @SerializedName("hasOfficialDocument")
+  private Boolean hasOfficialDocument = null;
+  @SerializedName("comparable")
+  private Boolean comparable = null;
   @SerializedName("documentFrontLivenessScore")
   private Integer documentFrontLivenessScore = null;
   @SerializedName("documentBackLivenessScore")
   private Integer documentBackLivenessScore = null;
-  @SerializedName("processedChecks")
-  private IdDocumentSubChecks processedChecks = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
+  @SerializedName("knownFaces")
+  private List<KnownFace> knownFaces = null;
+  @SerializedName("content")
+  private String content = null;
 
   /**
+   * Used as a type discriminator for json to object conversion.
    **/
-  @ApiModelProperty(required = true, value = "")
+  @ApiModelProperty(value = "Used as a type discriminator for json to object conversion.")
   public String getType() {
     return type;
   }
@@ -60,25 +83,57 @@ public class CheckResultDetectionsInner {
   }
 
   /**
-   * Attributes of the _idDocument_ detection.
+   * The classification of the recognized object.
    **/
-  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
-  public List<IdDocumentAttribute> getAttributes() {
-    return attributes;
+  @ApiModelProperty(value = "The classification of the recognized object.")
+  public String getClassification() {
+    return classification;
   }
-  public void setAttributes(List<IdDocumentAttribute> attributes) {
-    this.attributes = attributes;
+  public void setClassification(String classification) {
+    this.classification = classification;
   }
 
   /**
-   * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
+   * The group of the classification.
    **/
-  @ApiModelProperty(value = "A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.")
-  public List<BaseDetection> getSubDetections() {
-    return subDetections;
+  @ApiModelProperty(value = "The group of the classification.")
+  public String getGroup() {
+    return group;
   }
-  public void setSubDetections(List<BaseDetection> subDetections) {
-    this.subDetections = subDetections;
+  public void setGroup(String group) {
+    this.group = group;
+  }
+
+  /**
+   * The id of the detection object.
+   **/
+  @ApiModelProperty(value = "The id of the detection object.")
+  public Integer getId() {
+    return id;
+  }
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  /**
+   * The probability that the object found matches the classification.
+   **/
+  @ApiModelProperty(value = "The probability that the object found matches the classification.")
+  public Integer getProbability() {
+    return probability;
+  }
+  public void setProbability(Integer probability) {
+    this.probability = probability;
+  }
+
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  public Coordinates getCoordinates() {
+    return coordinates;
+  }
+  public void setCoordinates(Coordinates coordinates) {
+    this.coordinates = coordinates;
   }
 
   /**
@@ -90,28 +145,6 @@ public class CheckResultDetectionsInner {
   }
   public void setCheckId(String checkId) {
     this.checkId = checkId;
-  }
-
-  /**
-   * Indicates whether the identified document is official
-   **/
-  @ApiModelProperty(value = "Indicates whether the identified document is official")
-  public Boolean getHasOfficialDocument() {
-    return hasOfficialDocument;
-  }
-  public void setHasOfficialDocument(Boolean hasOfficialDocument) {
-    this.hasOfficialDocument = hasOfficialDocument;
-  }
-
-  /**
-   * Indicates whether the provided selfie-image is comparable to the document
-   **/
-  @ApiModelProperty(value = "Indicates whether the provided selfie-image is comparable to the document")
-  public Boolean getComparable() {
-    return comparable;
-  }
-  public void setComparable(Boolean comparable) {
-    this.comparable = comparable;
   }
 
   /**
@@ -137,6 +170,61 @@ public class CheckResultDetectionsInner {
   }
 
   /**
+   * The sub-checks that were processed
+   **/
+  @ApiModelProperty(value = "The sub-checks that were processed")
+  public PoaDocumentSubChecks getProcessedChecks() {
+    return processedChecks;
+  }
+  public void setProcessedChecks(PoaDocumentSubChecks processedChecks) {
+    this.processedChecks = processedChecks;
+  }
+
+  /**
+   * Attributes characterizing the text.
+   **/
+  @ApiModelProperty(value = "Attributes characterizing the text.")
+  public List<Attribute> getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(List<Attribute> attributes) {
+    this.attributes = attributes;
+  }
+
+  /**
+   * A set of sub-detection for text moderation.
+   **/
+  @ApiModelProperty(value = "A set of sub-detection for text moderation.")
+  public List<BaseDetection> getSubDetections() {
+    return subDetections;
+  }
+  public void setSubDetections(List<BaseDetection> subDetections) {
+    this.subDetections = subDetections;
+  }
+
+  /**
+   * Indicates whether the identified document is official
+   **/
+  @ApiModelProperty(value = "Indicates whether the identified document is official")
+  public Boolean getHasOfficialDocument() {
+    return hasOfficialDocument;
+  }
+  public void setHasOfficialDocument(Boolean hasOfficialDocument) {
+    this.hasOfficialDocument = hasOfficialDocument;
+  }
+
+  /**
+   * Indicates whether the provided selfie-image is comparable to the document
+   **/
+  @ApiModelProperty(value = "Indicates whether the provided selfie-image is comparable to the document")
+  public Boolean getComparable() {
+    return comparable;
+  }
+  public void setComparable(Boolean comparable) {
+    this.comparable = comparable;
+  }
+
+  /**
    * Indicates the liveness score of the front side image of the document
    **/
   @ApiModelProperty(value = "Indicates the liveness score of the front side image of the document")
@@ -159,13 +247,36 @@ public class CheckResultDetectionsInner {
   }
 
   /**
+   * The id of the documentHolder
    **/
-  @ApiModelProperty(value = "")
-  public IdDocumentSubChecks getProcessedChecks() {
-    return processedChecks;
+  @ApiModelProperty(value = "The id of the documentHolder")
+  public String getDocumentHolderId() {
+    return documentHolderId;
   }
-  public void setProcessedChecks(IdDocumentSubChecks processedChecks) {
-    this.processedChecks = processedChecks;
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
+  }
+
+  /**
+   * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
+   **/
+  @ApiModelProperty(value = "A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity")
+  public List<KnownFace> getKnownFaces() {
+    return knownFaces;
+  }
+  public void setKnownFaces(List<KnownFace> knownFaces) {
+    this.knownFaces = knownFaces;
+  }
+
+  /**
+   * The text that was detected
+   **/
+  @ApiModelProperty(value = "The text that was detected")
+  public String getContent() {
+    return content;
+  }
+  public void setContent(String content) {
+    this.content = content;
   }
 
 
@@ -179,32 +290,48 @@ public class CheckResultDetectionsInner {
     }
     CheckResultDetectionsInner checkResultDetectionsInner = (CheckResultDetectionsInner) o;
     return (this.type == null ? checkResultDetectionsInner.type == null : this.type.equals(checkResultDetectionsInner.type)) &&
-        (this.attributes == null ? checkResultDetectionsInner.attributes == null : this.attributes.equals(checkResultDetectionsInner.attributes)) &&
-        (this.subDetections == null ? checkResultDetectionsInner.subDetections == null : this.subDetections.equals(checkResultDetectionsInner.subDetections)) &&
+        (this.classification == null ? checkResultDetectionsInner.classification == null : this.classification.equals(checkResultDetectionsInner.classification)) &&
+        (this.group == null ? checkResultDetectionsInner.group == null : this.group.equals(checkResultDetectionsInner.group)) &&
+        (this.id == null ? checkResultDetectionsInner.id == null : this.id.equals(checkResultDetectionsInner.id)) &&
+        (this.probability == null ? checkResultDetectionsInner.probability == null : this.probability.equals(checkResultDetectionsInner.probability)) &&
+        (this.coordinates == null ? checkResultDetectionsInner.coordinates == null : this.coordinates.equals(checkResultDetectionsInner.coordinates)) &&
         (this.checkId == null ? checkResultDetectionsInner.checkId == null : this.checkId.equals(checkResultDetectionsInner.checkId)) &&
-        (this.hasOfficialDocument == null ? checkResultDetectionsInner.hasOfficialDocument == null : this.hasOfficialDocument.equals(checkResultDetectionsInner.hasOfficialDocument)) &&
-        (this.comparable == null ? checkResultDetectionsInner.comparable == null : this.comparable.equals(checkResultDetectionsInner.comparable)) &&
         (this.faceSimilarity == null ? checkResultDetectionsInner.faceSimilarity == null : this.faceSimilarity.equals(checkResultDetectionsInner.faceSimilarity)) &&
         (this.faceLivenessCheckScore == null ? checkResultDetectionsInner.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(checkResultDetectionsInner.faceLivenessCheckScore)) &&
+        (this.processedChecks == null ? checkResultDetectionsInner.processedChecks == null : this.processedChecks.equals(checkResultDetectionsInner.processedChecks)) &&
+        (this.attributes == null ? checkResultDetectionsInner.attributes == null : this.attributes.equals(checkResultDetectionsInner.attributes)) &&
+        (this.subDetections == null ? checkResultDetectionsInner.subDetections == null : this.subDetections.equals(checkResultDetectionsInner.subDetections)) &&
+        (this.hasOfficialDocument == null ? checkResultDetectionsInner.hasOfficialDocument == null : this.hasOfficialDocument.equals(checkResultDetectionsInner.hasOfficialDocument)) &&
+        (this.comparable == null ? checkResultDetectionsInner.comparable == null : this.comparable.equals(checkResultDetectionsInner.comparable)) &&
         (this.documentFrontLivenessScore == null ? checkResultDetectionsInner.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(checkResultDetectionsInner.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? checkResultDetectionsInner.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(checkResultDetectionsInner.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? checkResultDetectionsInner.processedChecks == null : this.processedChecks.equals(checkResultDetectionsInner.processedChecks));
+        (this.documentHolderId == null ? checkResultDetectionsInner.documentHolderId == null : this.documentHolderId.equals(checkResultDetectionsInner.documentHolderId)) &&
+        (this.knownFaces == null ? checkResultDetectionsInner.knownFaces == null : this.knownFaces.equals(checkResultDetectionsInner.knownFaces)) &&
+        (this.content == null ? checkResultDetectionsInner.content == null : this.content.equals(checkResultDetectionsInner.content));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
-    result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
-    result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
+    result = 31 * result + (this.classification == null ? 0: this.classification.hashCode());
+    result = 31 * result + (this.group == null ? 0: this.group.hashCode());
+    result = 31 * result + (this.id == null ? 0: this.id.hashCode());
+    result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
+    result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
     result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
-    result = 31 * result + (this.hasOfficialDocument == null ? 0: this.hasOfficialDocument.hashCode());
-    result = 31 * result + (this.comparable == null ? 0: this.comparable.hashCode());
     result = 31 * result + (this.faceSimilarity == null ? 0: this.faceSimilarity.hashCode());
     result = 31 * result + (this.faceLivenessCheckScore == null ? 0: this.faceLivenessCheckScore.hashCode());
+    result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
+    result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
+    result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
+    result = 31 * result + (this.hasOfficialDocument == null ? 0: this.hasOfficialDocument.hashCode());
+    result = 31 * result + (this.comparable == null ? 0: this.comparable.hashCode());
     result = 31 * result + (this.documentFrontLivenessScore == null ? 0: this.documentFrontLivenessScore.hashCode());
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
-    result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
+    result = 31 * result + (this.knownFaces == null ? 0: this.knownFaces.hashCode());
+    result = 31 * result + (this.content == null ? 0: this.content.hashCode());
     return result;
   }
 
@@ -214,16 +341,24 @@ public class CheckResultDetectionsInner {
     sb.append("class CheckResultDetectionsInner {\n");
     
     sb.append("  type: ").append(type).append("\n");
-    sb.append("  attributes: ").append(attributes).append("\n");
-    sb.append("  subDetections: ").append(subDetections).append("\n");
+    sb.append("  classification: ").append(classification).append("\n");
+    sb.append("  group: ").append(group).append("\n");
+    sb.append("  id: ").append(id).append("\n");
+    sb.append("  probability: ").append(probability).append("\n");
+    sb.append("  coordinates: ").append(coordinates).append("\n");
     sb.append("  checkId: ").append(checkId).append("\n");
-    sb.append("  hasOfficialDocument: ").append(hasOfficialDocument).append("\n");
-    sb.append("  comparable: ").append(comparable).append("\n");
     sb.append("  faceSimilarity: ").append(faceSimilarity).append("\n");
     sb.append("  faceLivenessCheckScore: ").append(faceLivenessCheckScore).append("\n");
+    sb.append("  processedChecks: ").append(processedChecks).append("\n");
+    sb.append("  attributes: ").append(attributes).append("\n");
+    sb.append("  subDetections: ").append(subDetections).append("\n");
+    sb.append("  hasOfficialDocument: ").append(hasOfficialDocument).append("\n");
+    sb.append("  comparable: ").append(comparable).append("\n");
     sb.append("  documentFrontLivenessScore: ").append(documentFrontLivenessScore).append("\n");
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
-    sb.append("  processedChecks: ").append(processedChecks).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
+    sb.append("  knownFaces: ").append(knownFaces).append("\n");
+    sb.append("  content: ").append(content).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

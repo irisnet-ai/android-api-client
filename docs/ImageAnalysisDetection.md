@@ -1,6 +1,6 @@
 
 
-# BaseDetection
+# ImageAnalysisDetection
 
 ## Properties
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **id** | **Integer** | The id of the detection object. |  [optional]
 **probability** | **Integer** | The probability that the object found matches the classification. |  [optional]
 **coordinates** | [**Coordinates**](Coordinates.md) |  |  [optional]
-**attributes** | [**List&lt;Attribute&gt;**](Attribute.md) | Attributes characterizing the _base_ detection. |  [optional]
+**attributes** | [**List&lt;Attribute&gt;**](Attribute.md) | Attributes characterizing the _image_ detection. |  [optional]
 
 
 

@@ -190,7 +190,7 @@ public class ConfigurationManagementApi {
     Object postBody = null;
 
     // create path and map variables
-    String path = "/v2/config/";
+    String path = "/v2/config";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -247,7 +247,7 @@ public class ConfigurationManagementApi {
 
 
     // create path and map variables
-    String path = "/v2/config/".replaceAll("\\{format\\}","json");
+    String path = "/v2/config".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -439,7 +439,7 @@ public class ConfigurationManagementApi {
     }
 
     // create path and map variables
-    String path = "/v2/config/";
+    String path = "/v2/config";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -502,7 +502,7 @@ public class ConfigurationManagementApi {
     }
 
     // create path and map variables
-    String path = "/v2/config/".replaceAll("\\{format\\}","json");
+    String path = "/v2/config".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();

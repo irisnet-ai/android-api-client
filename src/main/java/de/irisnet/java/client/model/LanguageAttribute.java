@@ -12,41 +12,54 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.Rectangle;
-import de.irisnet.java.client.model.Segment;
-import java.util.*;
+import de.irisnet.java.client.model.Attribute;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes the position and bounds of the classification object.
+ * Attribute that contains the language of a text or spoken words.
  **/
-@ApiModel(description = "Describes the position and bounds of the classification object.")
-public class Coordinates {
+@ApiModel(description = "Attribute that contains the language of a text or spoken words.")
+public class LanguageAttribute extends Attribute {
   
-  @SerializedName("rectangles")
-  private List<Rectangle> rectangles = null;
-  @SerializedName("segments")
-  private List<Segment> segments = null;
+  @SerializedName("type")
+  private String type = null;
+  @SerializedName("isoLanguage")
+  private String isoLanguage = null;
+  @SerializedName("probability")
+  private Integer probability = null;
 
   /**
+   * Used as a type discriminator for json to object conversion.
    **/
-  @ApiModelProperty(value = "")
-  public List<Rectangle> getRectangles() {
-    return rectangles;
+  @ApiModelProperty(value = "Used as a type discriminator for json to object conversion.")
+  public String getType() {
+    return type;
   }
-  public void setRectangles(List<Rectangle> rectangles) {
-    this.rectangles = rectangles;
+  public void setType(String type) {
+    this.type = type;
   }
 
   /**
+   * The ISO 639-1 language code.
    **/
-  @ApiModelProperty(value = "")
-  public List<Segment> getSegments() {
-    return segments;
+  @ApiModelProperty(value = "The ISO 639-1 language code.")
+  public String getIsoLanguage() {
+    return isoLanguage;
   }
-  public void setSegments(List<Segment> segments) {
-    this.segments = segments;
+  public void setIsoLanguage(String isoLanguage) {
+    this.isoLanguage = isoLanguage;
+  }
+
+  /**
+   * The probability that the text matches the language.
+   **/
+  @ApiModelProperty(value = "The probability that the text matches the language.")
+  public Integer getProbability() {
+    return probability;
+  }
+  public void setProbability(Integer probability) {
+    this.probability = probability;
   }
 
 
@@ -58,26 +71,29 @@ public class Coordinates {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Coordinates coordinates = (Coordinates) o;
-    return (this.rectangles == null ? coordinates.rectangles == null : this.rectangles.equals(coordinates.rectangles)) &&
-        (this.segments == null ? coordinates.segments == null : this.segments.equals(coordinates.segments));
+    LanguageAttribute languageAttribute = (LanguageAttribute) o;
+    return (this.type == null ? languageAttribute.type == null : this.type.equals(languageAttribute.type)) &&
+        (this.isoLanguage == null ? languageAttribute.isoLanguage == null : this.isoLanguage.equals(languageAttribute.isoLanguage)) &&
+        (this.probability == null ? languageAttribute.probability == null : this.probability.equals(languageAttribute.probability));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.rectangles == null ? 0: this.rectangles.hashCode());
-    result = 31 * result + (this.segments == null ? 0: this.segments.hashCode());
+    result = 31 * result + (this.type == null ? 0: this.type.hashCode());
+    result = 31 * result + (this.isoLanguage == null ? 0: this.isoLanguage.hashCode());
+    result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Coordinates {\n");
-    
-    sb.append("  rectangles: ").append(rectangles).append("\n");
-    sb.append("  segments: ").append(segments).append("\n");
+    sb.append("class LanguageAttribute {\n");
+    sb.append("  " + super.toString()).append("\n");
+    sb.append("  type: ").append(type).append("\n");
+    sb.append("  isoLanguage: ").append(isoLanguage).append("\n");
+    sb.append("  probability: ").append(probability).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

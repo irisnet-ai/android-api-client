@@ -194,7 +194,7 @@ public class BalanceEndpointsApi {
     Object postBody = null;
 
     // create path and map variables
-    String path = "/v2/info/";
+    String path = "/v2/info";
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();
@@ -251,7 +251,7 @@ public class BalanceEndpointsApi {
 
 
     // create path and map variables
-    String path = "/v2/info/".replaceAll("\\{format\\}","json");
+    String path = "/v2/info".replaceAll("\\{format\\}","json");
 
     // query params
     List<Pair> queryParams = new ArrayList<Pair>();

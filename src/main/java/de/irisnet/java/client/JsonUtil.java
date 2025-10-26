@@ -69,8 +69,20 @@ public class JsonUtil {
       return new TypeToken<List<AgeVerificationSubChecks>>(){}.getType();
     }
     
+    if ("AiClassification".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AiClassification>>(){}.getType();
+    }
+    
+    if ("AiPrototype".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AiPrototype>>(){}.getType();
+    }
+    
     if ("ApiNotice".equalsIgnoreCase(className)) {
       return new TypeToken<List<ApiNotice>>(){}.getType();
+    }
+    
+    if ("Attribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Attribute>>(){}.getType();
     }
     
     if ("BaseAttribute".equalsIgnoreCase(className)) {
@@ -99,6 +111,10 @@ public class JsonUtil {
     
     if ("CheckResult".equalsIgnoreCase(className)) {
       return new TypeToken<List<CheckResult>>(){}.getType();
+    }
+    
+    if ("CheckResultDetectionsInner".equalsIgnoreCase(className)) {
+      return new TypeToken<List<CheckResultDetectionsInner>>(){}.getType();
     }
     
     if ("Config".equalsIgnoreCase(className)) {
@@ -153,12 +169,20 @@ public class JsonUtil {
       return new TypeToken<List<IdDocumentSubChecks>>(){}.getType();
     }
     
+    if ("ImageAnalysisDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ImageAnalysisDetection>>(){}.getType();
+    }
+    
     if ("KnownFace".equalsIgnoreCase(className)) {
       return new TypeToken<List<KnownFace>>(){}.getType();
     }
     
     if ("KycUiParameter".equalsIgnoreCase(className)) {
       return new TypeToken<List<KycUiParameter>>(){}.getType();
+    }
+    
+    if ("LanguageAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<LanguageAttribute>>(){}.getType();
     }
     
     if ("LicenseInfo".equalsIgnoreCase(className)) {
@@ -185,6 +209,18 @@ public class JsonUtil {
       return new TypeToken<List<PoaCheckRequestData>>(){}.getType();
     }
     
+    if ("PoaDocumentAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<PoaDocumentAttribute>>(){}.getType();
+    }
+    
+    if ("PoaDocumentDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<PoaDocumentDetection>>(){}.getType();
+    }
+    
+    if ("PoaDocumentSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<List<PoaDocumentSubChecks>>(){}.getType();
+    }
+    
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<List<Pricing>>(){}.getType();
     }
@@ -193,8 +229,20 @@ public class JsonUtil {
       return new TypeToken<List<Rectangle>>(){}.getType();
     }
     
+    if ("Segment".equalsIgnoreCase(className)) {
+      return new TypeToken<List<Segment>>(){}.getType();
+    }
+    
     if ("Summary".equalsIgnoreCase(className)) {
       return new TypeToken<List<Summary>>(){}.getType();
+    }
+    
+    if ("TextDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<List<TextDetection>>(){}.getType();
+    }
+    
+    if ("ValueAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<ValueAttribute>>(){}.getType();
     }
     
     return new TypeToken<List<Object>>(){}.getType();
@@ -215,8 +263,20 @@ public class JsonUtil {
       return new TypeToken<AgeVerificationSubChecks>(){}.getType();
     }
     
+    if ("AiClassification".equalsIgnoreCase(className)) {
+      return new TypeToken<AiClassification>(){}.getType();
+    }
+    
+    if ("AiPrototype".equalsIgnoreCase(className)) {
+      return new TypeToken<AiPrototype>(){}.getType();
+    }
+    
     if ("ApiNotice".equalsIgnoreCase(className)) {
       return new TypeToken<ApiNotice>(){}.getType();
+    }
+    
+    if ("Attribute".equalsIgnoreCase(className)) {
+      return new TypeToken<Attribute>(){}.getType();
     }
     
     if ("BaseAttribute".equalsIgnoreCase(className)) {
@@ -245,6 +305,10 @@ public class JsonUtil {
     
     if ("CheckResult".equalsIgnoreCase(className)) {
       return new TypeToken<CheckResult>(){}.getType();
+    }
+    
+    if ("CheckResultDetectionsInner".equalsIgnoreCase(className)) {
+      return new TypeToken<CheckResultDetectionsInner>(){}.getType();
     }
     
     if ("Config".equalsIgnoreCase(className)) {
@@ -299,12 +363,20 @@ public class JsonUtil {
       return new TypeToken<IdDocumentSubChecks>(){}.getType();
     }
     
+    if ("ImageAnalysisDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<ImageAnalysisDetection>(){}.getType();
+    }
+    
     if ("KnownFace".equalsIgnoreCase(className)) {
       return new TypeToken<KnownFace>(){}.getType();
     }
     
     if ("KycUiParameter".equalsIgnoreCase(className)) {
       return new TypeToken<KycUiParameter>(){}.getType();
+    }
+    
+    if ("LanguageAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<LanguageAttribute>(){}.getType();
     }
     
     if ("LicenseInfo".equalsIgnoreCase(className)) {
@@ -331,6 +403,18 @@ public class JsonUtil {
       return new TypeToken<PoaCheckRequestData>(){}.getType();
     }
     
+    if ("PoaDocumentAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<PoaDocumentAttribute>(){}.getType();
+    }
+    
+    if ("PoaDocumentDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<PoaDocumentDetection>(){}.getType();
+    }
+    
+    if ("PoaDocumentSubChecks".equalsIgnoreCase(className)) {
+      return new TypeToken<PoaDocumentSubChecks>(){}.getType();
+    }
+    
     if ("Pricing".equalsIgnoreCase(className)) {
       return new TypeToken<Pricing>(){}.getType();
     }
@@ -339,8 +423,20 @@ public class JsonUtil {
       return new TypeToken<Rectangle>(){}.getType();
     }
     
+    if ("Segment".equalsIgnoreCase(className)) {
+      return new TypeToken<Segment>(){}.getType();
+    }
+    
     if ("Summary".equalsIgnoreCase(className)) {
       return new TypeToken<Summary>(){}.getType();
+    }
+    
+    if ("TextDetection".equalsIgnoreCase(className)) {
+      return new TypeToken<TextDetection>(){}.getType();
+    }
+    
+    if ("ValueAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<ValueAttribute>(){}.getType();
     }
     
     return new TypeToken<Object>(){}.getType();

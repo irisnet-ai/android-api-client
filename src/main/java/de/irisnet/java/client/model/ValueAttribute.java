@@ -13,31 +13,24 @@
 package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.Attribute;
-import de.irisnet.java.client.model.Coordinates;
-import java.util.*;
+import de.irisnet.java.client.model.OasAnyTypeNotMapped;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * A detection describes the object found with all its details.
+ * An attribute describes a quality or characteristic that a detection object has.
  **/
-@ApiModel(description = "A detection describes the object found with all its details.")
-public class BaseDetection {
+@ApiModel(description = "An attribute describes a quality or characteristic that a detection object has.")
+public class ValueAttribute extends Attribute {
   
   @SerializedName("type")
   private String type = null;
   @SerializedName("classification")
   private String classification = null;
-  @SerializedName("group")
-  private String group = null;
-  @SerializedName("id")
-  private Integer id = null;
+  @SerializedName("value")
+  private OasAnyTypeNotMapped value = null;
   @SerializedName("probability")
   private Integer probability = null;
-  @SerializedName("coordinates")
-  private Coordinates coordinates = null;
-  @SerializedName("attributes")
-  private List<Attribute> attributes = null;
 
   /**
    * Used as a type discriminator for json to object conversion.
@@ -51,9 +44,9 @@ public class BaseDetection {
   }
 
   /**
-   * The classification of the recognized object.
+   * The classification of the recognized attribute.
    **/
-  @ApiModelProperty(value = "The classification of the recognized object.")
+  @ApiModelProperty(value = "The classification of the recognized attribute.")
   public String getClassification() {
     return classification;
   }
@@ -62,57 +55,24 @@ public class BaseDetection {
   }
 
   /**
-   * The group of the classification.
    **/
-  @ApiModelProperty(value = "The group of the classification.")
-  public String getGroup() {
-    return group;
+  @ApiModelProperty(value = "")
+  public OasAnyTypeNotMapped getValue() {
+    return value;
   }
-  public void setGroup(String group) {
-    this.group = group;
+  public void setValue(OasAnyTypeNotMapped value) {
+    this.value = value;
   }
 
   /**
-   * The id of the detection object.
+   * The probability that the value matches the classification.
    **/
-  @ApiModelProperty(value = "The id of the detection object.")
-  public Integer getId() {
-    return id;
-  }
-  public void setId(Integer id) {
-    this.id = id;
-  }
-
-  /**
-   * The probability that the object found matches the classification.
-   **/
-  @ApiModelProperty(value = "The probability that the object found matches the classification.")
+  @ApiModelProperty(value = "The probability that the value matches the classification.")
   public Integer getProbability() {
     return probability;
   }
   public void setProbability(Integer probability) {
     this.probability = probability;
-  }
-
-  /**
-   **/
-  @ApiModelProperty(value = "")
-  public Coordinates getCoordinates() {
-    return coordinates;
-  }
-  public void setCoordinates(Coordinates coordinates) {
-    this.coordinates = coordinates;
-  }
-
-  /**
-   * Attributes characterizing the _base_ detection.
-   **/
-  @ApiModelProperty(value = "Attributes characterizing the _base_ detection.")
-  public List<Attribute> getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(List<Attribute> attributes) {
-    this.attributes = attributes;
   }
 
 
@@ -124,14 +84,11 @@ public class BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BaseDetection baseDetection = (BaseDetection) o;
-    return (this.type == null ? baseDetection.type == null : this.type.equals(baseDetection.type)) &&
-        (this.classification == null ? baseDetection.classification == null : this.classification.equals(baseDetection.classification)) &&
-        (this.group == null ? baseDetection.group == null : this.group.equals(baseDetection.group)) &&
-        (this.id == null ? baseDetection.id == null : this.id.equals(baseDetection.id)) &&
-        (this.probability == null ? baseDetection.probability == null : this.probability.equals(baseDetection.probability)) &&
-        (this.coordinates == null ? baseDetection.coordinates == null : this.coordinates.equals(baseDetection.coordinates)) &&
-        (this.attributes == null ? baseDetection.attributes == null : this.attributes.equals(baseDetection.attributes));
+    ValueAttribute valueAttribute = (ValueAttribute) o;
+    return (this.type == null ? valueAttribute.type == null : this.type.equals(valueAttribute.type)) &&
+        (this.classification == null ? valueAttribute.classification == null : this.classification.equals(valueAttribute.classification)) &&
+        (this.value == null ? valueAttribute.value == null : this.value.equals(valueAttribute.value)) &&
+        (this.probability == null ? valueAttribute.probability == null : this.probability.equals(valueAttribute.probability));
   }
 
   @Override
@@ -139,26 +96,20 @@ public class BaseDetection {
     int result = 17;
     result = 31 * result + (this.type == null ? 0: this.type.hashCode());
     result = 31 * result + (this.classification == null ? 0: this.classification.hashCode());
-    result = 31 * result + (this.group == null ? 0: this.group.hashCode());
-    result = 31 * result + (this.id == null ? 0: this.id.hashCode());
+    result = 31 * result + (this.value == null ? 0: this.value.hashCode());
     result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
-    result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
-    result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BaseDetection {\n");
-    
+    sb.append("class ValueAttribute {\n");
+    sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");
-    sb.append("  group: ").append(group).append("\n");
-    sb.append("  id: ").append(id).append("\n");
+    sb.append("  value: ").append(value).append("\n");
     sb.append("  probability: ").append(probability).append("\n");
-    sb.append("  coordinates: ").append(coordinates).append("\n");
-    sb.append("  attributes: ").append(attributes).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

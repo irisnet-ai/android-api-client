@@ -1,6 +1,6 @@
 
 
-# BaseDetection
+# TextDetection
 
 ## Properties
 
@@ -12,7 +12,9 @@ Name | Type | Description | Notes
 **id** | **Integer** | The id of the detection object. |  [optional]
 **probability** | **Integer** | The probability that the object found matches the classification. |  [optional]
 **coordinates** | [**Coordinates**](Coordinates.md) |  |  [optional]
-**attributes** | [**List&lt;Attribute&gt;**](Attribute.md) | Attributes characterizing the _base_ detection. |  [optional]
+**content** | **String** | The text that was detected |  [optional]
+**attributes** | [**List&lt;Attribute&gt;**](Attribute.md) | Attributes characterizing the text. |  [optional]
+**subDetections** | [**List&lt;BaseDetection&gt;**](BaseDetection.md) | A set of sub-detection for text moderation. |  [optional]
 
 
 

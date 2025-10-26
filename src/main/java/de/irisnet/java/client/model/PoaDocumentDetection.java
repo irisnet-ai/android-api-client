@@ -12,17 +12,19 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
+import de.irisnet.java.client.model.PoaDocumentAttribute;
+import de.irisnet.java.client.model.PoaDocumentSubChecks;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * A detection describes the object found with all its details.
+ * Contains further characteristics particular to _poaDocument_ detection.
  **/
-@ApiModel(description = "A detection describes the object found with all its details.")
-public class BaseDetection {
+@ApiModel(description = "Contains further characteristics particular to _poaDocument_ detection.")
+public class PoaDocumentDetection extends Detection {
   
   @SerializedName("type")
   private String type = null;
@@ -36,8 +38,14 @@ public class BaseDetection {
   private Integer probability = null;
   @SerializedName("coordinates")
   private Coordinates coordinates = null;
+  @SerializedName("checkId")
+  private String checkId = null;
+  @SerializedName("processedChecks")
+  private PoaDocumentSubChecks processedChecks = null;
   @SerializedName("attributes")
-  private List<Attribute> attributes = null;
+  private List<PoaDocumentAttribute> attributes = null;
+  @SerializedName("documentHolderId")
+  private String documentHolderId = null;
 
   /**
    * Used as a type discriminator for json to object conversion.
@@ -105,14 +113,47 @@ public class BaseDetection {
   }
 
   /**
-   * Attributes characterizing the _base_ detection.
+   * The id of the check that lead to the detection
    **/
-  @ApiModelProperty(value = "Attributes characterizing the _base_ detection.")
-  public List<Attribute> getAttributes() {
+  @ApiModelProperty(value = "The id of the check that lead to the detection")
+  public String getCheckId() {
+    return checkId;
+  }
+  public void setCheckId(String checkId) {
+    this.checkId = checkId;
+  }
+
+  /**
+   * The sub-checks that were processed
+   **/
+  @ApiModelProperty(value = "The sub-checks that were processed")
+  public PoaDocumentSubChecks getProcessedChecks() {
+    return processedChecks;
+  }
+  public void setProcessedChecks(PoaDocumentSubChecks processedChecks) {
+    this.processedChecks = processedChecks;
+  }
+
+  /**
+   * Attributes of the _poaDocument_ detection.
+   **/
+  @ApiModelProperty(value = "Attributes of the _poaDocument_ detection.")
+  public List<PoaDocumentAttribute> getAttributes() {
     return attributes;
   }
-  public void setAttributes(List<Attribute> attributes) {
+  public void setAttributes(List<PoaDocumentAttribute> attributes) {
     this.attributes = attributes;
+  }
+
+  /**
+   * The id of the documentHolder
+   **/
+  @ApiModelProperty(value = "The id of the documentHolder")
+  public String getDocumentHolderId() {
+    return documentHolderId;
+  }
+  public void setDocumentHolderId(String documentHolderId) {
+    this.documentHolderId = documentHolderId;
   }
 
 
@@ -124,14 +165,17 @@ public class BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BaseDetection baseDetection = (BaseDetection) o;
-    return (this.type == null ? baseDetection.type == null : this.type.equals(baseDetection.type)) &&
-        (this.classification == null ? baseDetection.classification == null : this.classification.equals(baseDetection.classification)) &&
-        (this.group == null ? baseDetection.group == null : this.group.equals(baseDetection.group)) &&
-        (this.id == null ? baseDetection.id == null : this.id.equals(baseDetection.id)) &&
-        (this.probability == null ? baseDetection.probability == null : this.probability.equals(baseDetection.probability)) &&
-        (this.coordinates == null ? baseDetection.coordinates == null : this.coordinates.equals(baseDetection.coordinates)) &&
-        (this.attributes == null ? baseDetection.attributes == null : this.attributes.equals(baseDetection.attributes));
+    PoaDocumentDetection poaDocumentDetection = (PoaDocumentDetection) o;
+    return (this.type == null ? poaDocumentDetection.type == null : this.type.equals(poaDocumentDetection.type)) &&
+        (this.classification == null ? poaDocumentDetection.classification == null : this.classification.equals(poaDocumentDetection.classification)) &&
+        (this.group == null ? poaDocumentDetection.group == null : this.group.equals(poaDocumentDetection.group)) &&
+        (this.id == null ? poaDocumentDetection.id == null : this.id.equals(poaDocumentDetection.id)) &&
+        (this.probability == null ? poaDocumentDetection.probability == null : this.probability.equals(poaDocumentDetection.probability)) &&
+        (this.coordinates == null ? poaDocumentDetection.coordinates == null : this.coordinates.equals(poaDocumentDetection.coordinates)) &&
+        (this.checkId == null ? poaDocumentDetection.checkId == null : this.checkId.equals(poaDocumentDetection.checkId)) &&
+        (this.processedChecks == null ? poaDocumentDetection.processedChecks == null : this.processedChecks.equals(poaDocumentDetection.processedChecks)) &&
+        (this.attributes == null ? poaDocumentDetection.attributes == null : this.attributes.equals(poaDocumentDetection.attributes)) &&
+        (this.documentHolderId == null ? poaDocumentDetection.documentHolderId == null : this.documentHolderId.equals(poaDocumentDetection.documentHolderId));
   }
 
   @Override
@@ -143,22 +187,28 @@ public class BaseDetection {
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
     result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
     result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
+    result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
+    result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
     result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
+    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BaseDetection {\n");
-    
+    sb.append("class PoaDocumentDetection {\n");
+    sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");
     sb.append("  group: ").append(group).append("\n");
     sb.append("  id: ").append(id).append("\n");
     sb.append("  probability: ").append(probability).append("\n");
     sb.append("  coordinates: ").append(coordinates).append("\n");
+    sb.append("  checkId: ").append(checkId).append("\n");
+    sb.append("  processedChecks: ").append(processedChecks).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");
+    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

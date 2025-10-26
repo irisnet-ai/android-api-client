@@ -39,10 +39,6 @@ public class IdDocumentDetection extends Detection {
   private Integer probability = null;
   @SerializedName("coordinates")
   private Coordinates coordinates = null;
-  @SerializedName("attributes")
-  private List<IdDocumentAttribute> attributes = null;
-  @SerializedName("subDetections")
-  private List<Detection> subDetections = null;
   @SerializedName("checkId")
   private String checkId = null;
   @SerializedName("hasOfficialDocument")
@@ -59,6 +55,8 @@ public class IdDocumentDetection extends Detection {
   private Integer documentBackLivenessScore = null;
   @SerializedName("processedChecks")
   private IdDocumentSubChecks processedChecks = null;
+  @SerializedName("attributes")
+  private List<IdDocumentAttribute> attributes = null;
   @SerializedName("documentHolderId")
   private String documentHolderId = null;
   @SerializedName("knownFaces")
@@ -127,28 +125,6 @@ public class IdDocumentDetection extends Detection {
   }
   public void setCoordinates(Coordinates coordinates) {
     this.coordinates = coordinates;
-  }
-
-  /**
-   * Attributes of the _idDocument_ detection.
-   **/
-  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
-  public List<IdDocumentAttribute> getAttributes() {
-    return attributes;
-  }
-  public void setAttributes(List<IdDocumentAttribute> attributes) {
-    this.attributes = attributes;
-  }
-
-  /**
-   * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
-   **/
-  @ApiModelProperty(value = "A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.")
-  public List<Detection> getSubDetections() {
-    return subDetections;
-  }
-  public void setSubDetections(List<Detection> subDetections) {
-    this.subDetections = subDetections;
   }
 
   /**
@@ -229,13 +205,25 @@ public class IdDocumentDetection extends Detection {
   }
 
   /**
+   * The sub-checks that were processed
    **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The sub-checks that were processed")
   public IdDocumentSubChecks getProcessedChecks() {
     return processedChecks;
   }
   public void setProcessedChecks(IdDocumentSubChecks processedChecks) {
     this.processedChecks = processedChecks;
+  }
+
+  /**
+   * Attributes of the _idDocument_ detection.
+   **/
+  @ApiModelProperty(value = "Attributes of the _idDocument_ detection.")
+  public List<IdDocumentAttribute> getAttributes() {
+    return attributes;
+  }
+  public void setAttributes(List<IdDocumentAttribute> attributes) {
+    this.attributes = attributes;
   }
 
   /**
@@ -276,8 +264,6 @@ public class IdDocumentDetection extends Detection {
         (this.id == null ? idDocumentDetection.id == null : this.id.equals(idDocumentDetection.id)) &&
         (this.probability == null ? idDocumentDetection.probability == null : this.probability.equals(idDocumentDetection.probability)) &&
         (this.coordinates == null ? idDocumentDetection.coordinates == null : this.coordinates.equals(idDocumentDetection.coordinates)) &&
-        (this.attributes == null ? idDocumentDetection.attributes == null : this.attributes.equals(idDocumentDetection.attributes)) &&
-        (this.subDetections == null ? idDocumentDetection.subDetections == null : this.subDetections.equals(idDocumentDetection.subDetections)) &&
         (this.checkId == null ? idDocumentDetection.checkId == null : this.checkId.equals(idDocumentDetection.checkId)) &&
         (this.hasOfficialDocument == null ? idDocumentDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(idDocumentDetection.hasOfficialDocument)) &&
         (this.comparable == null ? idDocumentDetection.comparable == null : this.comparable.equals(idDocumentDetection.comparable)) &&
@@ -286,6 +272,7 @@ public class IdDocumentDetection extends Detection {
         (this.documentFrontLivenessScore == null ? idDocumentDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(idDocumentDetection.documentFrontLivenessScore)) &&
         (this.documentBackLivenessScore == null ? idDocumentDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(idDocumentDetection.documentBackLivenessScore)) &&
         (this.processedChecks == null ? idDocumentDetection.processedChecks == null : this.processedChecks.equals(idDocumentDetection.processedChecks)) &&
+        (this.attributes == null ? idDocumentDetection.attributes == null : this.attributes.equals(idDocumentDetection.attributes)) &&
         (this.documentHolderId == null ? idDocumentDetection.documentHolderId == null : this.documentHolderId.equals(idDocumentDetection.documentHolderId)) &&
         (this.knownFaces == null ? idDocumentDetection.knownFaces == null : this.knownFaces.equals(idDocumentDetection.knownFaces));
   }
@@ -299,8 +286,6 @@ public class IdDocumentDetection extends Detection {
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
     result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
     result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
-    result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
-    result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
     result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
     result = 31 * result + (this.hasOfficialDocument == null ? 0: this.hasOfficialDocument.hashCode());
     result = 31 * result + (this.comparable == null ? 0: this.comparable.hashCode());
@@ -309,6 +294,7 @@ public class IdDocumentDetection extends Detection {
     result = 31 * result + (this.documentFrontLivenessScore == null ? 0: this.documentFrontLivenessScore.hashCode());
     result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
     result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
+    result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
     result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
     result = 31 * result + (this.knownFaces == null ? 0: this.knownFaces.hashCode());
     return result;
@@ -325,8 +311,6 @@ public class IdDocumentDetection extends Detection {
     sb.append("  id: ").append(id).append("\n");
     sb.append("  probability: ").append(probability).append("\n");
     sb.append("  coordinates: ").append(coordinates).append("\n");
-    sb.append("  attributes: ").append(attributes).append("\n");
-    sb.append("  subDetections: ").append(subDetections).append("\n");
     sb.append("  checkId: ").append(checkId).append("\n");
     sb.append("  hasOfficialDocument: ").append(hasOfficialDocument).append("\n");
     sb.append("  comparable: ").append(comparable).append("\n");
@@ -335,6 +319,7 @@ public class IdDocumentDetection extends Detection {
     sb.append("  documentFrontLivenessScore: ").append(documentFrontLivenessScore).append("\n");
     sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
     sb.append("  processedChecks: ").append(processedChecks).append("\n");
+    sb.append("  attributes: ").append(attributes).append("\n");
     sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
     sb.append("  knownFaces: ").append(knownFaces).append("\n");
     sb.append("}\n");

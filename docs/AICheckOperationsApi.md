@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**checkImage**](AICheckOperationsApi.md#checkImage) | **POST** /v2/check-image/{configId} | Check an image with the AI.
 [**checkPoaDocument**](AICheckOperationsApi.md#checkPoaDocument) | **POST** /v2/check-poa-document/{configId} | Perform an proof of address check with the AI.
 [**checkStream**](AICheckOperationsApi.md#checkStream) | **POST** /v2/check-stream/{configId} | Check a stream with the AI.
+[**checkText**](AICheckOperationsApi.md#checkText) | **POST** /v2/check-text/{configId} | Check a text with the AI.
 [**checkVideo**](AICheckOperationsApi.md#checkVideo) | **POST** /v2/check-video/{configId} | Check a video with the AI.
 [**faceAuthentication**](AICheckOperationsApi.md#faceAuthentication) | **POST** /v2/face-authentication/{configId} | Perform a face authentication for a given selfie with the AI.
 [**liveDocumentCheck**](AICheckOperationsApi.md#liveDocumentCheck) | **POST** /v2/check-live-id-document/{configId} | Start a guided live id document check with the AI.
@@ -265,6 +266,56 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/x-ndjson
+
+
+## checkText
+
+> CheckResult checkText(configId, data, detail)
+
+Check a text with the AI.
+
+The response (_CheckResult_ schema) is returned immediately after the request.
+
+### Example
+
+```java
+// Import classes:
+//import de.irisnet.java.client.AICheckOperationsApi;
+
+AICheckOperationsApi apiInstance = new AICheckOperationsApi();
+UUID configId = null; // UUID | The configuration id from the Basic Configuration operations.
+Data data = {"data":"This is an example text."}; // Data | The text that needs to be checked.
+Integer detail = 1; // Integer | Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information's (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
+try {
+    CheckResult result = apiInstance.checkText(configId, data, detail);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AICheckOperationsApi#checkText");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **configId** | **UUID**| The configuration id from the Basic Configuration operations. | [default to null]
+ **data** | [**Data**](Data.md)| The text that needs to be checked. |
+ **detail** | **Integer**| Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object. | [optional] [default to 1]
+
+### Return type
+
+[**CheckResult**](CheckResult.md)
+
+### Authorization
+
+[LICENSE-KEY](../README.md#LICENSE-KEY)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## checkVideo

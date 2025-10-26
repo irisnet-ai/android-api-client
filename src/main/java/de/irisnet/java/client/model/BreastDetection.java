@@ -12,11 +12,9 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.AgeVerificationSubChecks;
 import de.irisnet.java.client.model.BaseAttribute;
 import de.irisnet.java.client.model.Coordinates;
 import de.irisnet.java.client.model.Detection;
-import de.irisnet.java.client.model.KnownFace;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -41,28 +39,6 @@ public class BreastDetection extends Detection {
   private Coordinates coordinates = null;
   @SerializedName("attributes")
   private List<BaseAttribute> attributes = null;
-  @SerializedName("subDetections")
-  private List<Detection> subDetections = null;
-  @SerializedName("checkId")
-  private String checkId = null;
-  @SerializedName("hasOfficialDocument")
-  private Boolean hasOfficialDocument = null;
-  @SerializedName("comparable")
-  private Boolean comparable = null;
-  @SerializedName("faceSimilarity")
-  private Integer faceSimilarity = null;
-  @SerializedName("faceLivenessCheckScore")
-  private Integer faceLivenessCheckScore = null;
-  @SerializedName("documentFrontLivenessScore")
-  private Integer documentFrontLivenessScore = null;
-  @SerializedName("documentBackLivenessScore")
-  private Integer documentBackLivenessScore = null;
-  @SerializedName("processedChecks")
-  private AgeVerificationSubChecks processedChecks = null;
-  @SerializedName("documentHolderId")
-  private String documentHolderId = null;
-  @SerializedName("knownFaces")
-  private List<KnownFace> knownFaces = null;
 
   /**
    * Used as a type discriminator for json to object conversion.
@@ -140,126 +116,6 @@ public class BreastDetection extends Detection {
     this.attributes = attributes;
   }
 
-  /**
-   * A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.
-   **/
-  @ApiModelProperty(value = "A set of sub-detection that are particular to the _face_ detection. Mainly contains detections that were activated with the _attributesCheck_ prototype.")
-  public List<Detection> getSubDetections() {
-    return subDetections;
-  }
-  public void setSubDetections(List<Detection> subDetections) {
-    this.subDetections = subDetections;
-  }
-
-  /**
-   * The id of the check that lead to the detection
-   **/
-  @ApiModelProperty(value = "The id of the check that lead to the detection")
-  public String getCheckId() {
-    return checkId;
-  }
-  public void setCheckId(String checkId) {
-    this.checkId = checkId;
-  }
-
-  /**
-   * Indicates whether the identified document is official
-   **/
-  @ApiModelProperty(value = "Indicates whether the identified document is official")
-  public Boolean getHasOfficialDocument() {
-    return hasOfficialDocument;
-  }
-  public void setHasOfficialDocument(Boolean hasOfficialDocument) {
-    this.hasOfficialDocument = hasOfficialDocument;
-  }
-
-  /**
-   * Indicates whether the provided selfie-image is comparable to the document
-   **/
-  @ApiModelProperty(value = "Indicates whether the provided selfie-image is comparable to the document")
-  public Boolean getComparable() {
-    return comparable;
-  }
-  public void setComparable(Boolean comparable) {
-    this.comparable = comparable;
-  }
-
-  /**
-   * Indicates the similarity-level of whether two faces belong to the same person
-   **/
-  @ApiModelProperty(value = "Indicates the similarity-level of whether two faces belong to the same person")
-  public Integer getFaceSimilarity() {
-    return faceSimilarity;
-  }
-  public void setFaceSimilarity(Integer faceSimilarity) {
-    this.faceSimilarity = faceSimilarity;
-  }
-
-  /**
-   * Indicates the liveness score of the selfie image
-   **/
-  @ApiModelProperty(value = "Indicates the liveness score of the selfie image")
-  public Integer getFaceLivenessCheckScore() {
-    return faceLivenessCheckScore;
-  }
-  public void setFaceLivenessCheckScore(Integer faceLivenessCheckScore) {
-    this.faceLivenessCheckScore = faceLivenessCheckScore;
-  }
-
-  /**
-   * Indicates the liveness score of the front side image of the document
-   **/
-  @ApiModelProperty(value = "Indicates the liveness score of the front side image of the document")
-  public Integer getDocumentFrontLivenessScore() {
-    return documentFrontLivenessScore;
-  }
-  public void setDocumentFrontLivenessScore(Integer documentFrontLivenessScore) {
-    this.documentFrontLivenessScore = documentFrontLivenessScore;
-  }
-
-  /**
-   * Indicates the liveness score of the back side image of the document
-   **/
-  @ApiModelProperty(value = "Indicates the liveness score of the back side image of the document")
-  public Integer getDocumentBackLivenessScore() {
-    return documentBackLivenessScore;
-  }
-  public void setDocumentBackLivenessScore(Integer documentBackLivenessScore) {
-    this.documentBackLivenessScore = documentBackLivenessScore;
-  }
-
-  /**
-   **/
-  @ApiModelProperty(value = "")
-  public AgeVerificationSubChecks getProcessedChecks() {
-    return processedChecks;
-  }
-  public void setProcessedChecks(AgeVerificationSubChecks processedChecks) {
-    this.processedChecks = processedChecks;
-  }
-
-  /**
-   * The id of the documentHolder
-   **/
-  @ApiModelProperty(value = "The id of the documentHolder")
-  public String getDocumentHolderId() {
-    return documentHolderId;
-  }
-  public void setDocumentHolderId(String documentHolderId) {
-    this.documentHolderId = documentHolderId;
-  }
-
-  /**
-   * A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity
-   **/
-  @ApiModelProperty(value = "A list of known faces, describing which other documentHolders match this documentHolder with a certain similarity")
-  public List<KnownFace> getKnownFaces() {
-    return knownFaces;
-  }
-  public void setKnownFaces(List<KnownFace> knownFaces) {
-    this.knownFaces = knownFaces;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -276,18 +132,7 @@ public class BreastDetection extends Detection {
         (this.id == null ? breastDetection.id == null : this.id.equals(breastDetection.id)) &&
         (this.probability == null ? breastDetection.probability == null : this.probability.equals(breastDetection.probability)) &&
         (this.coordinates == null ? breastDetection.coordinates == null : this.coordinates.equals(breastDetection.coordinates)) &&
-        (this.attributes == null ? breastDetection.attributes == null : this.attributes.equals(breastDetection.attributes)) &&
-        (this.subDetections == null ? breastDetection.subDetections == null : this.subDetections.equals(breastDetection.subDetections)) &&
-        (this.checkId == null ? breastDetection.checkId == null : this.checkId.equals(breastDetection.checkId)) &&
-        (this.hasOfficialDocument == null ? breastDetection.hasOfficialDocument == null : this.hasOfficialDocument.equals(breastDetection.hasOfficialDocument)) &&
-        (this.comparable == null ? breastDetection.comparable == null : this.comparable.equals(breastDetection.comparable)) &&
-        (this.faceSimilarity == null ? breastDetection.faceSimilarity == null : this.faceSimilarity.equals(breastDetection.faceSimilarity)) &&
-        (this.faceLivenessCheckScore == null ? breastDetection.faceLivenessCheckScore == null : this.faceLivenessCheckScore.equals(breastDetection.faceLivenessCheckScore)) &&
-        (this.documentFrontLivenessScore == null ? breastDetection.documentFrontLivenessScore == null : this.documentFrontLivenessScore.equals(breastDetection.documentFrontLivenessScore)) &&
-        (this.documentBackLivenessScore == null ? breastDetection.documentBackLivenessScore == null : this.documentBackLivenessScore.equals(breastDetection.documentBackLivenessScore)) &&
-        (this.processedChecks == null ? breastDetection.processedChecks == null : this.processedChecks.equals(breastDetection.processedChecks)) &&
-        (this.documentHolderId == null ? breastDetection.documentHolderId == null : this.documentHolderId.equals(breastDetection.documentHolderId)) &&
-        (this.knownFaces == null ? breastDetection.knownFaces == null : this.knownFaces.equals(breastDetection.knownFaces));
+        (this.attributes == null ? breastDetection.attributes == null : this.attributes.equals(breastDetection.attributes));
   }
 
   @Override
@@ -300,17 +145,6 @@ public class BreastDetection extends Detection {
     result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
     result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
     result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
-    result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
-    result = 31 * result + (this.checkId == null ? 0: this.checkId.hashCode());
-    result = 31 * result + (this.hasOfficialDocument == null ? 0: this.hasOfficialDocument.hashCode());
-    result = 31 * result + (this.comparable == null ? 0: this.comparable.hashCode());
-    result = 31 * result + (this.faceSimilarity == null ? 0: this.faceSimilarity.hashCode());
-    result = 31 * result + (this.faceLivenessCheckScore == null ? 0: this.faceLivenessCheckScore.hashCode());
-    result = 31 * result + (this.documentFrontLivenessScore == null ? 0: this.documentFrontLivenessScore.hashCode());
-    result = 31 * result + (this.documentBackLivenessScore == null ? 0: this.documentBackLivenessScore.hashCode());
-    result = 31 * result + (this.processedChecks == null ? 0: this.processedChecks.hashCode());
-    result = 31 * result + (this.documentHolderId == null ? 0: this.documentHolderId.hashCode());
-    result = 31 * result + (this.knownFaces == null ? 0: this.knownFaces.hashCode());
     return result;
   }
 
@@ -326,17 +160,6 @@ public class BreastDetection extends Detection {
     sb.append("  probability: ").append(probability).append("\n");
     sb.append("  coordinates: ").append(coordinates).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");
-    sb.append("  subDetections: ").append(subDetections).append("\n");
-    sb.append("  checkId: ").append(checkId).append("\n");
-    sb.append("  hasOfficialDocument: ").append(hasOfficialDocument).append("\n");
-    sb.append("  comparable: ").append(comparable).append("\n");
-    sb.append("  faceSimilarity: ").append(faceSimilarity).append("\n");
-    sb.append("  faceLivenessCheckScore: ").append(faceLivenessCheckScore).append("\n");
-    sb.append("  documentFrontLivenessScore: ").append(documentFrontLivenessScore).append("\n");
-    sb.append("  documentBackLivenessScore: ").append(documentBackLivenessScore).append("\n");
-    sb.append("  processedChecks: ").append(processedChecks).append("\n");
-    sb.append("  documentHolderId: ").append(documentHolderId).append("\n");
-    sb.append("  knownFaces: ").append(knownFaces).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -12,41 +12,40 @@
 
 package de.irisnet.java.client.model;
 
-import de.irisnet.java.client.model.Rectangle;
-import de.irisnet.java.client.model.Segment;
-import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Describes the position and bounds of the classification object.
+ * Describes the bounds of a segment.
  **/
-@ApiModel(description = "Describes the position and bounds of the classification object.")
-public class Coordinates {
+@ApiModel(description = "Describes the bounds of a segment.")
+public class Segment {
   
-  @SerializedName("rectangles")
-  private List<Rectangle> rectangles = null;
-  @SerializedName("segments")
-  private List<Segment> segments = null;
+  @SerializedName("start")
+  private Integer start = null;
+  @SerializedName("end")
+  private Integer end = null;
 
   /**
+   * The starting point of the segment.
    **/
-  @ApiModelProperty(value = "")
-  public List<Rectangle> getRectangles() {
-    return rectangles;
+  @ApiModelProperty(value = "The starting point of the segment.")
+  public Integer getStart() {
+    return start;
   }
-  public void setRectangles(List<Rectangle> rectangles) {
-    this.rectangles = rectangles;
+  public void setStart(Integer start) {
+    this.start = start;
   }
 
   /**
+   * The ending point of the segment.
    **/
-  @ApiModelProperty(value = "")
-  public List<Segment> getSegments() {
-    return segments;
+  @ApiModelProperty(value = "The ending point of the segment.")
+  public Integer getEnd() {
+    return end;
   }
-  public void setSegments(List<Segment> segments) {
-    this.segments = segments;
+  public void setEnd(Integer end) {
+    this.end = end;
   }
 
 
@@ -58,26 +57,26 @@ public class Coordinates {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Coordinates coordinates = (Coordinates) o;
-    return (this.rectangles == null ? coordinates.rectangles == null : this.rectangles.equals(coordinates.rectangles)) &&
-        (this.segments == null ? coordinates.segments == null : this.segments.equals(coordinates.segments));
+    Segment segment = (Segment) o;
+    return (this.start == null ? segment.start == null : this.start.equals(segment.start)) &&
+        (this.end == null ? segment.end == null : this.end.equals(segment.end));
   }
 
   @Override
   public int hashCode() {
     int result = 17;
-    result = 31 * result + (this.rectangles == null ? 0: this.rectangles.hashCode());
-    result = 31 * result + (this.segments == null ? 0: this.segments.hashCode());
+    result = 31 * result + (this.start == null ? 0: this.start.hashCode());
+    result = 31 * result + (this.end == null ? 0: this.end.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Coordinates {\n");
+    sb.append("class Segment {\n");
     
-    sb.append("  rectangles: ").append(rectangles).append("\n");
-    sb.append("  segments: ").append(segments).append("\n");
+    sb.append("  start: ").append(start).append("\n");
+    sb.append("  end: ").append(end).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

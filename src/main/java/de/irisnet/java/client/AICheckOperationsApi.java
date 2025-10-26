@@ -770,6 +770,148 @@ public class AICheckOperationsApi {
     }
   }
   /**
+  * Check a text with the AI.
+  * The response (_CheckResult_ schema) is returned immediately after the request.
+   * @param configId The configuration id from the Basic Configuration operations.
+   * @param data The text that needs to be checked.
+   * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
+   * @return CheckResult
+  */
+  public CheckResult checkText (UUID configId, Data data, Integer detail) throws TimeoutException, ExecutionException, InterruptedException, ApiException {
+    Object postBody = data;
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkText",
+        new ApiException(400, "Missing the required parameter 'configId' when calling checkText"));
+    }
+    // verify the required parameter 'data' is set
+    if (data == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'data' when calling checkText",
+        new ApiException(400, "Missing the required parameter 'data' when calling checkText"));
+    }
+
+    // create path and map variables
+    String path = "/v2/check-text/{configId}".replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "detail", detail));
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+    }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      String localVarResponse = apiInvoker.invokeAPI (basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames);
+      if (localVarResponse != null) {
+         return (CheckResult) ApiInvoker.deserialize(localVarResponse, "", CheckResult.class);
+      } else {
+         return null;
+      }
+    } catch (ApiException ex) {
+       throw ex;
+    } catch (InterruptedException ex) {
+       throw ex;
+    } catch (ExecutionException ex) {
+      if (ex.getCause() instanceof VolleyError) {
+        VolleyError volleyError = (VolleyError)ex.getCause();
+        if (volleyError.networkResponse != null) {
+          throw new ApiException(volleyError.networkResponse.statusCode, volleyError.getMessage());
+        }
+      }
+      throw ex;
+    } catch (TimeoutException ex) {
+      throw ex;
+    }
+  }
+
+      /**
+   * Check a text with the AI.
+   * The response (_CheckResult_ schema) is returned immediately after the request.
+   * @param configId The configuration id from the Basic Configuration operations.   * @param data The text that needs to be checked.   * @param detail Set the detail level of the response.  * _1_ - The response only contains the _Summary_ and possibly the _Encoded_ schemas for basic information&#39;s (better API performance). * _2_ - Additionally lists all broken rules (_BrokenRule_ schema) according to the configuration parameters that were requested. * _3_ - Also shows detections (e.g. _BaseDetection_ schema) that contains extended features to each found object.
+  */
+  public void checkText (UUID configId, Data data, Integer detail, final Response.Listener<CheckResult> responseListener, final Response.ErrorListener errorListener) {
+    Object postBody = data;
+
+    // verify the required parameter 'configId' is set
+    if (configId == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'configId' when calling checkText",
+        new ApiException(400, "Missing the required parameter 'configId' when calling checkText"));
+    }
+    // verify the required parameter 'data' is set
+    if (data == null) {
+      VolleyError error = new VolleyError("Missing the required parameter 'data' when calling checkText",
+        new ApiException(400, "Missing the required parameter 'data' when calling checkText"));
+    }
+
+    // create path and map variables
+    String path = "/v2/check-text/{configId}".replaceAll("\\{format\\}","json").replaceAll("\\{" + "configId" + "\\}", apiInvoker.escapeString(configId.toString()));
+
+    // query params
+    List<Pair> queryParams = new ArrayList<Pair>();
+    // header params
+    Map<String, String> headerParams = new HashMap<String, String>();
+    // form params
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    queryParams.addAll(ApiInvoker.parameterToPairs("", "detail", detail));
+
+
+    String[] contentTypes = {
+      "application/json"
+    };
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+
+    if (contentType.startsWith("multipart/form-data")) {
+      // file uploading
+      MultipartEntityBuilder localVarBuilder = MultipartEntityBuilder.create();
+      
+
+      HttpEntity httpEntity = localVarBuilder.build();
+      postBody = httpEntity;
+    } else {
+      // normal form params
+          }
+
+    String[] authNames = new String[] { "LICENSE-KEY" };
+
+    try {
+      apiInvoker.invokeAPI(basePath, path, "POST", queryParams, postBody, headerParams, formParams, contentType, authNames,
+        new Response.Listener<String>() {
+          @Override
+          public void onResponse(String localVarResponse) {
+            try {
+              responseListener.onResponse((CheckResult) ApiInvoker.deserialize(localVarResponse,  "", CheckResult.class));
+            } catch (ApiException exception) {
+               errorListener.onErrorResponse(new VolleyError(exception));
+            }
+          }
+      }, new Response.ErrorListener() {
+          @Override
+          public void onErrorResponse(VolleyError error) {
+            errorListener.onErrorResponse(error);
+          }
+      });
+    } catch (ApiException ex) {
+      errorListener.onErrorResponse(new VolleyError(ex));
+    }
+  }
+  /**
   * Check a video with the AI.
   * An empty response is returned immediately. The actual body (_CheckResult_ schema) is send to the _callbackUrl_ after the AI has finished processing.  &lt;b&gt;NOTICE: Depending on your configuration and parameters this operation can be quite expensive on your credit balance.&lt;b&gt;
    * @param configId The configuration id from the Basic Configuration operations.

@@ -13,16 +13,18 @@
 package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.Attribute;
+import de.irisnet.java.client.model.BaseDetection;
 import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * A detection describes the object found with all its details.
+ * Contains further characteristics regarding the moderation of text.
  **/
-@ApiModel(description = "A detection describes the object found with all its details.")
-public class BaseDetection {
+@ApiModel(description = "Contains further characteristics regarding the moderation of text.")
+public class TextDetection extends Detection {
   
   @SerializedName("type")
   private String type = null;
@@ -36,8 +38,12 @@ public class BaseDetection {
   private Integer probability = null;
   @SerializedName("coordinates")
   private Coordinates coordinates = null;
+  @SerializedName("content")
+  private String content = null;
   @SerializedName("attributes")
   private List<Attribute> attributes = null;
+  @SerializedName("subDetections")
+  private List<BaseDetection> subDetections = null;
 
   /**
    * Used as a type discriminator for json to object conversion.
@@ -105,14 +111,36 @@ public class BaseDetection {
   }
 
   /**
-   * Attributes characterizing the _base_ detection.
+   * The text that was detected
    **/
-  @ApiModelProperty(value = "Attributes characterizing the _base_ detection.")
+  @ApiModelProperty(value = "The text that was detected")
+  public String getContent() {
+    return content;
+  }
+  public void setContent(String content) {
+    this.content = content;
+  }
+
+  /**
+   * Attributes characterizing the text.
+   **/
+  @ApiModelProperty(value = "Attributes characterizing the text.")
   public List<Attribute> getAttributes() {
     return attributes;
   }
   public void setAttributes(List<Attribute> attributes) {
     this.attributes = attributes;
+  }
+
+  /**
+   * A set of sub-detection for text moderation.
+   **/
+  @ApiModelProperty(value = "A set of sub-detection for text moderation.")
+  public List<BaseDetection> getSubDetections() {
+    return subDetections;
+  }
+  public void setSubDetections(List<BaseDetection> subDetections) {
+    this.subDetections = subDetections;
   }
 
 
@@ -124,14 +152,16 @@ public class BaseDetection {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BaseDetection baseDetection = (BaseDetection) o;
-    return (this.type == null ? baseDetection.type == null : this.type.equals(baseDetection.type)) &&
-        (this.classification == null ? baseDetection.classification == null : this.classification.equals(baseDetection.classification)) &&
-        (this.group == null ? baseDetection.group == null : this.group.equals(baseDetection.group)) &&
-        (this.id == null ? baseDetection.id == null : this.id.equals(baseDetection.id)) &&
-        (this.probability == null ? baseDetection.probability == null : this.probability.equals(baseDetection.probability)) &&
-        (this.coordinates == null ? baseDetection.coordinates == null : this.coordinates.equals(baseDetection.coordinates)) &&
-        (this.attributes == null ? baseDetection.attributes == null : this.attributes.equals(baseDetection.attributes));
+    TextDetection textDetection = (TextDetection) o;
+    return (this.type == null ? textDetection.type == null : this.type.equals(textDetection.type)) &&
+        (this.classification == null ? textDetection.classification == null : this.classification.equals(textDetection.classification)) &&
+        (this.group == null ? textDetection.group == null : this.group.equals(textDetection.group)) &&
+        (this.id == null ? textDetection.id == null : this.id.equals(textDetection.id)) &&
+        (this.probability == null ? textDetection.probability == null : this.probability.equals(textDetection.probability)) &&
+        (this.coordinates == null ? textDetection.coordinates == null : this.coordinates.equals(textDetection.coordinates)) &&
+        (this.content == null ? textDetection.content == null : this.content.equals(textDetection.content)) &&
+        (this.attributes == null ? textDetection.attributes == null : this.attributes.equals(textDetection.attributes)) &&
+        (this.subDetections == null ? textDetection.subDetections == null : this.subDetections.equals(textDetection.subDetections));
   }
 
   @Override
@@ -143,22 +173,26 @@ public class BaseDetection {
     result = 31 * result + (this.id == null ? 0: this.id.hashCode());
     result = 31 * result + (this.probability == null ? 0: this.probability.hashCode());
     result = 31 * result + (this.coordinates == null ? 0: this.coordinates.hashCode());
+    result = 31 * result + (this.content == null ? 0: this.content.hashCode());
     result = 31 * result + (this.attributes == null ? 0: this.attributes.hashCode());
+    result = 31 * result + (this.subDetections == null ? 0: this.subDetections.hashCode());
     return result;
   }
 
   @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BaseDetection {\n");
-    
+    sb.append("class TextDetection {\n");
+    sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");
     sb.append("  group: ").append(group).append("\n");
     sb.append("  id: ").append(id).append("\n");
     sb.append("  probability: ").append(probability).append("\n");
     sb.append("  coordinates: ").append(coordinates).append("\n");
+    sb.append("  content: ").append(content).append("\n");
     sb.append("  attributes: ").append(attributes).append("\n");
+    sb.append("  subDetections: ").append(subDetections).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
