@@ -14,6 +14,7 @@ package de.irisnet.java.client.model;
 
 import de.irisnet.java.client.model.Attribute;
 import de.irisnet.java.client.model.Coordinates;
+import de.irisnet.java.client.model.Detection;
 import java.util.*;
 import io.swagger.annotations.*;
 import com.google.gson.annotations.SerializedName;
@@ -22,7 +23,7 @@ import com.google.gson.annotations.SerializedName;
  * A detection describes the object found with all its details.
  **/
 @ApiModel(description = "A detection describes the object found with all its details.")
-public class BaseDetection {
+public class BaseDetection extends Detection {
   
   @SerializedName("type")
   private String type = null;
@@ -151,7 +152,7 @@ public class BaseDetection {
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class BaseDetection {\n");
-    
+    sb.append("  " + super.toString()).append("\n");
     sb.append("  type: ").append(type).append("\n");
     sb.append("  classification: ").append(classification).append("\n");
     sb.append("  group: ").append(group).append("\n");

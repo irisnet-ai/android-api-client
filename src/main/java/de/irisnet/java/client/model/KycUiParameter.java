@@ -29,6 +29,8 @@ public class KycUiParameter {
   private String textColor = 000000;
   @SerializedName("logo")
   private String logo = null;
+  @SerializedName("logoBackgroundColor")
+  private String logoBackgroundColor = ffffff;
   @SerializedName("language")
   private String language = null;
 
@@ -77,6 +79,17 @@ public class KycUiParameter {
   }
 
   /**
+   * The logo background color in hex format (rrggbb).
+   **/
+  @ApiModelProperty(value = "The logo background color in hex format (rrggbb).")
+  public String getLogoBackgroundColor() {
+    return logoBackgroundColor;
+  }
+  public void setLogoBackgroundColor(String logoBackgroundColor) {
+    this.logoBackgroundColor = logoBackgroundColor;
+  }
+
+  /**
    * The language related settings for the UI as a JSON.
    **/
   @ApiModelProperty(value = "The language related settings for the UI as a JSON.")
@@ -101,6 +114,7 @@ public class KycUiParameter {
         (this.backgroundColor == null ? kycUiParameter.backgroundColor == null : this.backgroundColor.equals(kycUiParameter.backgroundColor)) &&
         (this.textColor == null ? kycUiParameter.textColor == null : this.textColor.equals(kycUiParameter.textColor)) &&
         (this.logo == null ? kycUiParameter.logo == null : this.logo.equals(kycUiParameter.logo)) &&
+        (this.logoBackgroundColor == null ? kycUiParameter.logoBackgroundColor == null : this.logoBackgroundColor.equals(kycUiParameter.logoBackgroundColor)) &&
         (this.language == null ? kycUiParameter.language == null : this.language.equals(kycUiParameter.language));
   }
 
@@ -111,6 +125,7 @@ public class KycUiParameter {
     result = 31 * result + (this.backgroundColor == null ? 0: this.backgroundColor.hashCode());
     result = 31 * result + (this.textColor == null ? 0: this.textColor.hashCode());
     result = 31 * result + (this.logo == null ? 0: this.logo.hashCode());
+    result = 31 * result + (this.logoBackgroundColor == null ? 0: this.logoBackgroundColor.hashCode());
     result = 31 * result + (this.language == null ? 0: this.language.hashCode());
     return result;
   }
@@ -124,6 +139,7 @@ public class KycUiParameter {
     sb.append("  backgroundColor: ").append(backgroundColor).append("\n");
     sb.append("  textColor: ").append(textColor).append("\n");
     sb.append("  logo: ").append(logo).append("\n");
+    sb.append("  logoBackgroundColor: ").append(logoBackgroundColor).append("\n");
     sb.append("  language: ").append(language).append("\n");
     sb.append("}\n");
     return sb.toString();
