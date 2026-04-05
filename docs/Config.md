@@ -30,6 +30,7 @@ LIVEPROOFOFADDRESSCHECK | &quot;liveProofOfAddressCheck&quot;
 LIVEAGEVERIFICATIONCHECK | &quot;liveAgeVerificationCheck&quot;
 LIVEFACEAUTHENTICATION | &quot;liveFaceAuthentication&quot;
 VIDEOUPLOADIDENTIFICATION | &quot;videoUploadIdentification&quot;
+VIDEOUPLOADAGEVERIFICATIONCHECK | &quot;videoUploadAgeVerificationCheck&quot;
 CONSIDERKNOWNFACES | &quot;considerKnownFaces&quot;
 ADDENCODINGSTORESULT | &quot;addEncodingsToResult&quot;
 IFRAMEFLOW | &quot;iFrameFlow&quot;
