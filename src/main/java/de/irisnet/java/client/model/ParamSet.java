@@ -36,8 +36,6 @@ public class ParamSet {
   private List<Param> params = null;
   @SerializedName("kycUiParameters")
   private KycUiParameter kycUiParameters = null;
-  @SerializedName("kycDocumentCountryDenyList")
-  private String kycDocumentCountryDenyList = null;
 
   /**
    * Threshold when an object can be recognized. Lowering the value will increase the probability of recognizing objects. A threshold of 0.5 would mean, that 50% of an object like a face must be visible, to be detected.Setting the value too low however, can cause false positives.
@@ -111,17 +109,6 @@ public class ParamSet {
     this.kycUiParameters = kycUiParameters;
   }
 
-  /**
-   * A comma separated list of country codes (ISO 3166-1 alpha-2) for which id-documents should be rejected.
-   **/
-  @ApiModelProperty(value = "A comma separated list of country codes (ISO 3166-1 alpha-2) for which id-documents should be rejected.")
-  public String getKycDocumentCountryDenyList() {
-    return kycDocumentCountryDenyList;
-  }
-  public void setKycDocumentCountryDenyList(String kycDocumentCountryDenyList) {
-    this.kycDocumentCountryDenyList = kycDocumentCountryDenyList;
-  }
-
 
   @Override
   public boolean equals(Object o) {
@@ -137,8 +124,7 @@ public class ParamSet {
         (this.minDuration == null ? paramSet.minDuration == null : this.minDuration.equals(paramSet.minDuration)) &&
         (this.abortOnSeverity == null ? paramSet.abortOnSeverity == null : this.abortOnSeverity.equals(paramSet.abortOnSeverity)) &&
         (this.params == null ? paramSet.params == null : this.params.equals(paramSet.params)) &&
-        (this.kycUiParameters == null ? paramSet.kycUiParameters == null : this.kycUiParameters.equals(paramSet.kycUiParameters)) &&
-        (this.kycDocumentCountryDenyList == null ? paramSet.kycDocumentCountryDenyList == null : this.kycDocumentCountryDenyList.equals(paramSet.kycDocumentCountryDenyList));
+        (this.kycUiParameters == null ? paramSet.kycUiParameters == null : this.kycUiParameters.equals(paramSet.kycUiParameters));
   }
 
   @Override
@@ -150,7 +136,6 @@ public class ParamSet {
     result = 31 * result + (this.abortOnSeverity == null ? 0: this.abortOnSeverity.hashCode());
     result = 31 * result + (this.params == null ? 0: this.params.hashCode());
     result = 31 * result + (this.kycUiParameters == null ? 0: this.kycUiParameters.hashCode());
-    result = 31 * result + (this.kycDocumentCountryDenyList == null ? 0: this.kycDocumentCountryDenyList.hashCode());
     return result;
   }
 
@@ -165,7 +150,6 @@ public class ParamSet {
     sb.append("  abortOnSeverity: ").append(abortOnSeverity).append("\n");
     sb.append("  params: ").append(params).append("\n");
     sb.append("  kycUiParameters: ").append(kycUiParameters).append("\n");
-    sb.append("  kycDocumentCountryDenyList: ").append(kycDocumentCountryDenyList).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

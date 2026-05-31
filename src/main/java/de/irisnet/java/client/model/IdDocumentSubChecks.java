@@ -151,6 +151,11 @@ public class IdDocumentSubChecks {
   };
   @SerializedName("knownFacesCheck")
   private KnownFacesCheckEnum knownFacesCheck = null;
+  public enum FaceSimilarityCheckEnum {
+     passed,  failed,  not_processed, 
+  };
+  @SerializedName("faceSimilarityCheck")
+  private FaceSimilarityCheckEnum faceSimilarityCheck = null;
 
   /**
    * Indicates whether the MRZ checksum is correct
@@ -438,6 +443,17 @@ public class IdDocumentSubChecks {
     this.knownFacesCheck = knownFacesCheck;
   }
 
+  /**
+   * Indicates if the selfie image and the ID document image belong to the same person
+   **/
+  @ApiModelProperty(value = "Indicates if the selfie image and the ID document image belong to the same person")
+  public FaceSimilarityCheckEnum getFaceSimilarityCheck() {
+    return faceSimilarityCheck;
+  }
+  public void setFaceSimilarityCheck(FaceSimilarityCheckEnum faceSimilarityCheck) {
+    this.faceSimilarityCheck = faceSimilarityCheck;
+  }
+
 
   @Override
   public boolean equals(Object o) {
@@ -473,7 +489,8 @@ public class IdDocumentSubChecks {
         (this.documentNumberConsistency == null ? idDocumentSubChecks.documentNumberConsistency == null : this.documentNumberConsistency.equals(idDocumentSubChecks.documentNumberConsistency)) &&
         (this.issuingDateConsistency == null ? idDocumentSubChecks.issuingDateConsistency == null : this.issuingDateConsistency.equals(idDocumentSubChecks.issuingDateConsistency)) &&
         (this.expirationDateConsistency == null ? idDocumentSubChecks.expirationDateConsistency == null : this.expirationDateConsistency.equals(idDocumentSubChecks.expirationDateConsistency)) &&
-        (this.knownFacesCheck == null ? idDocumentSubChecks.knownFacesCheck == null : this.knownFacesCheck.equals(idDocumentSubChecks.knownFacesCheck));
+        (this.knownFacesCheck == null ? idDocumentSubChecks.knownFacesCheck == null : this.knownFacesCheck.equals(idDocumentSubChecks.knownFacesCheck)) &&
+        (this.faceSimilarityCheck == null ? idDocumentSubChecks.faceSimilarityCheck == null : this.faceSimilarityCheck.equals(idDocumentSubChecks.faceSimilarityCheck));
   }
 
   @Override
@@ -505,6 +522,7 @@ public class IdDocumentSubChecks {
     result = 31 * result + (this.issuingDateConsistency == null ? 0: this.issuingDateConsistency.hashCode());
     result = 31 * result + (this.expirationDateConsistency == null ? 0: this.expirationDateConsistency.hashCode());
     result = 31 * result + (this.knownFacesCheck == null ? 0: this.knownFacesCheck.hashCode());
+    result = 31 * result + (this.faceSimilarityCheck == null ? 0: this.faceSimilarityCheck.hashCode());
     return result;
   }
 
@@ -539,6 +557,7 @@ public class IdDocumentSubChecks {
     sb.append("  issuingDateConsistency: ").append(issuingDateConsistency).append("\n");
     sb.append("  expirationDateConsistency: ").append(expirationDateConsistency).append("\n");
     sb.append("  knownFacesCheck: ").append(knownFacesCheck).append("\n");
+    sb.append("  faceSimilarityCheck: ").append(faceSimilarityCheck).append("\n");
     sb.append("}\n");
     return sb.toString();
   }

@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **issuingDateConsistency** | [**IssuingDateConsistencyEnum**](#IssuingDateConsistencyEnum) | Indicates if the issuing date on the document and the MRZ are consistent |  [optional]
 **expirationDateConsistency** | [**ExpirationDateConsistencyEnum**](#ExpirationDateConsistencyEnum) | Indicates if the expiration date on the document and the MRZ are consistent |  [optional]
 **knownFacesCheck** | [**KnownFacesCheckEnum**](#KnownFacesCheckEnum) | Indicates if the selfie image matches an aready existing client/customer |  [optional]
+**faceSimilarityCheck** | [**FaceSimilarityCheckEnum**](#FaceSimilarityCheckEnum) | Indicates if the selfie image and the ID document image belong to the same person |  [optional]
 
 
 ## Enum: MrzChecksumEnum
@@ -185,6 +186,12 @@ Name | Value
 
 
 ## Enum: KnownFacesCheckEnum
+
+Name | Value
+---- | -----
+
+
+## Enum: FaceSimilarityCheckEnum
 
 Name | Value
 ---- | -----

@@ -57,6 +57,10 @@ public class JsonUtil {
   public static Type getListTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
+    if ("AgeAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<List<AgeAttribute>>(){}.getType();
+    }
+    
     if ("AgeVerificationAttribute".equalsIgnoreCase(className)) {
       return new TypeToken<List<AgeVerificationAttribute>>(){}.getType();
     }
@@ -67,14 +71,6 @@ public class JsonUtil {
     
     if ("AgeVerificationSubChecks".equalsIgnoreCase(className)) {
       return new TypeToken<List<AgeVerificationSubChecks>>(){}.getType();
-    }
-    
-    if ("AiClassification".equalsIgnoreCase(className)) {
-      return new TypeToken<List<AiClassification>>(){}.getType();
-    }
-    
-    if ("AiPrototype".equalsIgnoreCase(className)) {
-      return new TypeToken<List<AiPrototype>>(){}.getType();
     }
     
     if ("ApiNotice".equalsIgnoreCase(className)) {
@@ -251,6 +247,10 @@ public class JsonUtil {
   public static Type getTypeForDeserialization(Class cls) {
     String className = cls.getSimpleName();
     
+    if ("AgeAttribute".equalsIgnoreCase(className)) {
+      return new TypeToken<AgeAttribute>(){}.getType();
+    }
+    
     if ("AgeVerificationAttribute".equalsIgnoreCase(className)) {
       return new TypeToken<AgeVerificationAttribute>(){}.getType();
     }
@@ -261,14 +261,6 @@ public class JsonUtil {
     
     if ("AgeVerificationSubChecks".equalsIgnoreCase(className)) {
       return new TypeToken<AgeVerificationSubChecks>(){}.getType();
-    }
-    
-    if ("AiClassification".equalsIgnoreCase(className)) {
-      return new TypeToken<AiClassification>(){}.getType();
-    }
-    
-    if ("AiPrototype".equalsIgnoreCase(className)) {
-      return new TypeToken<AiPrototype>(){}.getType();
     }
     
     if ("ApiNotice".equalsIgnoreCase(className)) {
